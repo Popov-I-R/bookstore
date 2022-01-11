@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/xampp/htdocs/backend/Bookstore/Backend/all-books.php</file>
+            <file>file:/D:/xampp/htdocs/backend/Bookstore/Backend/all-categories.php</file>
+            <file>file:/D:/xampp/htdocs/backend/Bookstore/Backend/account.php</file>
+            <file>file:/D:/xampp/htdocs/backend/Bookstore/Backend/categorytemplate.php</file>
+            <file>file:/D:/xampp/htdocs/backend/Bookstore/Backend/add-book.php</file>
+            <file>file:/D:/xampp/htdocs/backend/Bookstore/Backend/includes/user/login.php</file>
+            <file>file:/D:/xampp/htdocs/backend/Bookstore/Backend/includes/book/edit.php</file>
+            <file>file:/D:/xampp/htdocs/backend/Bookstore/Backend/edit-book.php</file>
+            <file>file:/D:/xampp/htdocs/backend/Bookstore/Backend/login.php</file>
+            <file>file:/D:/xampp/htdocs/backend/Bookstore/Backend/header.php</file>
+            <file>file:/D:/xampp/htdocs/backend/Bookstore/Backend/index.php</file>
+        </group>
+    </open-files>
+</project-private>
