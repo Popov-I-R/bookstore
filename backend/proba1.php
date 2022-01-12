@@ -60,9 +60,9 @@ font-size:1.1rem
  
 
 <div class="page-content p-5" id="content">
-<div class="box-container">
+<div class="box-container" >
     <div class="box">
-        <img src="<?php echo URLBASE; ?>/backend/uploadsimages.jpg" alt="harryp"> 
+        <img src="<?php echo URLBASE; ?>/backend/uploadsimages.jpg"  alt="harryP" width="250" height="300" onclick="location.href = '<?php echo URLBASE; ?>/backend/book_template.php';" style="cursor: pointer;">
     </div>
     
     <div class="info">

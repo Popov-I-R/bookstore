@@ -60,7 +60,8 @@ font-size:1.1rem
  
 
 <div class="page-content p-5" id="content">
- <div class="container">
+    
+    <div class="container">
             <div class="row">
                 <div class="col-sm-5 col-xxl-5 col-xl-5 col-lg-5 col-sm-4">
                     <div class="product-details-image">
@@ -113,4 +114,5 @@ font-size:1.1rem
 </div>
 
 
+    
 </body>

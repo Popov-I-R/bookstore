@@ -99,6 +99,13 @@ font-size:1.1rem
                 Всички категории
             </a>
     </li>
+     <li class="nav-item">
+      <a href="<?php echo URLBASE; ?>/backend/categories-template.php" class="nav-link text-dark font-italic">
+                <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
+                Категории
+            </a>
+    </li>
+
   </ul>
 
 
@@ -137,7 +144,7 @@ font-size:1.1rem
 
                             </ul>
             </li>
-          <li><a href="#" class="nav-link px-2 text-white">Промоции</a></li>
+          <li><a href="<?php echo URLBASE; ?>/backend/categories-template.php" class="nav-link px-2 text-white">Промоции</a></li>
           <li><a href="#" class="nav-link px-2 text-white">За нас</a></li>
           <li><a href="#" class="nav-link px-2 text-white">Контакти</a></li>
         </ul>

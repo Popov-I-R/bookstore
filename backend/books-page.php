@@ -22,12 +22,12 @@ require_once 'header.php';
     
     <div class="col-sm-12 col-xxl-12 col-xl-12 col-lg-12 col-sm-12">
         <div class="category-name">
-            <h1>Категория</h1>
+            <h1>Съответна Категория</h1>
         </div>
     </div>
 
     <div class="card" style="width: 18rem;">
-  <img src="<?php echo URLBASE; ?>/backend/uploadsimages.jpg" class="card-img-top" alt="...">
+  <img src="<?php echo URLBASE; ?>/backend/uploadsimages.jpg"  alt="harryP" width="250" height="300" onclick="location.href = '<?php echo URLBASE; ?>/backend/book_template.php';" style="cursor: pointer;">
   <div class="card-body">
     <h5 class="card-title">Заглавие книга</h5>
         <div class="product-details-price-block">

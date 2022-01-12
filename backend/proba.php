@@ -1,56 +1,60 @@
 <?php
 
-require_once 'header.php'; 
-require_once '../common/includes/dbconnect.php';
-//require_once 'includes/check.php';
+require_once 'header.php';
 
 
-$query = "SELECT title FROM categories";
-//$query = "SELECT books.*, authors.name FROM books INNER JOIN book_author ON books.id = book_author.book_id INNER JOIN authors ON authors.id = book_author.author_id";
-$result = $conn->query($query);
+$sql_categories = "SELECT id, title FROM categories";
+$result_categories = $conn->query($sql_categories);
 
-if(!$result)
-    die("Fatal error");
+
+
 ?>
 
-<div class="page-content p-5" id="content">
-    
-    <h1>Всички категории</h1>
-    <table class="table">
-        <thead>
-             <tr>
-                 <th scope="col">Категория</th>
-             </tr>
-        </thead>
-        <tbody>
-            <?php
-            if($result->num_rows >0){
-                while($row = $result->fetch_assoc()) { 
-                    ?>
-            <tr>
-                <td><?php echo htmlspecialchars($row['title'])?></td>
-            </tr>        
-                    <?php
-                }     
-            }
-            ?>
-        </tbody>
-    </table>
-    
-    ---------------------------------------------
-    Select menu proba :
-    <select>
-        <?php while($row = mysqli_fetch_array($result)) {
-         ?>
-        <option value="<?php echo $row['title']; ?> "> <?php echo $row['title']; ?> </option>
+<!--Page content holder-->
+<div class='page-content p-5' id="content">
+   
+                    <div class="col-2">
+                         <label for="category">Категория</label>
+                        <select class="form-control required" id="category" name="categories[]" >
+                            <?php
+                            if($result_categories->num_rows>0){
+                                while($row = $result_categories->fetch_assoc()){
+                                  ?> 
+                                <option value="<?php echo $row['id']; ?>"><?php echo $row['title'];?></option>
+                                <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+    --------------------------------
+<!--<div class="btn-group">
+    <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Family</button>
+    <div class="dropdown-menu">
         <?php
-        }
+           
+            // Replace with the desired SQL
+            $sql = "SELECT id, title FROM categories";
+            
+            // get the results
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) 
+            {
+                // output data of each row
+                while($option = $result->fetch_assoc()) 
+                {
+                    // change "name" to the column fo your DB row.  
+                    echo "<a class='categories' href='#'>".$option["title"]."</a> ";
+
+                    // if you also store a link to your DB, for ex in a column link then use
+                    // echo "<a class='dropdown-item' href='".option["link"]."'>".$option["name"]."</a> ";
+                }
+            } 
+            $conn->close();
         ?>
-    </select>
-    
-    ------------------
-    
+     </div>
+ </div>-->
 
 
-    
-</div>
+<!--         

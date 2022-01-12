@@ -3,6 +3,7 @@ require_once '../common/includes/dbconnect.php';
 //require_once 'includes/check.php';
  define ('URLBASE', 'http://localhost/bookstore/') ;
  
+ 
 ?>
 <!doctype html>
 
@@ -51,8 +52,8 @@ require_once '../common/includes/dbconnect.php';
   <div class="py-4 px-3 mb-4 bg-light">
     <div class="media d-flex align-items-center"><img src="https://bootstrapious.com/i/snippets/sn-v-nav/avatar.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
       <div class="media-body">
-        <h4 class="m-0">John Doe</h4>
-        <p class="font-weight-light text-muted mb-0">Web developer</p>
+        <h4 class="m-0">Username</h4>
+        <p class="font-weight-light text-muted mb-0">User</p>
       </div>
     </div>
   </div>
@@ -67,23 +68,10 @@ require_once '../common/includes/dbconnect.php';
             </a>
     </li>
         <li class="nav-item">
-      <a href="<?php echo URLBASE; ?>/backend/add-book.php" class="nav-link text-dark font-italic">
-                <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-                Добави книга
-            </a>
+
     </li>
-    <li class="nav-item">
-      <a href="<?php echo URLBASE; ?>/backend/all-books.php" class="nav-link text-dark font-italic">
-                <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-                Всички книги
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="<?php echo URLBASE; ?>/backend/all-authors.php" class="nav-link text-dark font-italic">
-                <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-                Всички автори
-            </a>
-    </li>
+
+
     <li class="nav-item">
       <a href="<?php echo URLBASE; ?>/backend/all-categories.php" class="nav-link text-dark font-italic">
                 <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
@@ -100,25 +88,7 @@ require_once '../common/includes/dbconnect.php';
                 <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
                 Area charts
             </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-                <i class="fa fa-bar-chart mr-3 text-primary fa-fw"></i>
-                Bar charts
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-                <i class="fa fa-pie-chart mr-3 text-primary fa-fw"></i>
-                Pie charts
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-                <i class="fa fa-line-chart mr-3 text-primary fa-fw"></i>
-                Line charts
-            </a>
-    </li>
+
   </ul>
 </div>
 <!-- End vertical navbar -->
@@ -158,11 +128,11 @@ require_once '../common/includes/dbconnect.php';
   <?php 
          if(isset($_SESSION['login_user'])) { ?>
          <div class="profile">
-          <a class="btn btn-warning" href="http://localhost/bookstore//backend/account.php#" role="button">Профил</a>
+          <a class="btn btn-warning" href="http://localhost/bookstore//backend/account.php#" role="button">Профил</a> // Това изобщо не се показва
         </div>    
         <?php }  else { ?>
         <div class="login">
-          <a class="btn btn-warning" href="http://localhost/bookstore//backend/registration.php#" role="button">Регистрация</a>
+          <a class="btn btn-warning" href="http://localhost/bookstore//backend/registration.php#" role="button">Профил</a>
         </div>
           <?php
           }
