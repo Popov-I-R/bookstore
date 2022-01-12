@@ -152,8 +152,8 @@ font-size:1.1rem
 
           
         <div class="text-end">
-          <a class="btn btn-warning" href="http://localhost/bookstore//backend/login.php#" role="button">Вход</a>
-          <a class="btn btn-warning" href="http://localhost/bookstore//backend/registration.php#" role="button">Регистрация</a>
+          <a class="btn btn-warning" href="<?php echo URLBASE; ?>/backend/login.php" role="button">Вход</a>
+          <a class="btn btn-warning" href="<?php echo URLBASE; ?>/backend/registration.php" role="button">Регистрация</a>
         </div>
       </div>
     </div>
