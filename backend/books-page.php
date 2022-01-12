@@ -20,11 +20,19 @@ require_once 'header.php';
 
 <div class="page-content p-5" id="content">
     
+    <div class="col-sm-12 col-xxl-12 col-xl-12 col-lg-12 col-sm-12">
+        <div class="category-name">
+            <h1>Категория</h1>
+        </div>
+    </div>
+
     <div class="card" style="width: 18rem;">
   <img src="<?php echo URLBASE; ?>/backend/uploadsimages.jpg" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title">Заглавие книга</h5>
+        <div class="product-details-price-block">
+            <span class="product-price">Цена: 13 BGN</span>
+        </div>
     <a href="#" class="btn btn-primary">Купи</a>
     <a href="#" class="btn btn-primary">Добави в любими</a>
   </div>
