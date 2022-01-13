@@ -19,7 +19,7 @@ $result_publishers = $conn->query($sql_publishers);
     <div class="card">
         <h2 class="card-header">Добавяне на нова книга</h2>
         <div class='card-body'>
-            <form action='add-book.php' method='POST' enctype="multipart/form-data">
+            <form action='add-book.php' id="add-book" method='POST' enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="col-12">
                         <label for="isbn">ISBN *</label>
@@ -112,11 +112,11 @@ include_once 'footer.php';
             var title = $('#title').val();
             var publisher = $('#publisher').val();
             
-            var form = $('form')[0];
+            var form = $('form#add-book')[0];
             var formData = new FormData(form);
             
             formData.append('cover',$('input[type=file]')[0].files[0]);
-            console.log(formData);
+
             if(isbn != "" && title != "" && publisher != ""){
                 $.ajax({
                    type: 'POST',
@@ -126,7 +126,6 @@ include_once 'footer.php';
 //                       
 //                   },
                     data: formData,
-                    dataType:'json',
                     cache: false, 
                     processData: false,
                     contentType: false,
@@ -144,7 +143,7 @@ include_once 'footer.php';
                                 case 2:
                                     $('#warning').html('Изображението е твърде голямо.');
                                     break;
-                                case 2:
+                                case 3:
                                     $('#warning').html('Проблем при качването на файла.');
                                     break;    
                             }

@@ -3,6 +3,8 @@ require_once '../common/includes/dbconnect.php';
 //require_once 'includes/check.php';
  define ('URLBASE', 'http://localhost/bookstore/') ;
  
+ $sql_categories = "SELECT id, title FROM categories";
+$result_categories = $conn->query($sql_categories);
  
 ?>
 <!doctype html>
@@ -30,6 +32,7 @@ require_once '../common/includes/dbconnect.php';
 } 
 .nav-link:hover{
     color:#1ea3d7
+   
 }
 .dropdown:hover>.dropdown-menu {
     display: block;
@@ -37,10 +40,15 @@ require_once '../common/includes/dbconnect.php';
 .dropdown-item:hover{
     color:#1ea3d7
 }
+.text-white:hover{        
+color:#1ea3d7 !important
+}
+.btn-warning:hover{       
+font-size:1.1rem
+}
         
-        
-        
-        
+.category:hover{display:block !important;}        
+
         
         
         </style>
@@ -68,10 +76,23 @@ require_once '../common/includes/dbconnect.php';
             </a>
     </li>
         <li class="nav-item">
-
+      <a href="<?php echo URLBASE; ?>/backend/add-book.php" class="nav-link text-dark font-italic">
+                <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+                Добави книга
+            </a>
     </li>
-
-
+    <li class="nav-item">
+      <a href="<?php echo URLBASE; ?>/backend/all-books.php" class="nav-link text-dark font-italic">
+                <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+                Всички книги
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="<?php echo URLBASE; ?>/backend/all-authors.php" class="nav-link text-dark font-italic">
+                <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+                Всички автори
+            </a>
+    </li>
     <li class="nav-item">
       <a href="<?php echo URLBASE; ?>/backend/all-categories.php" class="nav-link text-dark font-italic">
                 <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
@@ -80,16 +101,8 @@ require_once '../common/includes/dbconnect.php';
     </li>
   </ul>
 
-  <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Charts</p>
 
-  <ul class="nav flex-column bg-white mb-0">
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-                <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
-                Area charts
-            </a>
 
-  </ul>
 </div>
 <!-- End vertical navbar -->
 
@@ -106,14 +119,22 @@ require_once '../common/includes/dbconnect.php';
           <li><a href="#" class="nav-link px-2 text-white">Начална страница</a></li>
             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-currency-pound"></i> Всички категории 
+                                 Всички категории 
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <li><a class="dropdown-item" href="#"><i class="bi bi-currency-euro"></i> Fantasy</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="#"> <i class="bi bi-currency-pound"> </i>Historical</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="#"><i class="bi bi-currency-dollar"></i> Bestseller</a></li>
+
+                        <select class="form-control" id="category" name="categories[]">
+                            <?php
+                            if($result_categories->num_rows>0){
+                                while($row = $result_categories->fetch_assoc()){
+                                  ?> 
+                                <option value="<?php echo $row['id']; ?>"><?php echo $row['title'];?></option>
+                                <?php
+                                }
+                            }
+                            ?>
+                        </select>
+
                             </ul>
             </li>
           <li><a href="#" class="nav-link px-2 text-white">Промоции</a></li>
@@ -124,26 +145,16 @@ require_once '../common/includes/dbconnect.php';
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <input type="search" class="form-control form-control-dark" placeholder="Търси книга..." aria-label="Search">
         </form>
+          
 
+<!---------------------------------------Проба за сесия login--------------->
+          
 
-        <div class="profile">
-          <a class="btn btn-warning" href="<?php echo URLBASE; ?>/backend/.php" role="button">Профил</a>
-          <a class="btn btn-warning" href="<?php echo URLBASE; ?>/backend/logout.php" role="button">Изход</a>
+          
+        <div class="text-end">
+          <a class="btn btn-warning" href="http://localhost/bookstore//backend/login.php#" role="button">Вход</a>
+          <a class="btn btn-warning" href="http://localhost/bookstore//backend/registration.php#" role="button">Регистрация</a>
         </div>
-          
-          
-          
-          
-         
-<!--         <div class="profile"
-          <a class="btn btn-warning" href="http://localhost/bookstore//backend/account.php#" role="button">Профил</a> 
-        </div>    
-        
-        <div class="login">
-          <a class="btn btn-warning" href="http://localhost/bookstore//backend/registration.php#" role="button">Изход</a>
-        </div>-->
-          
-
       </div>
     </div>
      

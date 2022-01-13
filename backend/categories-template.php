@@ -1,8 +1,11 @@
 <?php
 require_once '../common/includes/dbconnect.php';
 require_once 'header.php'; 
-//require_once 'includes/check.php';
-// define ('URLBASE', 'http://localhost/bookstore/') ;
+
+$category_id=$_GET['id'];
+$query = "SELECT books.* FROM books INNER JOIN book_category ON books.id = book_category.book_id WHERE book_category.category_id = $category_id";
+
+$result = $conn->query($query);
 
  
 ?>
@@ -34,8 +37,21 @@ require_once 'header.php';
     
     
     <div class="categories">
-        <img src="<?php echo URLBASE; ?>/backend/uploadsimages.jpg"  alt="harryP" width="250" height="300" onclick="location.href = '<?php echo URLBASE; ?>/backend/books-page.php';" style="cursor: pointer;">
-        <div class="link"><a href="page-link">Фантастика</a></div>
+        <div class="row">
+            <?php
+            if($result->num_rows >0){
+                while($row = $result->fetch_assoc()) { 
+                    ?>
+            <div class="col-4">
+                <img src="<?php echo URLBASE. "/backend/uploads/" .$row['image']?>"  alt="harryP" width="250" height="300">
+                <div class="link"><a href="page-link">Фантастика</a></div>
+            </div>
+            <?php }
+            
+                }
+            ?>
+            
+        </div>
     </div>
     
  </div>
