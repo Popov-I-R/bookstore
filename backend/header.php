@@ -57,56 +57,7 @@ $result_categories = $conn->query($sql_categories);
     </head>
 
 
-    <body>
-        <div class="vertical-nav bg-white" id="sidebar">
-            <div class="py-4 px-3 mb-4 bg-light">
-                <div class="media d-flex align-items-center"><img src="https://bootstrapious.com/i/snippets/sn-v-nav/avatar.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-                    <div class="media-body">
-                        <h4 class="m-0">Username</h4>
-                        <p class="font-weight-light text-muted mb-0">User</p>
-                    </div>
-                </div>
-            </div>
 
-            <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
-
-            <ul class="nav flex-column bg-white mb-0">
-                <li class="nav-item">
-                    <a href="<?php echo URLBASE; ?>/backend" class="nav-link text-dark font-italic bg-light">
-                        <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                        Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo URLBASE; ?>/backend/add-book.php" class="nav-link text-dark font-italic">
-                        <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-                        Добави книга
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo URLBASE; ?>/backend/all-books.php" class="nav-link text-dark font-italic">
-                        <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-                        Всички книги
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo URLBASE; ?>/backend/all-authors.php" class="nav-link text-dark font-italic">
-                        <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-                        Всички автори
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo URLBASE; ?>/backend/all-categories.php" class="nav-link text-dark font-italic">
-                        <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
-                        Всички категории
-                    </a>
-                </li>
-            </ul>
-
-
-
-        </div>
-        <!-- End vertical navbar -->
 
         <!-- ГОРЕН ЧЕРЕН НАВБАР СТАРТ-->
         <header class="p-3 bg-dark text-white">
@@ -117,7 +68,7 @@ $result_categories = $conn->query($sql_categories);
                     </a>
 
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
+
                         <li><a href="#" class="nav-link px-2 text-white">Начална страница</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
