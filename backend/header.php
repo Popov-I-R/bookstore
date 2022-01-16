@@ -19,7 +19,8 @@ $result_categories = $conn->query($sql_categories);
         <!--font awesome-->
         <link href="../common/assets/vendor/font-awesome/css/all.min.css" rel="stylesheet" type="text/css"/>
         <!--theme css-->
-        <link href="../common/assets/libs/css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="../common/assets/libs/css/vertical-categories.css" rel="stylesheet" type="text/css"/>
+        <link href="../common/assets/libs/css/style-vertical-nav.css" rel="stylesheet" type="text/css"/>
         <!--bootstrap bundle-->
         <script src="../common/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
         <!--jquery 3.6.0-->
@@ -56,7 +57,44 @@ $result_categories = $conn->query($sql_categories);
         </style>
     </head>
 
-
+    
+    
+    <body>
+        <div class="vertical-nav bg-white" id="sidebar">
+            <div class="py-4 px-3 mb-4 bg-light">
+                <div class="media d-flex align-items-center"><img src="<?php echo URLBASE; ?>/backend/uploads/profile-picture.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+                    <div class="media-body">
+                        <h4 class="m-0">Username</h4>
+                        <p class="font-weight-light text-muted mb-0">User</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="vertical">
+    <ul>
+      <li>
+        <a href="#">Категории</a>
+        <div>
+          <ul>
+             <?php
+                                    
+                if ($result_categories->num_rows > 0) {
+                    while ($row = $result_categories->fetch_assoc()) {
+                        ?> 
+                    <li><a href="<?php echo URLBASE; ?>/backend/categories-template.php?id=<?php echo $row['id']?> "><?php echo $row['title']; ?></a></li>
+                            <?php
+                            }
+                        }
+                    ?> 
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+            
+        
+        </div>
+        <!-- КРАЙ НА ВЕРТИКАЛЕН НАВБАР -->
 
 
         <!-- ГОРЕН ЧЕРЕН НАВБАР СТАРТ-->
@@ -68,8 +106,9 @@ $result_categories = $conn->query($sql_categories);
                     </a>
 
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                         <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
 
-                        <li><a href="#" class="nav-link px-2 text-white">Начална страница</a></li>
+                        <li><a href="<?php echo URLBASE; ?>/backend/index.php" class="nav-link px-2 text-white">Начална страница</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Всички категории 

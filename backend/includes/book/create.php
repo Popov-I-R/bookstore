@@ -81,7 +81,7 @@ if ($last_book_id != "" && $_POST['categories']) {
 
     $data = array();
     foreach ($_POST['categories'] as $categories) {
-        $data[] = $author;
+        $data[] = $categories;
     }
     $stmt = $conn->prepare("INSERT INTO book_category(book_id, category_id) VALUES (?,?)");
     $conn->begin_transaction();

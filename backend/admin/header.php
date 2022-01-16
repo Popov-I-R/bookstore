@@ -84,7 +84,7 @@ $result_categories = $conn->query($sql_categories);
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo URLBASE; ?>/backend/admin/edit-book.php" class="nav-link text-dark font-italic">
+                    <a href="<?php echo URLBASE; ?>/backend/admin/update-books.php" class="nav-link text-dark font-italic">
                         <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
                         Редактирай книга
                     </a>
