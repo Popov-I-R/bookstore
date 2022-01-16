@@ -3,9 +3,12 @@ require_once '../common/includes/dbconnect.php';
 require_once 'header.php'; 
 
 $category_id=$_GET['id'];
-$query = "SELECT books.* FROM books INNER JOIN book_category ON books.id = book_category.book_id WHERE book_category.category_id = $category_id";
+$query = "SELECT books.* "
+        . "FROM books INNER JOIN book_category ON books.id = book_category.book_id "
+        . "WHERE book_category.category_id = $category_id";
 
 $result = $conn->query($query);
+
 
  
 ?>
@@ -33,7 +36,42 @@ $result = $conn->query($query);
 
 <div class="page-content p-5" id="content">
     
-    <h1>Категории</h1>
+    
+<h1>
+    <?php 
+    if ($category_id === "1") {
+  echo "Фантастика";
+}  elseif ($category_id === "2") {
+  echo "История";
+}  elseif ($category_id === "3") {
+echo "Хазарт";
+}  elseif ($category_id === "4") {
+echo "Най-продавани";
+}  elseif ($category_id === "5") {
+echo "Трилър";
+}  elseif ($category_id === "6") {
+echo "Финанси";
+}  elseif ($category_id === "7") {
+echo "Медицина";
+}  elseif ($category_id === "8") {
+echo "Българска литература";
+}  elseif ($category_id === "9") {
+echo "Хумор/Смях";
+}  elseif ($category_id === "10") {
+echo "Хорър/Ужаси";
+}  elseif ($category_id === "11") {
+echo "Всичко друго";
+}
+
+else {
+  echo "hell nah!";
+}?>  
+</h1> 
+ 
+
+     
+    
+    <span>Категории</span>
     
     
     <div class="categories">
