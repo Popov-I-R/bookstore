@@ -2,6 +2,14 @@
 
 require_once 'header.php';
 
+
+$sql_isbn = "SELECT id, isbn FROM books";
+$result_isbn = $conn->query($sql_isbn);
+
+
+
+
+
 $sql_authors = "SELECT id, name FROM authors";
 $result_authors = $conn->query($sql_authors);
 
@@ -23,7 +31,16 @@ $result_publishers = $conn->query($sql_publishers);
                 <div class="form-row">
                     <div class="col-12">
                         <label for="isbn">ISBN *</label>
+                         <?php
+                            if($result_isbn->num_rows>0){
+                                while($row = $result_isbn->fetch_assoc()){
+                                  ?> 
                         <input type="text" class="form-control required" id="isbn" name="isbn" required>
+                        <option value="<?php echo $row['id']; ?>"><?php echo $row['isbn'];?></option>
+                               <?php
+                                }
+                            }
+                            ?>
                     </div>
                      <div class="col-12">
                         <label for="title">Заглавие *</label>

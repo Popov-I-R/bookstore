@@ -13,6 +13,10 @@ require_once 'header.php';
 
 ?>
 
+<html>
+    <head></head>
+    <body>
+        
 <!-- Page content holder -->
 <div class="page-content p-5" id="content">
   <!-- Toggle button -->
@@ -24,6 +28,11 @@ require_once 'header.php';
   <p class="lead text-white">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white">
         <u>Bootstrapious</u></a>
   </p>-->
+
+
+
+
+
   <div class="separator"></div>
   <div class="row text-white">
     <div class="col-lg-7">
@@ -62,5 +71,12 @@ require_once 'header.php';
 </div>
 
 <!--END-->
+        
+    </body>
+    
+</html>
+
+
+
 <?php 
 include_once 'footer.php';

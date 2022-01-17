@@ -125,12 +125,12 @@ $result_categories = $conn->query($sql_categories);
                                             <?php
                                         }
                                     }
-                                    ?>  // Така успяваме да вземем image-a po ID за конкретната книга
+                                    ?>   
                              
 
                             </ul>
                         </li>
-                        <li><a href="#" class="nav-link px-2 text-white">Промоции</a></li>
+                       <li><a href="#" class="nav-link px-2 text-white">Промоции</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">За нас</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">Контакти</a></li>
                     </ul>
