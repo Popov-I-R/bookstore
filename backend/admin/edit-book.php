@@ -14,14 +14,13 @@ $result_isbn = $conn->query($sql_isbn);
                         <label for="isbn">ISBN *</label>
                          <?php
                             if($result_isbn->num_rows>0){
-                                while($row = $result_isbn->fetch_assoc()){
-                                  ?> 
-                        <input type="text" class="form-control required" id="isbn" name="isbn" required>
-                        <?php echo $row['id']; ?>"><?php echo $row['isbn'];?>
-                               <?php
-                                }
+                                $row = $result_isbn->fetch_assoc();
+                                echo $row['id']; echo $row['isbn'];
                             }
-                            ?>
+                                ?>
+                                
+                                
+
                     </div>
 </div>
 

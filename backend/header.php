@@ -57,42 +57,43 @@ $result_categories = $conn->query($sql_categories);
         </style>
     </head>
 
-    
-    
+
+
     <body>
-        <div class="vertical-nav bg-white" id="sidebar">
-            <div class="py-4 px-3 mb-4 bg-light">
-                <div class="media d-flex align-items-center"><img src="<?php echo URLBASE; ?>/backend/uploads/profile-picture.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-                    <div class="media-body">
-                        <h4 class="m-0">Username</h4>
-                        <p class="font-weight-light text-muted mb-0">User</p>
+        <div class="col-md">
+            <div class="vertical-nav bg-white" id="sidebar">
+                <div class="py-4 px-3 mb-4 bg-light">
+                    <div class="media d-flex align-items-center"><img src="<?php echo URLBASE; ?>/backend/uploads/profile-picture.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+                        <div class="media-body">
+                            <h4 class="m-0">Username</h4>
+                            <p class="font-weight-light text-muted mb-0">User</p>
+                        </div>
                     </div>
                 </div>
+
+                <nav class="vertical">
+                    <ul>
+                        <li>
+                            <a href="#">Категории</a>
+                            <div>
+                                <ul>
+                                    <?php
+                                    if ($result_categories->num_rows > 0) {
+                                        while ($row = $result_categories->fetch_assoc()) {
+                                            ?> 
+                                            <li><a href="<?php echo URLBASE; ?>/backend/categories-template.php?id=<?php echo $row['id'] ?> "><?php echo $row['title']; ?></a></li>
+                                            <?php
+                                        }
+                                    }
+                                    ?> 
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+
             </div>
-            
-            <nav class="vertical">
-    <ul>
-      <li>
-        <a href="#">Категории</a>
-        <div>
-          <ul>
-             <?php
-                                    
-                if ($result_categories->num_rows > 0) {
-                    while ($row = $result_categories->fetch_assoc()) {
-                        ?> 
-                    <li><a href="<?php echo URLBASE; ?>/backend/categories-template.php?id=<?php echo $row['id']?> "><?php echo $row['title']; ?></a></li>
-                            <?php
-                            }
-                        }
-                    ?> 
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </nav>
-            
-        
         </div>
         <!-- КРАЙ НА ВЕРТИКАЛЕН НАВБАР -->
 
@@ -106,7 +107,7 @@ $result_categories = $conn->query($sql_categories);
                     </a>
 
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                         <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
+                        <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
 
                         <li><a href="<?php echo URLBASE; ?>/backend/index.php" class="nav-link px-2 text-white">Начална страница</a></li>
                         <li class="nav-item dropdown">
@@ -116,26 +117,25 @@ $result_categories = $conn->query($sql_categories);
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
 <!--                                <select class="form-control" id="category" name="categories[]">-->
-                                    <?php
-                                    
-                                    if ($result_categories->num_rows > 0) {
-                                        while ($row = $result_categories->fetch_assoc()) {
-                                            ?> 
-                                <li><a href="<?php echo URLBASE; ?>/backend/categories-template.php?id=<?php echo $row['id']?> "><?php echo $row['title']; ?></a></li>
-                                            <?php
-                                        }
+                                <?php
+                                if ($result_categories->num_rows > 0) {
+                                    while ($row = $result_categories->fetch_assoc()) {
+                                        ?> 
+                                        <li><a href="<?php echo URLBASE; ?>/backend/categories-template.php?id=<?php echo $row['id'] ?> "><?php echo $row['title']; ?></a></li>
+                                        <?php
                                     }
-                                    ?>   
-                             
+                                }
+                                ?>   
+
 
                             </ul>
                         </li>
-                       <li><a href="#" class="nav-link px-2 text-white">Промоции</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">Промоции</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">За нас</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">Контакти</a></li>
                     </ul>
 
-                    
+
                     <!--тази форма бърка кода ни-->
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                         <input type="search" class="form-control form-control-dark" placeholder="Търси книга..." aria-label="Search">

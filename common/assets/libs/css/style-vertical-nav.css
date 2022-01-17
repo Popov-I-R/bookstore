@@ -1,16 +1,11 @@
-/*
-*
-* ==========================================
-* CUSTOM UTIL CLASSES
-* ==========================================
-*
-*/
+
+
 
 .vertical-nav {
   min-width: 17rem;
   width: 17rem;
   height: 100vh;
-  position: fixed;
+  
   top: 0;
   left: 0;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
@@ -23,7 +18,7 @@
   transition: all 0.4s;
 }
 
-/* for toggle behavior */
+ for toggle behavior 
 
 #sidebar.active {
   margin-left: -17rem;
@@ -36,26 +31,27 @@
 
 @media (max-width: 768px) {
   #sidebar {
-    margin-left: -17rem;
+    margin-left: 3rem;
   }
   #sidebar.active {
-    margin-left: 0;
+  
   }
   #content {
     width: 100%;
     margin: 0;
+    height: 80%
   }
   #content.active {
-    margin-left: 17rem;
+    margin-left: -5rem;
     width: calc(100% - 17rem);
   }
 }
 
-/*
+
 *
 
 *
-*/
+
 
 body {
   background: #599fd9;
