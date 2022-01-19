@@ -1,10 +1,10 @@
-<?php
+<?php //
 require_once 'header.php';
 
-$_GET['id'];
-var_dump($GET_id);
 
-$sql_isbn = "SELECT id, isbn, title FROM books";
+
+
+$sql_isbn = "SELECT id, isbn, title, price FROM books";
 $result_isbn = $conn->query($sql_isbn);
 
 ?>
@@ -15,13 +15,13 @@ $result_isbn = $conn->query($sql_isbn);
                          <?php
                             if($result_isbn->num_rows>0){
                                 $row = $result_isbn->fetch_assoc();
-                                echo $row['id']; echo $row['isbn']; echo $row['title'];
+                                echo $row['id'];  echo $row['isbn']; echo $row['title']; echo $row['price'];
                             }
                                 ?>
                                 
                                 
 
-</div>
+                    </div>
 </div>
 
 

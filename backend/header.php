@@ -1,6 +1,6 @@
 <?php
 require_once '../common/includes/dbconnect.php';
-require_once 'includes/check.php';
+//require_once 'includes/check.php';
 define('URLBASE', 'http://localhost/bookstore');
 
 $sql_categories = "SELECT id, title FROM categories";
@@ -65,8 +65,8 @@ $result_categories = $conn->query($sql_categories);
                 <div class="py-4 px-3 mb-4 bg-light">
                     <div class="media d-flex align-items-center"><img src="<?php echo URLBASE; ?>/backend/uploads/profile-picture.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
                         <div class="media-body">
-                            <h4 class="m-0">Username</h4>
-                            <p class="font-weight-light text-muted mb-0">User</p>
+                            <h4 class="m-0">Потребител</h4>
+                            <p class="font-weight-light text-muted mb-0">Добре дошли</p>
                         </div>
                     </div>
                 </div>
@@ -137,9 +137,9 @@ $result_categories = $conn->query($sql_categories);
 
 
                     <!--тази форма бърка кода ни-->
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+<!--                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                         <input type="search" class="form-control form-control-dark" placeholder="Търси книга..." aria-label="Search">
-                    </form>
+                    </form>-->
 
 
                     <!---------------------------------------Проба за сесия login--------------->
@@ -156,7 +156,7 @@ $result_categories = $conn->query($sql_categories);
 
         </header>
 
-        <!-- ГОРЕН ЧЕРЕН НАВБАР КРАЙ-->
+    
 
 
     </body>

@@ -7,6 +7,9 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
     
 session_start(); // Така стартираме сесия ?!? В случая сесия за успешно логнат потребител
     
+
+
+
 $email = $_POST['email'];
 $u_password = $_POST['password'];
 

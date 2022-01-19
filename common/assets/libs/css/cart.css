@@ -31,7 +31,7 @@ p {
 }
 
 h1 {
-  font-size: 5.75rem;
+  font-size: 1.75rem;
   font-weight: normal;
   margin: 0;
   padding: 0;
@@ -368,7 +368,7 @@ aside {
   }
 }
 
-@media screen and (min-width: 641px) and (max-width: 960px) {
+/*@media screen and (min-width: 641px) and (max-width: 960px) {
   aside {
     padding: 0 1rem 0 0;
   }
@@ -384,4 +384,4 @@ aside {
   .product-details {
     padding: 0 1rem;
   }
-}
+}*/

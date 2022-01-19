@@ -1,8 +1,8 @@
 <?php
 require_once '../common/includes/dbconnect.php';
 //require_once 'header.php'; 
-//require_once 'includes/check.php';
-// define ('URLBASE', 'http://localhost/bookstore/') ; 
+require_once 'includes/check.php';
+ define ('URLBASE', 'http://localhost/bookstore/') ; 
 ?>
 <!doctype html>
 

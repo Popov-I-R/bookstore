@@ -1,4 +1,4 @@
-<?php
+<?php //
 require_once '../common/includes/dbconnect.php';
 require_once 'header.php'; 
 
@@ -6,8 +6,14 @@ $category_id=$_GET['id'];
 $query = "SELECT books.* "
         . "FROM books INNER JOIN book_category ON books.id = book_category.book_id "
         . "WHERE book_category.category_id = $category_id";
-
 $result = $conn->query($query);
+
+
+
+
+
+
+
 
 
  
@@ -16,13 +22,13 @@ $result = $conn->query($query);
     <style>
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
 
-body{
+/*body{
   font-family: Roboto, sans-serif;
-  font-size: 14px;
+
   font-weight: 400;
   line-height: 1.5;
   color: #000;
-}
+}*/
 
 h3.h3 {
     text-align: center;
@@ -247,14 +253,14 @@ else {
                     </a>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="#">Име книга</a></h3>
+                    <h3 class="title"><a href="#"><?php echo $category_id?></a></h3>
                     <div class="price">$11.00
                         
                     </div>
                 </div>
                 
                 <ul class="social">
-                    <li><a href="" data-tip="Добави в количката"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li><a href="<?php echo URLBASE ?>/backend/admin/book-template.php?id=<?php echo $row['id']; ?>" data-tip="Добави в количката"><i class="fa fa-shopping-cart"></i></a></li>
                 </ul>
             </div>
         </div>

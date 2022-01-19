@@ -73,9 +73,12 @@ font-size:1.1rem
                     </div>
 
                 </div>
+
                 <div class="col-sm-7 col-xxl-7 col-xl-7 col-lg-7 col-sm-7">
                     <div class="product-details-info">
+                        <div class="row">
                         <h3 class="product-title">Променлива за заглавие</h3>
+                        </div>
                         <ul class="product-data-info">
                             <li class="product-datainfo">Променлива автор<span class="productdata-info"> Автор</span></li>
                             <li class="product-datainfo">Променлива ISBN <span class="productdata-info"> ISBN</span></li>
@@ -108,7 +111,8 @@ font-size:1.1rem
                         </div>   
                     </div>
                 </div>
-            </div>
+                    
+
         </div>
 
 </div>
