@@ -11,6 +11,7 @@ $result_categories = $conn->query($sql_categories);
 <html> 
 
     <head>
+        <title>Онлайн магазин</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--bootstrap css-->
@@ -99,64 +100,80 @@ $result_categories = $conn->query($sql_categories);
 
 
         <!-- ГОРЕН ЧЕРЕН НАВБАР СТАРТ-->
-        <header class="p-3 bg-dark text-white">
-            <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-                    </a>
+        <div class="site-header">
+            <div class="header-top">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="container-md">
+                        <a class="navbar-brand" href="#"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="<?php echo URLBASE; ?>/backend/index.php"><i class="bi bi-shuffle"></i>  Начало</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="https://img.icons8.com/emoji/23/000000/united-kingdom-emoji.png"/> Книги
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
-
-                        <li><a href="<?php echo URLBASE; ?>/backend/index.php" class="nav-link px-2 text-white">Начална страница</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Всички категории 
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-<!--                                <select class="form-control" id="category" name="categories[]">-->
-                                <?php
-                                if ($result_categories->num_rows > 0) {
-                                    while ($row = $result_categories->fetch_assoc()) {
-                                        ?> 
-                                        <li><a href="<?php echo URLBASE; ?>/backend/categories-template.php?id=<?php echo $row['id'] ?> "><?php echo $row['title']; ?></a></li>
                                         <?php
-                                    }
-                                }
-                                ?>   
+                                        if ($result_categories->num_rows > 0) {
+                                            while ($row = $result_categories->fetch_assoc()) {
+                                                ?> 
+                                                <li><a href="<?php echo URLBASE; ?>/backend/categories-template.php?id=<?php echo $row['id'] ?> "><?php echo $row['title']; ?></a></li>
+                                                <?php
+                                            }
+                                        }
+                                        ?>   
+
+
+
+
+                                        <!--                                        
+                                                                                
+                                                                                <li><a class="dropdown-item" href="#">Категория </a></li>
+                                                                                <li><hr class="dropdown-divider"></li>-->
+
+                                    </ul>
+                                </li>
 
 
                             </ul>
-                        </li>
-                        <li><a href="#" class="nav-link px-2 text-white">Промоции</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">За нас</a></li>
-                        <li><a href="<?php echo URLBASE; ?>/backend/contact.php" class="nav-link px-2 text-white">Контакти</a></li>
-                    </ul>
+                            <!-- NAVBAR RIGHT with command navbar-nav ms-auto-->
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#"><i class="bi bi-shuffle"></i>  За нас</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="<?php echo URLBASE; ?>/backend/contact.php""><i class="bi bi-heart-fill"></i>  Контакти</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-person-fill"></i> Вход / Регистрация    <!--След логин се превръща в "Профил"-->
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="<?php echo URLBASE; ?>/backend/login.php">Вход</a></li>  <!-- След логин се превръща в "моят профил" -->
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="<?php echo URLBASE; ?>/backend/registration.php">Регистрация</a></li>  <!-- След логин се превръща в "Изход"-->
+                                        <li><hr class="dropdown-divider"></li>
+                                    </ul>
+                                </li>
+                            </ul>
 
 
-                    <!--тази форма бърка кода ни-->
-<!--                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                        <input type="search" class="form-control form-control-dark" placeholder="Търси книга..." aria-label="Search">
-                    </form>-->
 
-
-                    <!---------------------------------------Проба за сесия login--------------->
-
-
-
-                    <div class="text-end">
-                        <a class="btn btn-warning" href="http://localhost/bookstore//backend/login.php#" role="button">Вход</a>
-                        <a class="btn btn-warning" href="http://localhost/bookstore//backend/registration.php#" role="button">Регистрация</a>
+                        </div>
                     </div>
-                </div>
+                </nav>
             </div>
-
-
-        </header>
-
-    
+        </div>
+        <div class="page-content p-1" id="content">
+            <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Скрито <br> меню</small></button> <br>
+            <button id="cart" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa- mr-2"></i><small class="text-uppercase font-weight-bold">Виртуална <br> количка <span class="text-number">1</span></small></button>
+        </div>
 
 
     </body>

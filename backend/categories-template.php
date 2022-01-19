@@ -34,7 +34,8 @@ h3.h3 {
     text-align: center;
     margin: 1em;
     text-transform: capitalize;
-    font-size: 6em;
+    font-size: 5vw;
+    color:black;
 }
 
 .product-grid6,
@@ -189,7 +190,7 @@ h3.h3 {
     }
     #categoryname {
         max-width: 550px;
-        min-width: 440px;
+        
     }
 }
 
