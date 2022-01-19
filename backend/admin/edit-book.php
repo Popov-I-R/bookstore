@@ -2,7 +2,7 @@
 require_once 'header.php';
 
 $_GET['id'];
-var_dump($GET_id);
+
 
 $sql_isbn = "SELECT id, isbn, title FROM books";
 $result_isbn = $conn->query($sql_isbn);

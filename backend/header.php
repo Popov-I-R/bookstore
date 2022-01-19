@@ -132,7 +132,7 @@ $result_categories = $conn->query($sql_categories);
                         </li>
                         <li><a href="#" class="nav-link px-2 text-white">Промоции</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">За нас</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">Контакти</a></li>
+                        <li><a href="<?php echo URLBASE; ?>/backend/contact.php" class="nav-link px-2 text-white">Контакти</a></li>
                     </ul>
 
 
