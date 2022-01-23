@@ -3,22 +3,12 @@
 require_once 'header.php';
 
 
-$sql_isbn = "SELECT id, isbn FROM books";
+$sql_isbn = "SELECT id, isbn, title, price  FROM books INNER JOIN book_author ON books.id = book_author.book_id INNER JOIN authors ON authors.id = book_author.author_id WHERE id=$book_id";
 $result_isbn = $conn->query($sql_isbn);
+      
 
 
 
-
-
-$sql_authors = "SELECT id, name FROM authors";
-$result_authors = $conn->query($sql_authors);
-
-$sql_categories = "SELECT id, title FROM categories";
-$result_categories = $conn->query($sql_categories);
-
-$sql_publishers = "SELECT id, title FROM publishers";
-$result_publishers = $conn->query($sql_publishers);
-        
 
 ?>
 
