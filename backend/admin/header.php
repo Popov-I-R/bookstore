@@ -63,7 +63,7 @@ $result_categories = $conn->query($sql_categories);
                 <div class="media d-flex align-items-center"><img src="https://bootstrapious.com/i/snippets/sn-v-nav/avatar.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
                     <div class="media-body">
                         <h4 class="m-0">ADMIN-PANEL</h4>
-                        
+
                     </div>
                 </div>
             </div>
@@ -107,6 +107,18 @@ $result_categories = $conn->query($sql_categories);
                         Всички категории
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?php echo URLBASE; ?>/backend/admin/all-users.php" class="nav-link text-dark font-italic">
+                        <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
+                        Всички потребители
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo URLBASE; ?>/backend/admin/all-orders.php" class="nav-link text-dark font-italic">
+                        <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
+                        Всички поръчки
+                    </a>
+                </li>
             </ul>
 
 
@@ -114,9 +126,9 @@ $result_categories = $conn->query($sql_categories);
         </div>
         <!-- End vertical navbar -->
 
-        
 
-       
+
+
 
         <!-- ГОРЕН ЧЕРЕН НАВБАР КРАЙ-->
 
