@@ -115,7 +115,7 @@ $result_categories = $conn->query($sql_categories);
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://img.icons8.com/emoji/23/000000/united-kingdom-emoji.png"/> Книги
+                                        <img src=""/> Книги
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
@@ -150,17 +150,42 @@ $result_categories = $conn->query($sql_categories);
                                 <li class="nav-item">
                                     <a class="nav-link active" href="<?php echo URLBASE; ?>/backend/contact.php""><i class="bi bi-heart-fill"></i>  Контакти</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-person-fill"></i> Вход / Регистрация    <!--След логин се превръща в "Профил"-->
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="<?php echo URLBASE; ?>/backend/login.php">Вход</a></li>  <!-- След логин се превръща в "моят профил" -->
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="<?php echo URLBASE; ?>/backend/registration.php">Регистрация</a></li>  <!-- След логин се превръща в "Изход"-->
-                                        <li><hr class="dropdown-divider"></li>
-                                    </ul>
-                                </li>
+                                <?php if (isset($_SESSION['login_user'])) { ?>
+                                    <div class="profile">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-person-fill"></i> Профил    <!--След логин се превръща в "Профил"-->
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <li><a class="dropdown-item" href="<?php echo URLBASE; ?>/backend/account.php">Моят профил</a></li> 
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="<?php echo URLBASE; ?>/backend/logout.php">Изход</a></li> 
+                                                <li><hr class="dropdown-divider"></li>
+                                            </ul>
+                                        </li>
+                                    </div>
+                                <?php } else { ?>
+
+                                    <div class="login">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-person-fill"></i> Вход / Регистрация    <!--След логин се превръща в "Профил"-->
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <li><a class="dropdown-item" href="<?php echo URLBASE; ?>/backend/login.php">Вход</a></li>  <!-- След логин се превръща в "моят профил" -->
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="<?php echo URLBASE; ?>/backend/registration.php">Регистрация</a></li>  <!-- След логин се превръща в "Изход"-->
+                                                <li><hr class="dropdown-divider"></li>
+                                            </ul>
+                                        </li>
+                                    </div>
+
+                                    <?php
+                                }
+                                var_dump($_SESSION);
+                                ?>
+
+
                             </ul>
 
 
@@ -172,18 +197,18 @@ $result_categories = $conn->query($sql_categories);
         </div>
         <div class="page-content p-1" id="content">
             <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <line x1="4" y1="6" x2="20" y2="6" />
-  <line x1="4" y1="12" x2="20" y2="12" />
-  <line x1="4" y1="18" x2="20" y2="18" />
-</svg></button> <br>
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <line x1="4" y1="6" x2="20" y2="6" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <line x1="4" y1="18" x2="20" y2="18" />
+                </svg></button> <br>
             <button id="cart" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <circle cx="6" cy="19" r="2" />
-  <circle cx="17" cy="19" r="2" />
-  <path d="M17 17h-11v-14h-2" />
-  <path d="M6 5l14 1l-1 7h-13" />
-  </svg><span class="text-number">1</span></button>
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <circle cx="6" cy="19" r="2" />
+                <circle cx="17" cy="19" r="2" />
+                <path d="M17 17h-11v-14h-2" />
+                <path d="M6 5l14 1l-1 7h-13" />
+                </svg><span class="text-number">1</span></button>
         </div>
 
 
