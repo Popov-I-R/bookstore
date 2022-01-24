@@ -1,8 +1,25 @@
 <?php
 require_once 'header.php';
 
-$query = "SELECT books.*, authors.name FROM books INNER JOIN book_author ON books.id = book_author.book_id INNER JOIN authors ON authors.id = book_author.author_id";
-$result = $conn->query($query);
+//$query = "SELECT books.*, authors.name FROM books INNER JOIN book_author ON books.id = book_author.book_id INNER JOIN authors ON authors.id = book_author.author_id";
+//$result = $conn->query($query);
+
+//$query_info ="SELECT books.id, books.title, books.image. books.price, categories.name FROM books INNER JOIN book_category";
+//$result_info = $conn->query($query);
+
+//$book_id = $_GET['id'];
+//
+//$sql = "SELECT books. *, book_author.author_id, book_category.category_id FROM books INNER JOIN book_author ON books.id = book_author.book_id INNER JOIN authors ON authors.id = book_author.author_id "
+//        . "INNER JOIN book_category ON books.id = book_category.book_id "
+//        . "INNER JOIN categories ON categories.id = book_category.category_id "
+//        . "INNER JOIN publishers ON publishers.id = books.publisher_id WHERE books.id=$book_id ";
+//
+//$result = $conn->query($sql);
+
+
+
+
+
 
 if (!$result)
     die("Fatal error");
@@ -81,7 +98,7 @@ if (!$result)
                             <h3 class="product-title">Променлива за заглавие</h3>
                         </div>
                         <ul class="product-data-info">
-                            <li class="product-datainfo">Променлива автор<span class="productdata-info"> Автор</span></li>
+                            <li class="product-datainfo">Променлива автор<span class="productdata-info"> <?php echo $row['title']?></span></li>
                             <li class="product-datainfo">Променлива ISBN <span class="productdata-info"> ISBN</span></li>
                             <li class="product-datainfo">Променлива издател <span class="productdata-info"> Издател</span></li>
                             <li class="product-datainfo">Променлива година <span class="productdata-info"> Година</span></li>

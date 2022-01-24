@@ -9,7 +9,8 @@ $query = "SELECT books.* "
 $result = $conn->query($query);
 
 
-
+//$query_info ="SELECT books.id, books.title, books.image. books.price, categories.name FROM books INNER JOIN book_category";
+//$result_info = $conn->query($query);
 
 
 
@@ -249,14 +250,14 @@ else {
         <div class="col-md-3 col-sm-6">
             <div class="product-grid6">
                 <div class="product-image6">
-                    <a href="#">
+                    <a href="<?php echo URLBASE; ?>/backend/book-template.php?id=<?php echo $row['id'] ?>">
                         <img class="pic-1" src="<?php echo URLBASE. "/backend/uploads/" .$row['image']?>"  alt="harryP" width="150" height="150">
                     </a>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="#"><?php echo $category_id?></a></h3>
-                    <div class="price">$11.00
-                        
+                    <h3 class="title"><a href="#"><?php echo $row['title']?></a></h3>
+                    <div class="price">
+                        <span><?php echo $row['price']?></span>
                     </div>
                 </div>
                 

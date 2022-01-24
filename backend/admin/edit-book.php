@@ -16,8 +16,8 @@ $result = $conn->query($sql);
 $sql_authors = "SELECT id, name FROM authors";
 $result_authors = $conn->query($sql_authors);
 
-$sql_books = "SELECT id, year, price FROM books";
-$result_books = $conn->query($sql_books);
+//$sql_books = "SELECT id, year, price FROM books";
+//$result_books = $conn->query($sql_books);
 
 $sql_categories = "SELECT id, title FROM categories";
 $result_categories = $conn->query($sql_categories);
@@ -30,23 +30,28 @@ $result_publishers = $conn->query($sql_publishers);
 <div class='page-content p-5' id="content">
     <div class="card">
         <h2 class="card-header">Редактиране на книга</h2>
-        <?php
-                            if($result->num_rows>0){
-                                $row = $result->fetch_assoc(); ?>
         <div class='card-body'>
-            <form action='edit-book.php' id="add-book" method='POST' enctype="multipart/form-data">
+            
+            <form action='edit-.php' id="edit-book" method='POST' enctype="multipart/form-data">
                 <div class="form-row">
+                    <?php
+                            if($result->num_rows>0){
+                                $row = $result->fetch_assoc(); 
+                                ?>
                     <div class="col-12">
-                        <label for="isbn">ISBN *</label>
-                        <input value=" <?php echo $row['isbn'] ?> " type="text" class="form-control required" id="isbn" name="isbn" required>
+                        <input value=" <?php echo $row['id'] ?> " type="hidden"  name="id">
+                    </div>
+                    <div class="col-12">
+                        <label for="isbn">ISBN</label>
+                        <input value=" <?php echo $row['isbn'] ?> " type="text" class="form-control required disabled" id="isbn" name="isbn" required >
                     </div>
                      <div class="col-12">
-                        <label for="title">Заглавие *</label>
-                        <input value="<?php echo $row['title'] ?> " type='text' class="form-control required" id="title" name="title" required>
+                        <label for="title">Заглавие</label>
+                        <input value="<?php echo $row['title'] ?> " type='text' class="form-control required disabled" id="title" name="title" required>
                     </div>
                     <div class="col-12">
                         <label for="author">Автор</label>
-                        <select class="form-control required" id="author" name="authors[]" >
+                        <select class="form-control disabled" id="author" name="authors[]" >
                             <?php
                             if($result_authors->num_rows>0){
                                 while($row_author = $result_authors->fetch_assoc()){
@@ -59,8 +64,8 @@ $result_publishers = $conn->query($sql_publishers);
                         </select>
                  </div>   
                     <div class="col-12">
-                         <label for="category">Категория *</label>
-                        <select class="form-control required" id="category" name="categories[]">
+                         <label for="category">Категория</label>
+                        <select class="form-control required disabled" id="category" name="categories[]">
                             <?php
                             if($result_categories->num_rows>0){
                                 while($row_category = $result_categories->fetch_assoc()){
@@ -74,7 +79,7 @@ $result_publishers = $conn->query($sql_publishers);
                     </div>
                     <div class="col-12">
                         <label for="year">Година</label>
-                        <input value="<?php echo $row['year'] ?> " type='number' class="form-control" id="year" name="year" >
+                        <input value="<?php echo $row['year'] ?> " type='text' class="form-control" id="year" name="year" >
                     </div>
                     <div class="col-12">
                         <label for="description">Описание</label>
@@ -82,20 +87,20 @@ $result_publishers = $conn->query($sql_publishers);
                     </div>
                     <div class="col-12">
                         <label for="cover">Добавяне на снимка</label>
-                        <input type="file" class="form-control" id="cover" name="cover" accept="image/*"/>
+                        <input type="file" class="form-control disabled" id="cover" name="cover" accept="image/*"/>
                     </div>
                     <div class="col-12">
-                        <label for="price">Цена *</label>
-                        <input value="<?php echo $row['price'] ?> " type="number" class="form-control required" id="price" name="price" required>
+                        <label for="price">Цена</label>
+                        <input value="<?php echo $row['price'] ?> " type="text" class="form-control" id="price" name="price">
                     </div>
                     <div class="col-12">
-                        <label for="publisher">Издател *</label>
-                        <select class="form-control required" id="publisher" name="publisher">
+                        <label for="publisher">Издател</label>
+                        <select class="form-control disabled " id="publisher" name="publisher">
                             <?php
                             if($result_publishers->num_rows>0){
-                                while($row = $result_publishers->fetch_assoc()){
+                                while($row_publisher = $result_publishers->fetch_assoc()){
                                   ?> 
-                                <option value="<?php echo $row['id']; ?>"><?php echo $row['title'];?></option>
+                                <option <?php echo ($row['publisher_id'] == $row_publisher['id']) ? "selected" : ""; ?> value="<?php echo $row_publisher['id']; ?>"><?php echo $row_publisher['title']; ?> </option>
                                 <?php
                                 }
                             }

@@ -83,3 +83,8 @@ body {
     
     border-color:yellow;
 }
+
+.btn-light:hover {
+/*  color: #000;*/
+  border-color: #0582ff !important;
+}
