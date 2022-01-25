@@ -1,13 +1,13 @@
 <?php 
 
 
-session_start();
-// Ако юзера не е логнат, редиректва към логин страницата
-if(!isset($_SESSION["user_id"])){
-    header("location:login.php");
-    exit();
-} 
-    
+//session_start();
+//// Ако юзера не е логнат, редиректва към логин страницата
+//if(!isset($_SESSION["user_id"])){
+//    header("location:login.php");
+//    exit();
+//} 
+//    
     
 require_once 'header.php';
 
