@@ -1,8 +1,10 @@
 <?php
-require_once 'includes/check.php';
 require_once 'header.php';
+require_once 'backend/includes/check.php';
 
-$query = "SELECT * FROM orders";
+$user_id = $_SESSION["login_user"];
+$query = "SELECT orders.*, books.title FROM orders INNER JOIN customers ON customers.id = orders.customer_id "
+        . "INNER JOIN books ON books.id = orders.book_id WHERE customers.user_id = $user_id";
 $result = $conn->query($query);
 
 if(!$result)
@@ -61,7 +63,7 @@ if(!$result)
                     ?>
             <tr>
                 <td><?php echo htmlspecialchars($row['customer_id'])?></td>
-                <td><?php echo htmlspecialchars($row['book_id'])?></td>
+                <td><?php echo htmlspecialchars($row['title'])?></td>
                 <td><?php echo htmlspecialchars($row['qty'])?></td>
                 <td>
                     <a href="<?php echo URLBASE ?>/backend/view-book.php?id=<?php echo $row['id']; ?>">Преглед</a>

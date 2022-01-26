@@ -19,8 +19,8 @@ require_once 'header.php';
 
         <div class="page-content p-5" id="content">
             <main>
+                <row>
                 <div class="basket">
-
                     <div class="basket-labels">
                         <ul>
                             <li class="item item-heading">Продукт</li>
@@ -69,6 +69,13 @@ require_once 'header.php';
                         </div>
                     </div>
                 </aside>
+                    </row>
+                <row>
+                    <div class="col-12">
+                        
+                    </div>
+                        
+                </row>
             </main>
         </div>
     </body>

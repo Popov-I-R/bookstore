@@ -32,7 +32,7 @@ $result_publishers = $conn->query($sql_publishers);
         <h2 class="card-header">Редактиране на книга</h2>
         <div class='card-body'>
             
-            <form action='edit-.php' id="edit-book" method='POST' enctype="multipart/form-data">
+            <form action='edit-book.php' id="edit-book" method='POST' enctype="multipart/form-data">
                 <div class="form-row">
                     <?php
                             if($result->num_rows>0){
@@ -121,5 +121,60 @@ $result_publishers = $conn->query($sql_publishers);
 </div>
 
 
-<?php
-include_once 'footer.php';
+
+<script>
+    $(document).ready(function(){
+        $('#btn-save').unbind().bind('click', function(e){
+            e.preventDefault();
+            var isbn = $('#isbn').val();
+            var title = $('#title').val();
+            var publisher = $('#publisher').val();
+            
+            var form = $('form#edit-book')[0];
+            var formData = new FormData(form);
+            
+            formData.append('cover',$('input[type=file]')[0].files[0]);
+
+            if(isbn != "" && title != "" && publisher != ""){
+                $.ajax({
+                   type: 'POST',
+//                   data: {
+//                       isbn: isbn,
+//                       dasdasd: $('#isbn').val(),
+//                       
+//                   },
+                    data: formData,
+                    cache: false, 
+                    processData: false,
+                    contentType: false,
+                    url: 'includes/book/edit-.php',
+                    success: function(dataResult){
+                        console.log(dataResult);
+                        var dataResult = JSON.parse(dataResult);
+                        if(dataResult.statusCode == 200) {
+                           $('#success').html('Книгата е редактирана успешно'); 
+                        } else if (dataResult.statusCode == 201 && dataResult.flag !="") {
+                            switch (dataResult.flag) {
+                                case 1: 
+                                    $('#warning').html('Разширението трябва да бъде .jpg, .jpeg или .png');
+                                    break;
+                                case 2:
+                                    $('#warning').html('Изображението е твърде голямо.');
+                                    break;
+                                case 3:
+                                    $('#warning').html('Проблем при качването на файла.');
+                                    break;    
+                            }
+                        }else {
+                            alert('Error');
+                        }
+                    }
+                });
+            }else {
+                alert("Попълни задължителните полета!");
+//                $('form').addClass('needs-validation');
+            }
+            
+        });
+    });
+</script>

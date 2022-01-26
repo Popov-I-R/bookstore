@@ -1,5 +1,5 @@
 <?php //
-require_once '../common/includes/dbconnect.php';
+require_once 'common/includes/dbconnect.php';
 require_once 'header.php'; 
 
 $category_id=$_GET['id'];
@@ -208,11 +208,16 @@ h3.h3 {
 <main>
 
  
-<div class="page-content p-5" id="content">
+<div class="page-content p-1" id="content">
     
     <div class="container">
         
-        <h3 class="h3" id="categoryname">
+       
+        
+        
+        
+    <div class="row">
+         <h3 class="h3" id="categoryname">
              <?php 
     if ($category_id === "1") {
   echo "Фантастика";
@@ -241,10 +246,6 @@ echo "Всичко друго";
 else {
   echo "hell nah!";
 }?>   </h3>
-        
-        
-        
-    <div class="row">
         <?php
             if($result->num_rows >0){
                 while($row = $result->fetch_assoc()) { 
@@ -252,7 +253,7 @@ else {
         <div class="col-md-3 col-sm-6">
             <div class="product-grid6">
                 <div class="product-image6">
-                    <a href="<?php echo URLBASE; ?>/backend/book-template.php?id=<?php echo $row['id'] ?>">
+                    <a href="<?php echo URLBASE; ?>/book-template.php?id=<?php echo $row['id'] ?>">
                         <img class="pic-1" src="<?php echo URLBASE. "/backend/uploads/" .$row['image']?>"  alt="harryP" width="150" height="150">
                     </a>
                 </div>
@@ -267,7 +268,7 @@ else {
                 </div>
                 
                 <ul class="social">
-                    <li><a href="<?php echo URLBASE ?>/backend/admin/book-template.php?id=<?php echo $row['id']; ?>" data-tip="Добави в количката"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li><a href="<?php echo URLBASE ?>/backend/book-template.php?id=<?php echo $row['id']; ?>" data-tip="Добави в количката"><i class="fa fa-shopping-cart"></i></a></li>
 <!--                    <a class="add-cart" href="#"> Add cart</a>-->
                 </ul>
             </div>

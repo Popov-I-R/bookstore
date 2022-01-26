@@ -1,6 +1,14 @@
 <?php
-require_once 'includes/check.php';
+
 require_once 'header.php';
+require_once 'backend/includes/check.php';
+
+
+$user_id = $_SESSION['login_user'];
+$query = "SELECT * FROM users WHERE id=$user_id";
+$result = $conn->query($query);
+
+
 ?>
 <!doctype html>
 
@@ -37,17 +45,21 @@ require_once 'header.php';
                                     <form>
                                         <h6 class="heading-small text-muted mb-4">User information</h6>
                                         <div class="pl-lg-4">
+                                             <?php
+            if($result->num_rows >0){
+                while($row = $result->fetch_assoc()) { 
+                    ?>
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="form-group focused">
                                                         <label class="form-control-label" for="input-username">Потребителско име</label>
-                                                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
+                                                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Потребителско име" value="<?php echo $row['username']; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label class="form-control-label" for="input-email">Имейл адрес</label>
-                                                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                                                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Имейл адрес" value="<?php echo $row['email']; ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -55,35 +67,39 @@ require_once 'header.php';
                                                 <div class="col-lg-4">
                                                     <div class="form-group focused">
                                                         <label class="form-control-label" for="input-first-name">Първо име</label>
-                                                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                                                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Първо име" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group focused">
-                                                        <label class="form-control-label" for="input-last-name">Номер за връзка</label>
-                                                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                                                        <label class="form-control-label" for="input-number">Номер за връзка</label>
+                                                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Number " value="+359 ">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group focused">
                                                         <label class="form-control-label" for="input-city">Град</label>
-                                                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="Град">
+                                                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Град" value="">
                                                     </div>
                                                 </div>
                                             </div>
+                                                                <?php
+                }     
+            }
+            ?>
                                         </div>
                                         <hr class="my-4">
                                         <!-- Address -->
-                                        <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                                        
 
                                         <hr class="my-4">
                                         <!-- Description -->
-                                        <h6 class="heading-small text-muted mb-4">About me</h6>
+                                        
                                         <div class="pl-lg-4">
                                             <div class="form-group focused">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <a href="<?php echo URLBASE; ?>/backend/myorders.php" class="btn btn-sm btn-primary">Моите поръчки</a>
+                                                        <a href="<?php echo URLBASE; ?>/myorders.php" class="btn btn-sm btn-primary">Моите поръчки</a>
                                                     </div>
                                                     <div class="col-6">
                                                         <a href="#!" class="btn btn-sm btn-primary">Запази</a>

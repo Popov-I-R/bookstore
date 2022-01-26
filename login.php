@@ -1,50 +1,6 @@
 <?php
-require_once '../../common/includes/dbconnect.php';
-//require_once 'header.php'; 
-//require_once 'includes/check.php';
-define('URLBASE', 'http://localhost/bookstore/');
+require_once 'header.php'; 
 ?>
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--bootstrap css-->
-        <link rel="stylesheet" href="../common/assets/vendor/bootstrap/css/bootstrap.min.css">
-        <!--font awesome-->
-        <link rel="stylesheet" href="../common/assets/vendor/font-awesome/css/all.min.css">
-        <!--theme css-->
-        <link rel="stylesheet" href="../common/assets/libs/css/style.css">
-
-        <!--bootstrap bundle-->
-        <script src="../common/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-        <!--jquery 3.6.0-->
-        <script src="../common/assets/vendor/jquery/jquery-3.6.0.min.js"></script>
-        <!--theme js-->
-        <script src="../common/assets/libs/js/javascript.js" type="text/javascript"></script>
-        <style>
-            body{
-                background: none;
-            }
-            .boy
-            .divider:after,
-            .divider:before {
-                content: "";
-                flex: 1;
-                height: 1px;
-                background: #eee;
-            }
-            .h-custom {
-                height: calc(100% - 73px);
-            }
-            @media (max-width: 450px) {
-                .h-custom {
-                    height: 100%;
-                }
-            }
-        </style>
-    </head>
-    <body>
 
         <div class="page-content p-5" id="content">
             <section class="vh-100">
@@ -114,8 +70,6 @@ define('URLBASE', 'http://localhost/bookstore/');
 
             </section>
         </div>    
-    </body>
-</html>
 
 <script>
     $("#btn-login").unbind().bind('click', function (e) {
@@ -123,7 +77,6 @@ define('URLBASE', 'http://localhost/bookstore/');
         $('#error').hide();
         var email = $("#email").val();
         var password = $('#password').val();
-
         if (email != "" && password != "") {
             $.ajax({
                 type: 'POST',
@@ -132,7 +85,7 @@ define('URLBASE', 'http://localhost/bookstore/');
                     password: password
                 },
                 cache: false,
-                url: 'includes/user/login.php',
+                url: 'frontend/includes/user/login.php',
                 success: function (dataResult) {
                     var dataResult = JSON.parse(dataResult);
                     console.log(dataResult);
@@ -149,9 +102,9 @@ define('URLBASE', 'http://localhost/bookstore/');
             });
         }
 
-        if (email != "" && password != "") {
-            console.log('Super')
-        } else {
+        
+            
+         else {
             alert("Моля, въведете вашите данни.")
         }
     });

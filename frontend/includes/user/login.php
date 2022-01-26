@@ -26,7 +26,7 @@ $u_password = $_POST['password'];
         
         if(password_verify($u_password, $h_password)) {
             $_SESSION['login_user'] = $id;//запаметяваме в сесията ид-то на юзър-а
-            echo json_encode(['statusCode' =>200, "test"=>$_SESSION['login_user']]);
+            echo json_encode(['statusCode' =>200]);
         } else {
             echo json_encode(['statusCode' =>202]);
         }    

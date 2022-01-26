@@ -35,8 +35,8 @@ if(!$result)
                 <td><?php echo htmlspecialchars($row['price'])?></td>
                 <td><?php echo date("d.m.Y", strtotime($row['created_at']))?></td>
                 <td>
-                    <a href="<?php echo URLBASE ?>/backend/admin/view-book.php?id=<?php echo $row['id']; ?>">Преглед</a>
-                    <a href="<?php echo URLBASE ?>/backend/admin/edit-book.php?id=<?php echo $row['id']; ?>">Редактиране</a>
+                    <a href="<?php echo URLBASE ?>/backend/view-book.php?id=<?php echo $row['id']; ?>">Преглед</a>
+                    <a href="<?php echo URLBASE ?>/backend/edit-book.php?id=<?php echo $row['id']; ?>">Редактиране</a>
                 </td>
             </tr>        
                     <?php
