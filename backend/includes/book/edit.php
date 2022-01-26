@@ -1,102 +1,110 @@
 <?php
 
 require_once '../../../common/includes/dbconnect.php';
+if (isset($_POST['id'])) {
 
-$id = NULL;
-$isbn = $_POST['isbn'];
-$title = $_POST['title'];
-$year = $_POST['year'];
-$description = $_POST['description'];
-$price = $_POST['price'];
-$publisher = $_POST['publisher'];
-$date_created = date('Y-m-d G:i:s');
 
-$image = "";
-$flag = "";
 
-if (!empty($_FILES['cover']['name'])) {
-    $filename = $_FILES['cover']['name'];
-    $destination = '../../uploads/' . $filename;
-    $extension = pathinfo($filename, PATHINFO_EXTENSION);
+    $id = $_POST['id'];
+    $isbn = $_POST['isbn'];
+    $title = $_POST['title'];
+    $year = $_POST['year'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+    $publisher = $_POST['publisher'];
+
+    $image = "";
+    $flag = "";
+
+    if (!empty($_FILES['cover']['name'])) {
+        $filename = $_FILES['cover']['name'];
+        $destination = '../../uploads/' . $filename;
+        $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
 //    $destination = $_SERVER['DOCUMENT_ROOT'] . "/backend/uploads/" . $filename;
-   
-    $file = $_FILES['cover']['tmp_name'];
-    $size = $_FILES['cover']['size'];
-    if (!in_array($extension, ['jpeg', 'jpg', 'png'])) {
-        $flag = 1;
-    } elseif ($size > 1000000) {
-        $flag = 2;
-    } else {
-        if (move_uploaded_file($file, $destination)) {
-            $image = $filename;
+
+        $file = $_FILES['cover']['tmp_name'];
+        $size = $_FILES['cover']['size'];
+        if (!in_array($extension, ['jpeg', 'jpg', 'png'])) {
+            $flag = 1;
+        } elseif ($size > 2000000) {
+            $flag = 2;
         } else {
-            $flag = 3;
+            if (move_uploaded_file($file, $destination)) {
+                $image = $filename;
+            } else {
+                $flag = 3;
+            }
         }
     }
-}
 
-$result = "";
-if (($image == "" && $flag == "") || ($image != "" && $flag == "" )) {
-    $stmp = $conn->prepare('INSERT INTO books VALUES(?,?,?,?,?,?,?,?,?)');
-    $stmp->bind_param('isssssdis', $id, $isbn, $title, $year, $description, $image, $price, $publisher, $date_created);
-    $result = $stmp->execute();
-}
+    $result = "";
+    if (($image == "" && $flag == "") || ($image != "" && $flag == "" )) {
+       
+       
+        $stmp = $conn->prepare('UPDATE books SET isbn=?, title=?, year=?, description=?, image=?, price=?,publisher_id=? WHERE id=?');
+        $stmp->bind_param('sssssdii', $isbn, $title, $year, $description, $image, $price, $publisher, $id);
+        $result = $stmp->execute();
+    }
 
-$last_book_id = "";
-if ($result) {
-    $last_book_id = $conn->insert_id; //връща последно качено id
-}
+    $last_book_id = "";
+    if ($result) {
+        $last_book_id = $id; //връща последно качено id
+    }
 
 
-if ($last_book_id != "" && $_POST ['authors']) {
+    if ($last_book_id != "" && isset($_POST ['authors'])) {
 //    $query = "";
 //    foreach ($_POST['authors'] as $author){
 //       $query .= "('$last_book_id', '$author'),";
 //    }
 //    $query = "INSERT INTO book_author(book_id, author_id) VALUES " .trim($query, ',');
-//            $result = $conn->query($query);
-    $data = array();
-    foreach ($_POST['authors'] as $author) {
-        $data[] = $author;
-    }
-    $stmt = $conn->prepare("INSERT INTO book_author(book_id, author_id) VALUES (?,?)");
-    $conn->begin_transaction();
+//    $result = $conn->query($query);
+        $data = array();
+        foreach ($_POST['authors'] as $author) {
+            $data[] = $author;
+        }
+        $stmt = $conn->prepare("UPDATE book_author SET author_id=? WHERE book_id=?");
+        $conn->begin_transaction();
 
-    foreach ($data as $row) {
-        $stmt->bind_param("ii", $last_book_id, $row);
-        $stmt->execute();
+        foreach ($data as $row) {
+            $stmt->bind_param("ii", $row, $last_book_id);
+            $stmt->execute();
+        }
+        $conn->commit();
     }
-    $conn->commit();
-}
 
-if ($last_book_id != "" && $_POST['categories']) {
-//    $query = "";
-//    foreach ($_POST['categories'] as $category){
-//       $query .= "('$last_book_id', '$category'),";
-//    }
+    if ($last_book_id != "" && isset($_POST['categories'])) {
+        $query = "";
+        foreach ($_POST['categories'] as $category) {
+            $query .= "('$last_book_id', '$category'),";
+        } 
 //    $query = "INSERT INTO book_category(book_id, category_id) VALUES " .trim($query, ',');
 //            $result = $conn->query($query);
 //}
 
-    $data = array();
-    foreach ($_POST['categories'] as $categories) {
-        $data[] = $categories;
+        $data = array();
+        foreach ($_POST['categories'] as $categories) {
+            $data[] = $categories;
+        }
+        $stmt = $conn->prepare("UPDATE book_category SET category_id=? WHERE book_id=?");
+        $conn->begin_transaction();
+        foreach ($data as $row) {
+            $stmt->bind_param("si", $row, $last_book_id);
+            $stmt->execute();
+        }
+        $conn->commit();
     }
-    $stmt = $conn->prepare("INSERT INTO book_category(book_id, category_id) VALUES (?,?)");
-    $conn->begin_transaction();
 
-    foreach ($data as $row) {
-        $stmt->bind_param("ii", $last_book_id, $row);
-        $stmt->execute();
+
+
+
+    if ($result) {
+        echo json_encode(["statusCode" => 200]);
+    } else {
+        echo json_encode([
+            "statusCode" => 201,
+            "flag" => $flag,
+        ]);
     }
-    $conn->commit();
-}
-if ($result) {
-    echo json_encode(["statusCode" => 200]);
-} else {
-    echo json_encode([
-        "statusCode" => 201,
-        "flag" => $flag,
-    ]);
-}
+} 

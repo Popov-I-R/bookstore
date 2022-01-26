@@ -147,7 +147,7 @@ $result_publishers = $conn->query($sql_publishers);
                     cache: false, 
                     processData: false,
                     contentType: false,
-                    url: 'includes/book/edit-.php',
+                    url: 'includes/book/edit.php',
                     success: function(dataResult){
                         console.log(dataResult);
                         var dataResult = JSON.parse(dataResult);

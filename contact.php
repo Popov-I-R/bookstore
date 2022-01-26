@@ -8,7 +8,7 @@ require_once 'header.php';
             <meta charset="UTF-8">
             <title>Контакти</title>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-            <link rel="stylesheet" href="../common/assets/libs/css/contact.css">
+            <link rel="stylesheet" href="common/assets/libs/css/contact.css">
 
         </head>
         <body>
@@ -19,7 +19,8 @@ require_once 'header.php';
                     <div class="col-12">
                         <div class="container" id="contactformm">
                             <div id="stage" class="stage"></div>
-                            <script src='https://cdnjs.cloudflare.com/ajax/libs/react/0.13.2/react.min.js'></script><script  src="../common/assets/libs/js/contact.js"></script>
+                            <script src='https://cdnjs.cloudflare.com/ajax/libs/react/0.13.2/react.min.js'></script>
+                            <script  src="common/assets/libs/js/contact.js"></script>
                         </div>
                     </div>
 

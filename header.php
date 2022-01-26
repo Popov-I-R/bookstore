@@ -197,6 +197,7 @@ $result_categories = $conn->query($sql_categories);
             </div>
         </div>
         <div class="page-content p-1" id="content">
+            <div class="col-2">
             <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <line x1="4" y1="6" x2="20" y2="6" />
@@ -210,6 +211,10 @@ $result_categories = $conn->query($sql_categories);
                 <path d="M17 17h-11v-14h-2" />
                 <path d="M6 5l14 1l-1 7h-13" />
                 </svg><span class="text-number">1</span></button>
+                </div>
+            <div class="col-10">
+                
+            </div>
         </div>
 
 

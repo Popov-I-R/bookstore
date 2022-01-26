@@ -1,5 +1,5 @@
 <?php
-require_once '../common/includes/dbconnect.php';
+require_once 'common/includes/dbconnect.php';
 
 session_start();
 $_SESSION = array();
