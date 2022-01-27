@@ -1,58 +1,9 @@
 <?php
-require_once '../common/includes/dbconnect.php';
-//require_once 'header.php'; 
-require_once 'includes/check.php';
- define ('URLBASE', 'http://localhost/bookstore/') ; 
+
+require_once 'header.php'; 
 ?>
-<!doctype html>
-
-<html> 
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--bootstrap css-->
-
-        <link href="../common/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <!--font awesome-->
-        <link href="../common/assets/vendor/font-awesome/css/all.min.css" rel="stylesheet" type="text/css"/>
-        <!--theme css-->
-        <link href="../common/assets/libs/css/style.css" rel="stylesheet" type="text/css"/>
-        <!--bootstrap bundle-->
-        <script src="../common/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-        <!--jquery 3.6.0-->
-        <script src="../common/assets/vendor/jquery/jquery-3.6.0.min.js" type="text/javascript"></script>
-        <!--theme js-->
-        <script src="../common/assets/libs/js/javascript.js" type="text/javascript"></script>
-        <style>
-            .nav-link {
-                color:white
-            }
-            .nav-link:hover{
-                color:#1ea3d7
-
-            }
-            .dropdown:hover>.dropdown-menu {
-                display: block;
-            }
-            .dropdown-item:hover{
-                color:#1ea3d7
-            }
-            .text-white:hover{
-                color:#1ea3d7 !important
-            }
-            .btn-warning:hover{
-                font-size:1.1rem
-            }
-
-            .category:hover{
-                display:block !important;
-            }
 
 
-
-        </style>
-    </head>
     <div class="page-content p-5" id="content">
 
         <section class="vh-100">
@@ -116,7 +67,7 @@ require_once 'includes/check.php';
                             <div class="text-center text-lg-start mt-4 pt-2">
                                 <button type="button" id="btn-register" class="btn btn-primary btn-lg"
                                         style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
-                                <p class="small fw-bold mt-2 pt-1 mb-0">Have an account? <a href="<?php echo URLBASE; ?>/backend/login.php"
+                                <p class="small fw-bold mt-2 pt-1 mb-0">Have an account? <a href="<?php echo URLBASE; ?>/login.php"
                                                                                             class="link-danger">Login</a></p>
                             </div>
 
@@ -138,7 +89,7 @@ require_once 'includes/check.php';
             console.log(username);
             if (username != "" && email != "" && password != "") {
                 $.ajax({
-                    url: "includes/user/create.php",
+                    url: "backend/includes/user/create.php",
                     type: "POST",
                     data: {
                         username: username,
