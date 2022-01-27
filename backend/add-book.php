@@ -129,7 +129,7 @@ include_once 'footer.php';
                     cache: false, 
                     processData: false,
                     contentType: false,
-                    url: '../includes/book/create.php',
+                    url: 'includes/book/create.php',
                     success: function(dataResult){
                         console.log(dataResult);
                         var dataResult = JSON.parse(dataResult);

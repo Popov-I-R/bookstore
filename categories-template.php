@@ -254,7 +254,7 @@ else {
             <div class="product-grid6">
                 <div class="product-image6">
                     <a href="<?php echo URLBASE; ?>/book-template.php?id=<?php echo $row['id'] ?>">
-                        <img class="pic-1" src="<?php echo URLBASE. "/backend/uploads/" .$row['image']?>"  alt="harryP" width="150" height="150">
+                        <img class="pic-1" src="<?php echo URLBASE. "/backend/uploads/" .$row['image']?>"  alt="harryP" width="335" height="500">
                     </a>
                 </div>
                 <div class="product-content">

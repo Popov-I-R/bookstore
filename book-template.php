@@ -103,7 +103,7 @@ if (!$result)
                                 $result_authors = $conn->query($sql_authors);
                                 ?>
                                 <ul class="product-data-info">
-                                    <li class="product-datainfo">Променлива автор
+                                    <li class="product-datainfo">Автор:
                                     <?php
                                     if ($result_authors->num_rows > 0) {
                                         while ($row_author = $result_authors->fetch_assoc()) {
@@ -115,7 +115,7 @@ if (!$result)
                                     ?>
                                             </li>
                                     <li class="product-datainfo">ISBN: <span class="productdata-info"> <?php echo $row['isbn'] ?></span></li>
-                                    <li class="product-datainfo">Променлива издател 
+                                    <li class="product-datainfo">Издател:
 
                                         <span class="productdata-info"> <?php echo $row['pub_title'] ?></span></li>
 

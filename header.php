@@ -1,5 +1,4 @@
 <?php
-
 require_once 'common/includes/dbconnect.php';
 define('URLBASE', 'http://localhost/bookstore');
 session_start();
@@ -183,7 +182,6 @@ $result_categories = $conn->query($sql_categories);
 
                                     <?php
                                 }
-                                
                                 ?>
 
 
@@ -196,26 +194,36 @@ $result_categories = $conn->query($sql_categories);
                 </nav>
             </div>
         </div>
-        <div class="page-content p-1" id="content">
-            <div class="col-2">
-            <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <line x1="4" y1="6" x2="20" y2="6" />
-                <line x1="4" y1="12" x2="20" y2="12" />
-                <line x1="4" y1="18" x2="20" y2="18" />
-                </svg></button> <br>
-            <button id="cart" type="button" onclick="location.href = '<?php echo URLBASE; ?>/backend/checkout.php';" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <circle cx="6" cy="19" r="2" />
-                <circle cx="17" cy="19" r="2" />
-                <path d="M17 17h-11v-14h-2" />
-                <path d="M6 5l14 1l-1 7h-13" />
-                </svg><span class="text-number">1</span></button>
-                </div>
-            <div class="col-10">
-                
+        <div class="page-content p-1" id="content"> 
+            <div class="row">
+
+                <div class="container">
+                    
+                        <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <line x1="4" y1="6" x2="20" y2="6" />
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <line x1="4" y1="18" x2="20" y2="18" />
+                            </svg>
+                        </button> <br>
+                        <button id="cart" type="button" onclick="location.href = '<?php echo URLBASE; ?>/backend/checkout.php';" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <circle cx="6" cy="19" r="2" />
+                            <circle cx="17" cy="19" r="2" />
+                            <path d="M17 17h-11v-14h-2" />
+                            <path d="M6 5l14 1l-1 7h-13" />
+                            </svg><span class="text-number">1</span>
+                        </button>
+                    </div>
+          
+<!--                   
+                        <img src="<?php echo URLBASE; ?>/backend/uploads/books.jpg" width="1150" height="220"   >-->
+              
+             
+                <!--            <div class="col-11">
+                                
+                            </div>-->
             </div>
         </div>
-
 
     </body>
