@@ -53,7 +53,14 @@ $result_categories = $conn->query($sql_categories);
                 display:block !important;
             }
 
-
+            .link-cart{
+                position: relative;
+            }
+            .link-cart .cart-count{
+                position: absolute;
+                top: 0;
+                left: 20px;
+            }
 
         </style>
     </head>
@@ -198,32 +205,40 @@ $result_categories = $conn->query($sql_categories);
             <div class="row">
 
                 <div class="container">
-                    
-                        <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <line x1="4" y1="6" x2="20" y2="6" />
-                            <line x1="4" y1="12" x2="20" y2="12" />
-                            <line x1="4" y1="18" x2="20" y2="18" />
-                            </svg>
-                        </button> <br>
-                        <button id="cart" type="button" onclick="location.href = '<?php echo URLBASE; ?>/backend/checkout.php';" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <circle cx="6" cy="19" r="2" />
-                            <circle cx="17" cy="19" r="2" />
-                            <path d="M17 17h-11v-14h-2" />
-                            <path d="M6 5l14 1l-1 7h-13" />
-                            </svg><span class="text-number">1</span>
-                        </button>
-                    </div>
-          
-<!--                   
-                        <img src="<?php echo URLBASE; ?>/backend/uploads/books.jpg" width="1150" height="220"   >-->
-              
-             
-                <!--            <div class="col-11">
-                                
-                            </div>-->
+
+                    <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <line x1="4" y1="6" x2="20" y2="6" />
+                        <line x1="4" y1="12" x2="20" y2="12" />
+                        <line x1="4" y1="18" x2="20" y2="18" />
+                        </svg>
+                    </button> <br>
+                    <button id="cart" type="button" onclick="location.href = '<?php echo URLBASE; ?>/checkout.php';" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <circle cx="6" cy="19" r="2" />
+                        <circle cx="17" cy="19" r="2" />
+                        <path d="M17 17h-11v-14h-2" />
+                        <path d="M6 5l14 1l-1 7h-13" />
+                        </svg><span class="text-number">1</span>
+                    </button>
+                </div>
+
             </div>
         </div>
+
+        <header>
+            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+                <
+                <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                    <a class="me-3 py-2 text-dark text-decoration-none" href="#">Pricing</a>
+                    <a class="py-2 text-dark text-decoration-none link-cart" href="<?php echo URLBASE ?>/view-cart.php"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+/              <p id="cart-count" class="cart-count"><?php /* echo count($_SESSION["products"]); ТОВА Е ЗА БРОЯЧА, НО КАТО Е ВКЛЮЧЕНИ ИЗЧЕЗВА ВСИЧКО И НЯМА ЛОГИН*/?></p>  // 
+                    </a>
+                </nav>
+            </div>
+        </header>
 
     </body>

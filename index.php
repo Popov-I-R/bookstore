@@ -2,7 +2,8 @@
 
 require_once 'header.php';
 
-
+$query = "SELECT books.* FROM books LIMIT 3";
+$result = $conn->query($query);
 
 
 ?>
@@ -200,6 +201,38 @@ position: absolute;
 
             <!--  <div class="separator"></div>-->
 
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    ?>
+<!--                    <form class="product-form">
+                        <div class="col d-flex align-items-start book-item">
+                            <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                                <img width="150" src="<?php echo URLBASE . '/backend/uploads/' . $row['image'] ?>">
+                            </div>
+                            <div>
+                                <h2> 
+                                    <a href="<?php echo URLBASE ?>/book-template.php?id=<?php echo $row['id']; ?>">
+                                        <?php echo htmlspecialchars($row['title']) ?></a>
+                                </h2>
+                                <?php $des = htmlspecialchars($row['description']) ?>
+                                <p><?php echo (strlen($des) > 200) ? substr($des, 0, 200) . '...' : $des ?></p>
+                                <h3><?php echo htmlspecialchars($row['price']) ?></h3>
+                                <input type="hidden" value="1" name="book_qty">
+                                <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
+                                <button type="submit" class="mt-3 btn btn-primary add-cart">
+                                    Add to cart
+                                </button>
+                            </div>
+                        </div>
+                    </form>-->
+                    <?php
+                }
+            }
+            ?>
+            
+            
+            
             <section class="hero-area hero-slider-4">
                 <div class="container">
                     <div class="row">
@@ -283,3 +316,6 @@ include_once 'footer.php';
 
 
 ?>
+<script>
+   
+</script>

@@ -252,6 +252,7 @@ else {
                     ?>
         <div class="col-md-3 col-sm-6">
             <div class="product-grid6">
+                <form class="product-form">
                 <div class="product-image6">
                     <a href="<?php echo URLBASE; ?>/book-template.php?id=<?php echo $row['id'] ?>">
                         <img class="pic-1" src="<?php echo URLBASE. "/backend/uploads/" .$row['image']?>"  alt="harryP" width="335" height="500">
@@ -262,15 +263,24 @@ else {
                     <div class="price">
                         <span><?php echo $row['price']?></span>
                     </div>
-<!--                <div class="image">
-                <h3><?php echo $row['price']?></h3>
-                </div>-->
+        <input type="hidden" value="1" name="book_qty">
+                                <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
+<!--                                <button type="submit" class="mt-3 btn btn-primary add-cart">
+                                    Add to cart
+                                </button>-->
                 </div>
                 
                 <ul class="social">
-                    <li><a href="<?php echo URLBASE ?>/backend/book-template.php?id=<?php echo $row['id']; ?>" data-tip="Добави в количката"><i class="fa fa-shopping-cart"></i></a></li>
-<!--                    <a class="add-cart" href="#"> Add cart</a>-->
+                    <button type="submit"  class="mt-3 btn btn-primary add-cart">
+                                    Add to cart
+                                </button>
+                    
+                    
+                    
+<!--                    <li><a href="<?php echo URLBASE ?>/backend/book-template.php?id=<?php echo $row['id']; ?>" data-tip="Добави в количката"><i class="fa fa-shopping-cart"></i></a></li>-->
+
                 </ul>
+                </form>
             </div>
         </div>
         <?php }
@@ -280,7 +290,7 @@ else {
 
     </div>
         <li class="cart">
-            <a href="cart.html"> <span>0</span></a>
+            <a href="cart.html"> <span>0</span></a> това е за ютуб туториала брояча
         </li>
 </div>
     
@@ -316,55 +326,108 @@ else {
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>-->
 
 <script>
-//let carts = document.querySelectorAll('.add-cart');
-//
-//let products = [     // Тук мисля би тледвало да проверява колко такива продукти имаме в кошницата
-//    {
-//        name: 'Grey Tshirt',
-//        tag: 'greytshoity',
-//        price: 15,
-//        incart:0
-//    }
-//];
-//
-//
-//
-//for(let i=0; i < carts.length;  i++) {
-//    carts[i].addEventListener('click',()=> {
-//        cartNumbers(products[i]);
-//    });
-//};
-//
-//function onLoadCartNumbers() {
-//    let productNumbers = localStorage.getItem('cartNumbers');
-//    
-//    if(productNumbers) {
-//        document.querySelector('.cart span').textContent = productNumbers;
-//    }
-//}
-//
-//
-//
-//function cartNumbers(product) {
-//    console.log("The product clicked is", product)
-//    let productNumbers = localStorage.getItem('cartNumbers'); // Слагаме в localstorage числото, което се образува от това колко пъти сме натиснали продукта
-//    
-//    productNumbers = parseInt(productNumbers); // Превръщаме стнинга в число
-//    
-//    if( productNumbers) {
-//        localStorage.setItem('cartNumbers', productNumbers +1);
-//        document.querySelector('.cart span').textContent = productNumbers +1; // така променяме числото в клас карт и в спан
-//    } else {
-//         localStorage.setItem('cartNumbers', 1);
-//         document.querySelector('.cart span').textContent = 1;
-//    }
-//    
-//    
-//    
-////   localStorage.setItem('cartNumbers', 1); 
-//};
-//
-//onLoadCartNumbers();
+    
+    $(document).ready(function(){
+	// update product quantity in cart
+    $(".quantity").change(function() {		
+		 var element = this;
+		 setTimeout(function () { update_quantity.call(element) }, 2000);	
+	});	
+	function update_quantity() {
+		var pcode = $(this).attr("data-code");
+		var quantity = $(this).val(); 
+		$(this).parent().parent().fadeOut(); 
+		$.getJSON( "manage_cart.php", {"update_quantity":pcode, "quantity":quantity} , function(data){		
+			window.location.reload();			
+		});
+	}	
+    
+    
+    
+     $(".product-form").submit(function (e) {
+        var form_data = $(this).serialize();
+        var button_content = $(this).find('button[type=submit]');
+        button_content.html('Adding...');
+
+        $.ajax({
+            url: "common/includes/manage-cart.php",
+            type: "POST",
+//            dataType: "json",
+            data: form_data,
+        }).done(function (data) {
+            var data = JSON.parse(data);
+            console.log(data);
+            $("#cart-count").html(data.products);
+            button_content.html('Add to Cart');
+        })
+        e.preventDefault();
+    });
+    
+    //Remove items from cart
+	$("#shopping-cart-results").on('click', 'a.remove-item', function(e) {
+		e.preventDefault(); 
+		var pcode = $(this).attr("data-code"); 
+		$(this).parent().parent().fadeOut();
+		$.getJSON( "manage_cart.php", {"remove_code":pcode} , function(data){
+			$("#cart-container").html(data.products); 	
+			window.location.reload();			
+		});
+	});
+});
+    
+    
+    
+    
+    
+let carts = document.querySelectorAll('.add-cart');
+
+let products = [     // Тук мисля би тледвало да проверява колко такива продукти имаме в кошницата
+    {
+        name: 'Grey Tshirt',
+        tag: 'greytshoity',
+        price: 15,
+        incart:0
+    }
+];
+
+
+
+for(let i=0; i < carts.length;  i++) {
+    carts[i].addEventListener('click',()=> {
+        cartNumbers(products[i]);
+    });
+};
+
+function onLoadCartNumbers() {
+    let productNumbers = localStorage.getItem('cartNumbers');
+    
+    if(productNumbers) {
+        document.querySelector('.cart span').textContent = productNumbers;
+    }
+}
+
+
+
+function cartNumbers(product) {
+    console.log("The product clicked is", product)
+    let productNumbers = localStorage.getItem('cartNumbers'); // Слагаме в localstorage числото, което се образува от това колко пъти сме натиснали продукта
+    
+    productNumbers = parseInt(productNumbers); // Превръщаме стнинга в число
+    
+    if( productNumbers) {
+        localStorage.setItem('cartNumbers', productNumbers +1);
+        document.querySelector('.cart span').textContent = productNumbers +1; // така променяме числото в клас карт и в спан
+    } else {
+         localStorage.setItem('cartNumbers', 1);
+         document.querySelector('.cart span').textContent = 1;
+    }
+    
+    
+    
+//   localStorage.setItem('cartNumbers', 1); 
+};
+
+onLoadCartNumbers();
 </script>
 
       
