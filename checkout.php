@@ -19,7 +19,7 @@ require_once 'header.php';
     <body>
 
         <div class="page-content p-5" id="content">
-<
+            
             <div class="col-10">
                 <?php
                 if (isset($_SESSION["products"]) && count($_SESSION["products"]) > 0) {
@@ -52,9 +52,9 @@ require_once 'header.php';
                                         <img src="http://placehold.it/120x166" alt="Placholder Image 2" class="product-frame">
                                     </div>
                                     <div class="product-details">
-                                        <h1><strong><span class="item-quantity"> <?php echo $product_qty ?> </span> x Автор </strong> <?php
-                                            echo $product_name;
-                                            ?></h1>
+                                        <h1><strong><span class="item-quantity"> <?php echo $product_qty ?> </span> x <?php echo $product_name;
+                                            ?> </strong> 
+                                            </h1>
                                         <p>ISBN 213832234y32</p>
                                     </div>
                                 </div>

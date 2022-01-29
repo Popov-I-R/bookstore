@@ -27,7 +27,7 @@ if (isset($_SESSION["products"]) && count($_SESSION["products"]) > 0) {
             foreach ($_SESSION["products"] as $product) {
                 $product_name = $product["title"];
                 $product_price = $product["price"];
-                $product_code = $product["code"];
+//                $product_code = $product["code"];
                 $product_qty = $product["book_qty"];
                 $subtotal = ($product_price * $product_qty);
                 $total = ($total + $subtotal);
