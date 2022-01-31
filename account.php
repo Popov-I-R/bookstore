@@ -1,14 +1,10 @@
 <?php
-
 require_once 'header.php';
 require_once 'backend/includes/check.php';
-
 
 $user_id = $_SESSION['login_user'];
 $query = "SELECT * FROM users WHERE id=$user_id";
 $result = $conn->query($query);
-
-
 ?>
 <!doctype html>
 
@@ -45,56 +41,56 @@ $result = $conn->query($query);
                                     <form>
                                         <h6 class="heading-small text-muted mb-4">User information</h6>
                                         <div class="pl-lg-4">
-                                             <?php
-            if($result->num_rows >0){
-                while($row = $result->fetch_assoc()) { 
-                    ?>
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="form-group focused">
-                                                        <label class="form-control-label" for="input-username">Потребителско име</label>
-                                                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Потребителско име" value="<?php echo $row['username']; ?>">
+                                            <?php
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                    ?>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group focused">
+                                                                <label class="form-control-label" for="input-username">Потребителско име</label>
+                                                                <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Потребителско име" value="<?php echo $row['username']; ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-control-label" for="input-email">Имейл адрес</label>
+                                                                <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Имейл адрес" value="<?php echo $row['email']; ?>">
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-group">
-                                                        <label class="form-control-label" for="input-email">Имейл адрес</label>
-                                                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Имейл адрес" value="<?php echo $row['email']; ?>">
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group focused">
+                                                                <label class="form-control-label" for="input-first-name">Първо име</label>
+                                                                <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Първо име" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group focused">
+                                                                <label class="form-control-label" for="input-number">Номер за връзка</label>
+                                                                <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Number " value="+359 ">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group focused">
+                                                                <label class="form-control-label" for="input-city">Град</label>
+                                                                <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Град" value="">
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <div class="form-group focused">
-                                                        <label class="form-control-label" for="input-first-name">Първо име</label>
-                                                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Първо име" value="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group focused">
-                                                        <label class="form-control-label" for="input-number">Номер за връзка</label>
-                                                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Number " value="+359 ">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group focused">
-                                                        <label class="form-control-label" for="input-city">Град</label>
-                                                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Град" value="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                                                <?php
-                }     
-            }
-            ?>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
                                         </div>
                                         <hr class="my-4">
                                         <!-- Address -->
-                                        
+
 
                                         <hr class="my-4">
                                         <!-- Description -->
-                                        
+
                                         <div class="pl-lg-4">
                                             <div class="form-group focused">
                                                 <div class="row">
@@ -114,22 +110,6 @@ $result = $conn->query($query);
                         </div>
                     </div>
                 </div>
-
-
-
-
-
             </div>
-
-
-
-
-
-
-
-
-
-
-        </div>
-    </main>
-</body>
+        </main>
+    </body>

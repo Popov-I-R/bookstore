@@ -14,9 +14,9 @@ require_once 'header.php';
         <body>
 
             <!-- Page content holder -->
-            <div class="page-content p-5" id="content">
+            <div class="page-content p-1" id="content">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-lg-12">
                         <div class="container" id="contactformm">
                             <div id="stage" class="stage"></div>
                             <script src='https://cdnjs.cloudflare.com/ajax/libs/react/0.13.2/react.min.js'></script>

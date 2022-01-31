@@ -7,10 +7,8 @@ $query = "SELECT orders.*, books.title FROM orders INNER JOIN customers ON custo
         . "INNER JOIN books ON books.id = orders.book_id WHERE customers.user_id = $user_id";
 $result = $conn->query($query);
 
-if(!$result)
+if (!$result)
     die("Fatal error");
-
-
 ?>
 <!doctype html>
 
@@ -48,59 +46,40 @@ if(!$result)
                                         <h6 class="heading-small text-muted mb-4">User information</h6>
                                         <div class="pl-lg-4">
                                             <div class="row">
-                 <table class="table">
-        <thead>
-             <tr>
-                 <th scope="col">Потребител</th>
-                 <th scope="col">Книга</th>
-                 <th scope="col">Количество</th>
-             </tr>
-        </thead>
-        <tbody>
-            <?php
-            if($result->num_rows >0){
-                while($row = $result->fetch_assoc()) { 
-                    ?>
-            <tr>
-                <td><?php echo htmlspecialchars($row['customer_id'])?></td>
-                <td><?php echo htmlspecialchars($row['title'])?></td>
-                <td><?php echo htmlspecialchars($row['qty'])?></td>
-                <td>
-                    <a href="<?php echo URLBASE ?>/backend/view-book.php?id=<?php echo $row['id']; ?>">Преглед</a>
-                </td>
-            </tr>        
-                    <?php
-                }     
-            }
-            ?>
-        </tbody>
-    </table>
+                                                <div class='col-lg-12'>
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                    
+                                                            <th scope="col">Потребител</th>
+                                                            <th scope="col">Книга</th>
+                                                            <th scope="col">Количество</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        if ($result->num_rows > 0) {
+                                                            while ($row = $result->fetch_assoc()) {
+                                                                ?>
+                                                                <tr>
+                                                                    <td><?php echo htmlspecialchars($row['customer_id']) ?></td>
+                                                                    <td><?php echo htmlspecialchars($row['title']) ?></td>
+                                                                    <td><?php echo htmlspecialchars($row['qty']) ?></td>
+                                                                </tr>        
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                           
-
-
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
-
-
             </div>
-
-
-
-
-
-
-
-
-
-
         </div>
     </main>
 </body>

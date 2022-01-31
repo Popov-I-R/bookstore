@@ -1,230 +1,233 @@
 <?php
 require_once 'header.php';
+require_once 'common/includes/dbconnect.php';
 ?>
 
+<?php
+require_once 'header.php';
+require_once 'backend/includes/check.php';
+
+$user_id = $_SESSION['login_user'];
+$query = "SELECT * FROM users WHERE id=$user_id";
+$result = $conn->query($query);
+?>
+<title> </title>
+
+<!--<script type="text/javascript" src="script/cart.js"></script>-->
+<?php include('common/includes/container.php'); ?>
 
 
-
-<!DOCTYPE html>
-<html lang="en" >
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-        <link href="common/assets/libs/css/cart.css" rel="stylesheet" type="text/css"/>
-        <link href="common/assets/libs/js/cart.css" rel="stylesheet" type="text/css"/>
-
-
-    </head>
-    <body>
-
-        <div class="page-content p-5" id="content">
-            
-            <div class="col-10">
-                <?php
-                if (isset($_SESSION["products"]) && count($_SESSION["products"]) > 0) {
-                    ?> 
-
-
-                    <?php
-                    $cart_box = '<ul class="cart-products-loaded">';
-                    $total = 0;
-                    foreach ($_SESSION["products"] as $product) {
-                        $product_name = $product["title"];
-                        $product_price = $product["price"];
-//                $product_code = $product["code"];
-                        $product_qty = $product["book_qty"];
-                        $subtotal = ($product_price * $product_qty);
-                        $total = ($total + $subtotal);
-                        ?>
-                        <div class="basket">
-                            <div class="basket-labels">
-                                <ul>
-                                    <li class="item item-heading">Заглавие</li>
-                                    <li class="price">Цена</li>
-                                    <li class="quantity">Количество</li>
-                                    <li class="subtotal">Крайна цена</li>
-                                </ul>
-                            </div>
-                            <div class="basket-product">
-                                <div class="item">
-                                    <div class="product-image">
-                                        <img src="http://placehold.it/120x166" alt="Placholder Image 2" class="product-frame">
-                                    </div>
-                                    <div class="product-details">
-                                        <h1><strong><span class="item-quantity"> <?php echo $product_qty ?> </span> x <?php echo $product_name;
-                                            ?> </strong> 
-                                            </h1>
-                                        <p>ISBN 213832234y32</p>
-                                    </div>
-                                </div>
-                                <div class="price"><?php echo $product_price; ?></div>
-                                <div class="quantity">
-                                    <input type="number" value="<?php echo $product_qty ?>" min="$product_qty" class="quantity-field">
-                                </div>
-                                <div class="subtotal"><?php echo $subtotal ?></div>
-                                <div class="remove">
-                                    <button>Remove</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <?php
-                    }
-                    ?>
-                </div>
-                <div class="2">
-                    <div class="final">
-                        <div class="summary-total-items"><span class="total-items"></span> Продукти във вашата количка</div>
-                        <div class="summary-subtotal">
-                            <div class="subtotal-title">Крайна цена</div>
-                            <div class="subtotal-value final-value" id="basket-subtotal"><?php echo $total ?></div>
-                        </div>
-                        <div class="summary-delivery">
-
-                        </div>
-                        <div class="summary-total">
-                            <div class="total-title">Total</div>
-                            <div class="total-value final-value" id="basket-total"><?php echo $total ?></div>
-                        </div>
-                        <div class="summary-checkout">
-                            <button class="checkout-cta">Направи поръчка</button>
+<div class="page-content p-1" id="content">
+    <div class='row' >
+        <div class='col-12' >
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-2">
+                    <div class="row align-items-center">
+                        <div class="col-12">
+                            <h3 class="mb-1">Моят профил</h3>
                         </div>
                     </div>
                 </div>
+                <div class="card-body">
+                    <form>
+                        <h6 class="heading-small text-muted mb-4">User information</h6>
+                        <div class="pl-lg-4">
+                            <?php
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    ?>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-username">Потребителско име</label>
+                                                <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Потребителско име" value="<?php echo $row['username']; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-first-name">Име и Фамилия</label>
+                                                <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Име и фамилия" value="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
 
 
+                                       
+                                            <div class="col-lg-8">
+                                                <div class="form-group focused">
+                                                    <label class="form-control-label" for="address">Адрес</label>
+                                                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Моля, въведете вашият адрес" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group focused">
+                                                    <label class="form-control-label" for="input-city">Град</label>
+                                                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Град" value="">
+                                                </div>
+                                            </div>
+                                       
+                                    </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-email">Имейл адрес</label>
+                                                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Имейл адрес" value="<?php echo $row['email']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group focused">
+                                                    <label class="form-control-label" for="input-number">Номер за връзка</label>
+                                                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Number " value="+359 ">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </div>
 
 
-
-
-
-
-
-
-
+                    </form>
+                </div>
             </div>
-        </body>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-12' >
+            <div class="container">	
+                <h3 style="text-align:left">Review Your Cart Before Buying</h3>
+                <?php
+                if (isset($_SESSION["products"]) && count($_SESSION["products"]) > 0) {
+                    $total = 0;
+                    $list_tax = '';
+                    ?>	
 
-    </html>
-    <!-- partial -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script><script  src="../common/assets/libs/js/cart.js" type="text/javascript"></script>
+                    <table class="table" id="shopping-cart-results">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Subtotal</th>		
+                                <th>&nbsp;</th>				
+                            </tr>
+                        </thead>
+                        <tbody>				
+                            <?php
+                            $cart_box = '';
+                            foreach ($_SESSION["products"] as $product) {
+                                $product_name = $product["title"];
+                                $product_qty = $product["book_qty"];
+                                $product_price = $product["price"];
+                                $product_code = $product["book_id"];
+                                $item_price = sprintf("%01.2f", ($product_price * $product_qty));
+                                $currency = 'лв. ';
+                                ?>
+                                <tr>
+                                    <td><?php echo $product_name; /* echo "&mdash;"; */ ?></td>
+                                    <td><?php echo $product_price; ?></td>
+                                    <td><?php echo $product_qty; ?></td>
+                                    <td><?php echo sprintf("%01.2f", ($product_price * $product_qty)) ?> <?php echo $currency; ?></td>
+                                    <td>&nbsp;</td>
+                                </tr>				
+                                <?php
+                                $subtotal = ($product_price * $product_qty);
+                                $total = ($total + $subtotal);
+                            }
+                            $grand_total = $total;
+//	foreach($taxes as $key => $value){
+//			$tax_amount = round($total * ($value / 100));
+//			$tax_item[$key] = $tax_amount;
+//			$grand_total = $grand_total + $tax_amount; 
+//	}	
+//	foreach($tax_item as $key => $value){
+//		$list_tax .= $key. ' : '. $currency. sprintf("%01.2f", $value).'<br />';
+//	}	
 
-    </body>
-    </html>
-    <?php
-}
-?>
+                            $cart_box .= "<span>  $list_tax <hr>Payable Amount : " . sprintf("%01.2f", $grand_total) . " $currency </span>";
+                            ?>
+                        <tfoot>
+                            <tr>
+                                <td><br><br><br><br><br><br><a href="<?php echo URLBASE; ?>/categories-template.php?id=1<?php echo $row['id=1'] ?>"  class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Continue Shopping</a></td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td class="text-center view-cart-total"><strong><?php echo $cart_box; ?></strong></td>	
+                                <td><br><br><br><br><br><br><a href="success.php" class="btn btn-success btn-block">Place Order <i class="glyphicon glyphicon-menu-right"></i></a></td>
+                            </tr>
+                        </tfoot>	
+                        <?php
+                    } else {
+                        echo "Вашата количка е празна";
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class='col-12' >
+
+        </div>
+    </div>
+</div>
+
+
+<?php /* include footer */ ?>
 
 <script>
 
-    /* Set values + misc */
-
-    var fadeTime = 300;
-
-    /* Assign actions */
-    $('.quantity input').change(function () {
-        updateQuantity(this);
-    });
-
-    $('.remove button').click(function () {
-        removeItem(this);
-    });
-
     $(document).ready(function () {
-        updateSumItems();
+        // update product quantity in cart
+        $(".quantity").change(function () {
+            var element = this;
+            setTimeout(function () {
+                update_quantity.call(element)
+            }, 2000);
+        });
+        function update_quantity() {
+            var pcode = $(this).attr("data-code");
+            var quantity = $(this).val();
+            $(this).parent().parent().fadeOut();
+            $.getJSON("manage_cart.php", {"update_quantity": pcode, "quantity": quantity}, function (data) {
+                window.location.reload();
+            });
+        }
+
+
+
+        $(".product-form").submit(function (e) {
+            var form_data = $(this).serialize();
+            var button_content = $(this).find('button[type=submit]');
+            button_content.html('Adding...');
+
+            $.ajax({
+                url: "common/includes/manage-cart.php",
+                type: "POST",
+//            dataType: "json",
+                data: form_data,
+            }).done(function (data) {
+                var data = JSON.parse(data);
+                console.log(data);
+                $("#cart-count").html(data.products);
+                button_content.html('Add to Cart');
+            })
+            e.preventDefault();
+        });
+
+        //Remove items from cart
+        $("#shopping-cart-results").on('click', 'a.remove-item', function (e) {
+            e.preventDefault();
+            var pcode = $(this).attr("data-code");
+            $(this).parent().parent().fadeOut();
+            $.getJSON("manage_cart.php", {"remove_code": pcode}, function (data) {
+                $("#cart-container").html(data.products);
+                window.location.reload();
+            });
+        });
     });
-
-    /* Recalculate cart */
-    function recalculateCart(onlyTotal) {
-        var subtotal = 0;
-
-        /* Sum up row totals */
-        $('.basket-product').each(function () {
-            subtotal += parseFloat($(this).children('.subtotal').text());
-        });
-
-        /* Calculate totals */
-        var total = subtotal;
-
-        //If there is a valid promoCode, and subtotal < 10 subtract from total
-        var promoPrice = parseFloat($('.promo-value').text());
-        if (promoPrice) {
-            if (subtotal >= 10) {
-                total -= promoPrice;
-            } else {
-                alert('Order must be more than £10 for Promo code to apply.');
-                $('.summary-promo').addClass('hide');
-            }
-        }
-
-        /*If switch for update only total, update only total display*/
-        if (onlyTotal) {
-            /* Update total display */
-            $('.total-value').fadeOut(fadeTime, function () {
-                $('#basket-total').html(total.toFixed(2));
-                $('.total-value').fadeIn(fadeTime);
-            });
-        } else {
-            /* Update summary display. */
-            $('.final-value').fadeOut(fadeTime, function () {
-                $('#basket-subtotal').html(subtotal.toFixed(2));
-                $('#basket-total').html(total.toFixed(2));
-                if (total == 0) {
-                    $('.checkout-cta').fadeOut(fadeTime);
-                } else {
-                    $('.checkout-cta').fadeIn(fadeTime);
-                }
-                $('.final-value').fadeIn(fadeTime);
-            });
-        }
-    }
-
-    /* Update quantity */
-    function updateQuantity(quantityInput) {
-        /* Calculate line price */
-        var productRow = $(quantityInput).parent().parent();
-        var price = parseFloat(productRow.children('.price').text());
-        var quantity = $(quantityInput).val();
-        var linePrice = price * quantity;
-
-        /* Update line price display and recalc cart totals */
-        productRow.children('.subtotal').each(function () {
-            $(this).fadeOut(fadeTime, function () {
-                $(this).text(linePrice.toFixed(2));
-                recalculateCart();
-                $(this).fadeIn(fadeTime);
-            });
-        });
-
-        productRow.find('.item-quantity').text(quantity);
-        updateSumItems();
-    }
-
-    function updateSumItems() {
-        var sumItems = 0;
-        $('.quantity input').each(function () {
-            sumItems += parseInt($(this).val());
-        });
-        $('.total-items').text(sumItems);
-    }
-
-    /* Remove item from cart */
-    function removeItem(removeButton) {
-        /* Remove row from DOM and recalc cart total */
-        var productRow = $(removeButton).parent().parent();
-        productRow.slideUp(fadeTime, function () {
-            productRow.remove();
-            recalculateCart();
-            updateSumItems();
-        });
-    }
-
-
-
-
-
-
-
-
 </script>

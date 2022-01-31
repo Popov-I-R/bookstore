@@ -28,6 +28,7 @@ $result_categories = $conn->query($sql_categories);
         <!--theme js-->
         <script src="common/assets/libs/js/javascript.js" type="text/javascript"></script>
 <!--        <script src="../common/assets/libs/js/main.js" type="text/javascript"></script>-->
+        
         <style>
             .nav-link {
                 color:white

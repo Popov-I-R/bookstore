@@ -224,9 +224,9 @@ h3.h3 {
 }  elseif ($category_id === "2") {
   echo "История";
 }  elseif ($category_id === "3") {
-echo "Хазарт";
+echo "Компютри/Програмиране";
 }  elseif ($category_id === "4") {
-echo "Най-продавани";
+echo "Психология";
 }  elseif ($category_id === "5") {
 echo "Трилър";
 }  elseif ($category_id === "6") {
@@ -271,8 +271,8 @@ else {
                 </div>
                 
                 <ul class="social">
-                    <button type="submit"  class="mt-3 btn btn-primary add-cart">
-                                    Add to cart
+                    <button type="submit"  class="mt-3 btn btn-outline-success add-cart">
+                                    Добави в количката
                                 </button>
                     
                     
