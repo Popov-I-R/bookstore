@@ -136,15 +136,6 @@ $result_categories = $conn->query($sql_categories);
                                             }
                                         }
                                         ?>   
-
-
-
-
-                                        <!--                                        
-                                                                                
-                                                                                <li><a class="dropdown-item" href="#">Категория </a></li>
-                                                                                <li><hr class="dropdown-divider"></li>-->
-
                                     </ul>
                                 </li>
 
@@ -191,12 +182,7 @@ $result_categories = $conn->query($sql_categories);
                                     <?php
                                 }
                                 ?>
-
-
                             </ul>
-
-
-
                         </div>
                     </div>
                 </nav>
