@@ -1,10 +1,6 @@
 <?php
 require_once 'header.php';
-
-//$query = "SELECT books.*, authors.name FROM books INNER JOIN book_author ON books.id = book_author.book_id INNER JOIN authors ON authors.id = book_author.author_id";
-//$result = $conn->query($query);
-//$query_info ="SELECT books.id, books.title, books.image. books.price, categories.name FROM books INNER JOIN book_category";
-//$result_info = $conn->query($query);
+require_once 'common/includes/dbconnect.php';
 
 $book_id = $_GET['id'];
 
@@ -23,46 +19,11 @@ if (!$result)
 <html> 
 
     <head>
-        <!--        <meta charset="utf-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                bootstrap css
-        
-                <link href="../common/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-                font awesome
-                <link href="../common/assets/vendor/font-awesome/css/all.min.css" rel="stylesheet" type="text/css"/>
-                theme css
-                <link href="../common/assets/libs/css/vertical-categories.css" rel="stylesheet" type="text/css"/>
-                <link href="../common/assets/libs/css/style-vertical-nav.css" rel="stylesheet" type="text/css"/>
-                bootstrap bundle
-                <script src="../common/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-                jquery 3.6.0
-                <script src="../common/assets/vendor/jquery/jquery-3.6.0.min.js" type="text/javascript"></script>
-                theme js
-                <script src="../common/assets/libs/js/javascript.js" type="text/javascript"></script>-->
         <style>
-            /*            .nav-link {
-                        color:white
-            } 
-            .nav-link:hover{
-                color:#1ea3d7
-               
-            }
-            .dropdown:hover>.dropdown-menu {
-                display: block;
-            }
-            .dropdown-item:hover{
-                color:#1ea3d7
-            }
-            .text-white:hover{        
-            color:#1ea3d7 !important
-            }
-            .btn-warning:hover{       
-            font-size:1.1rem
-            }
-                    
-            .category:hover{display:block !important;}        */
 
-
+            .product-add-cart {
+                text-decoration: none;
+            }
 
         </style>
     </head>
@@ -92,62 +53,62 @@ if (!$result)
 
                         <div class="col-sm-7 col-xxl-7 col-xl-7 col-lg-7 col-sm-7">
                             <div class="product-details-info">
-
-                                <div class="row">
-                                    <h3 class="product-title"><?php echo $row['title'] ?> </h3>
-                                </div>
-                                <?php
-                                $author_id = $row['author_id'];
-
-                                $sql_authors = "SELECT name FROM authors WHERE id=$author_id";
-                                $result_authors = $conn->query($sql_authors);
-                                ?>
-                                <ul class="product-data-info">
-                                    <li class="product-datainfo">Автор:
+                                <form class="product-form">
+                                    <div class="row">
+                                        <h3 class="product-title"><?php echo $row['title'] ?> </h3>
+                                    </div>
                                     <?php
-                                    if ($result_authors->num_rows > 0) {
-                                        while ($row_author = $result_authors->fetch_assoc()) {
-                                            ?>
-                                        <span class="productdata-info"> <?php echo $row_author['name'] ;?></span>
-                                            <?php
-                                        }
-                                    }
+                                    $author_id = $row['author_id'];
+
+                                    $sql_authors = "SELECT name FROM authors WHERE id=$author_id";
+                                    $result_authors = $conn->query($sql_authors);
                                     ?>
-                                            </li>
-                                    <li class="product-datainfo">ISBN: <span class="productdata-info"> <?php echo $row['isbn'] ?></span></li>
-                                    <li class="product-datainfo">Издател:
-
-                                        <span class="productdata-info"> <?php echo $row['pub_title'] ?></span></li>
-
-                                    <li class="product-datainfo">Година на издаване: <span class="productdata-info"><?php echo $row['year'] ?></span></li>
-                                </ul>
-                                <div class="product-details-price-block">
-                                    <span class="product-price"> Цена: <?php echo $row['price'] ?> лв.</span>
-                                </div>
-
-                                <div class="product-details-data-info">
-                                    <h4 class="sr-only">Product Summary</h4>
-                                    <p><?php echo $row['description'] ?></p>
-                                </div>
-                                <div class="col-sm-6 col-xxl-6 col-xl-6 col-lg-6">
-                                    <div class="product-add-to-cart">
-                                        <div class="product-addtocart">
-                                            <span class="product-add-quantity">Количество:</span>
-                                            <input type="number" class="form-control text-center" value="1">
-                                        </div>
-                                        <!--                                <div class="product-add-to-cart-add-cart-btn">
-                                                                            <a href="#" class="btn btn-outlined--primary"><span class="product-add-plus">+</span>Add to
-                                                                                Cart</a>
-                                                                        </div>-->
-                                    </div>    
-                                </div>
-                                <div class="product-favourites-cart">
-                                    <a href="" class="product-add-cart"><i class=""></i>Добави в количката</a>
-                                    <a href="" class="product-add-favourites"><i class=""></i>Добави в любими</a>
-                                </div> 
-    <?php
-}
-?>
+                                    <ul class="product-data-info">
+                                        <li class="product-datainfo">Автор:
+                                            <?php
+                                            if ($result_authors->num_rows > 0) {
+                                                while ($row_author = $result_authors->fetch_assoc()) {
+                                                    ?>
+                                                    <span class="productdata-info"> <?php echo $row_author['name']; ?></span>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </li>
+                                        <li class="product-datainfo">ISBN: <span class="productdata-info"> <?php echo $row['isbn'] ?></span></li>
+                                        <li class="product-datainfo">Издател:
+                                            <span class="productdata-info"> <?php echo $row['pub_title'] ?></span></li>
+                                        <li class="product-datainfo">Година на издаване: <span class="productdata-info"><?php echo $row['year'] ?></span></li>
+                                    </ul>
+                                    <div class="product-details-price-block">
+                                        <span class="product-price"> Цена: <?php echo $row['price'] ?> лв.</span>
+                                    </div>
+                                    <div class="product-details-data-info">
+                                        <h4 class="sr-only">Product Summary</h4>
+                                        <p><?php echo $row['description'] ?></p>
+                                    </div>
+                                    <div class="col-sm-6 col-xxl-6 col-xl-6 col-lg-6">
+                                        <div class="product-add-to-cart">
+                                            <div class="product-addtocart">
+                                                <span class="product-add-quantity">Количество:</span>
+                                                <input type="number" class="form-control text-center" value="1">
+                                            </div>
+                                            <!--                                <div class="product-add-to-cart-add-cart-btn">
+                                                                                <a href="#" class="btn btn-outlined--primary"><span class="product-add-plus">+</span>Add to
+                                                                                    Cart</a>
+                                                                            </div>-->
+                                        </div>    
+                                    </div>
+                                    <div class="product-favourites-cart">
+                                        <button type="submit"  class="mt-3 btn btn-outline-success add-cart">
+                                            Добави в количката
+                                        </button>
+        <!--                                    <a href="" class="product-add-favourites"><i class=""></i>Добави в любими</a>-->
+                                    </div> 
+                                    <?php
+                                }
+                                ?>
+                            </form>
                         </div>
                     </div>
 
@@ -157,5 +118,57 @@ if (!$result)
             </div>
 
         </div>
+
+        <script>
+            $(document).ready(function () {
+                // update product quantity in cart
+                $(".quantity").change(function () {
+                    var element = this;
+                    setTimeout(function () {
+                        update_quantity.call(element)
+                    }, 2000);
+                });
+                function update_quantity() {
+                    var pcode = $(this).attr("data-code");
+                    var quantity = $(this).val();
+                    $(this).parent().parent().fadeOut();
+                    $.getJSON("manage_cart.php", {"update_quantity": pcode, "quantity": quantity}, function (data) {
+                        window.location.reload();
+                    });
+                }
+
+
+
+                $(".product-form").submit(function (e) {
+                    var form_data = $(this).serialize();
+                    var button_content = $(this).find('button[type=submit]');
+                    button_content.html('Adding...');
+
+                    $.ajax({
+                        url: "common/includes/manage-cart.php",
+                        type: "POST",
+//            dataType: "json",
+                        data: form_data,
+                    }).done(function (data) {
+                        var data = JSON.parse(data);
+                        console.log(data);
+                        $("#cart-count").html(data.products);
+                        button_content.html('Add to Cart');
+                    })
+                    e.preventDefault();
+                });
+
+                //Remove items from cart
+                $("#shopping-cart-results").on('click', 'a.remove-item', function (e) {
+                    e.preventDefault();
+                    var pcode = $(this).attr("data-code");
+                    $(this).parent().parent().fadeOut();
+                    $.getJSON("manage_cart.php", {"remove_code": pcode}, function (data) {
+                        $("#cart-container").html(data.products);
+                        window.location.reload();
+                    });
+                });
+            });
+        </script>
 
     </body>

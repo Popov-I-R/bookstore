@@ -4,6 +4,12 @@ define('URLBASE', 'http://localhost/bookstore');
 session_start();
 $sql_categories = "SELECT id, title FROM categories";
 $result_categories = $conn->query($sql_categories);
+
+$user_id = $_SESSION['login_user'];
+$query_user = "SELECT * FROM users WHERE id=$user_id";
+$result_user = $conn->query($query_user);
+
+
 ?>
 <!doctype html>
 
@@ -74,7 +80,21 @@ $result_categories = $conn->query($sql_categories);
                 <div class="py-4 px-3 mb-4 bg-light">
                     <div class="media d-flex align-items-center"><img src="<?php echo URLBASE; ?>/backend/uploads/profile-picture.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
                         <div class="media-body">
+                         <?php if (isset($_SESSION['login_user'])) { ?>
+                             <?php
+                                            if ($result_user->num_rows > 0) {
+                                                while ($row = $result_user->fetch_assoc()) {
+                                                    ?>
+                            <h4 class="m-0"><?php echo $row['username']; ?></h4>
+                                      <?php
+                                                }
+                                            }
+                                            ?>
+                                     <?php } else { ?>  
                             <h4 class="m-0">Потребител</h4>
+                                     <?php
+                                }
+                                ?>
                             <p class="font-weight-light text-muted mb-0">Добре дошли</p>
                         </div>
                     </div>
