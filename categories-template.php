@@ -334,7 +334,7 @@ $result = $conn->query($query);
         $(".product-form").submit(function (e) {
             var form_data = $(this).serialize();
             var button_content = $(this).find('button[type=submit]');
-            button_content.html('Adding...');
+            button_content.html('Добави отново');
 
             $.ajax({
                 url: "common/includes/manage-cart.php",

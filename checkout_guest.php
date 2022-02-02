@@ -24,7 +24,7 @@ require_once 'common/includes/dbconnect.php';
                 <div class="card-header bg-white border-2">
                     <div class="row align-items-center">
                         <div class="col-12">
-                            <h3 class="mb-1">Моят профил</h3>
+                            <h3 class="mb-1">Вашите данни</h3>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@ require_once 'common/includes/dbconnect.php';
                     <form>
                         <h6 class="heading-small text-muted mb-4">User information</h6>
                         <div class="pl-lg-4">
-                            //<?php
+                            <?php
 //                            if ($result->num_rows > 0) {
 //                                while ($row = $result->fetch_assoc()) {
 //                                    ?>
@@ -40,13 +40,13 @@ require_once 'common/includes/dbconnect.php';
                                         <div class="col-lg-6">
                                             <div class="form-group focused">
                                                 <label class="form-control-label" for="input-username">Потребителско име</label>
-                                                <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Потребителско име" value="">
+                                                <input type="text" id="input-username" class="form-control form-control" placeholder="Потребителско име" disabled>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group focused">
                                                 <label class="form-control-label" for="input-first-name">Име и Фамилия*</label>
-                                                <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Име и фамилия" value="">
+                                                <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Име и фамилия" value="" required>
                                             </div>
                                         </div>
 
@@ -101,7 +101,7 @@ require_once 'common/includes/dbconnect.php';
     <div class='row'>
         <div class='col-12' >
             <div class="container">	
-                <h3 style="text-align:left">Review Your Cart Before Buying</h3>
+                <h3 style="text-align:left">Вашата поръчка</h3>
                 <?php
                 if (isset($_SESSION["products"]) && count($_SESSION["products"]) > 0) {
                     $total = 0;

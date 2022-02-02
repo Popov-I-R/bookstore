@@ -43,10 +43,10 @@ require_once 'header.php';
                         $product_price = $product["price"];
                         $product_code = $product["book_id"];
                         $product_qty = $product["book_qty"];
-                        var_dump($product_qty);
+//                        var_dump($product_qty);
                         $subtotal = ($product_price * $product_qty);
                         $total = ($total + $subtotal);
-                        var_dump($subtotal);
+//                        var_dump($subtotal);
                         ?>
                         <tr>
                             <td><?php
@@ -79,12 +79,20 @@ require_once 'header.php';
                     if (isset($total)) {
                         ?>	
                         <td class="text-center cart-products-total"><strong>Total <?php echo sprintf("%01.2f", $total); ?> <?php echo $currency ?> </strong></td>
-                        <td><a href="checkout_guest.php" 
-                               class="btn btn-success btn-block">Продължи (като гост) <i 
-                                    class="glyphicon glyphicon-menu-right"></i></a></td>
+                        <?php if (isset($_SESSION['login_user'])) { ?>
                         <td><a href="checkout.php" 
                                class="btn btn-success btn-block">Продължи (като потребител)<i 
                                     class="glyphicon glyphicon-menu-right"></i></a></td>
+                                    <?php } else { ?>
+                        <td><a href="checkout_guest.php" 
+                               class="btn btn-success btn-block">Продължи (като гост) <i 
+                                    class="glyphicon glyphicon-menu-right"></i></a></td>
+                                    
+                                    <?php
+                                }
+                                ?>
+                                    
+                        
                         <?php } ?>
                 </tr>
                 </tfoot>			
@@ -123,7 +131,7 @@ require_once 'header.php';
         if (quantity == 0) {
             $(this).parent().parent().fadeOut();
         }
-        
+
 
         $.ajax({
             url: "common/includes/manage-cart.php",
@@ -133,7 +141,7 @@ require_once 'header.php';
                 update_quantity: pcode,
                 quantity: quantity,
             },
-            cache:false,
+            cache: false,
             success: function (dataresult) {
                 window.location.reload();
             }
@@ -146,7 +154,7 @@ require_once 'header.php';
     }
 
     $("#shopping-cart-results").on('click', 'a.remove-item', function (e) {
-        console.log(123);
+//        console.log(123);
         e.preventDefault();
         var pcode = $(this).attr("data-code");
         $(this).parent().parent().fadeOut();
@@ -154,16 +162,16 @@ require_once 'header.php';
 //            $("#cart-container").html(data.products);
 //            window.location.reload();
 //        });
-        
-         $.ajax({
+
+        $.ajax({
             url: "common/includes/manage-cart.php",
             type: "POST",
             data: {
                 type: "remove",
                 remove_code: pcode
-                
+
             },
-            cache:false,
+            cache: false,
             success: function (dataresult) {
 //                window.location.reload();
             }

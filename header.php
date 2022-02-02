@@ -2,7 +2,6 @@
 require_once 'common/includes/dbconnect.php';
 define('URLBASE', 'http://localhost/bookstore');
 
-
 session_start();
 
 $sql_categories = "SELECT id, title FROM categories";
@@ -10,13 +9,6 @@ $result_categories = $conn->query($sql_categories);
 
 $sql_categories2 = "SELECT id, title FROM categories";
 $result_categories2 = $conn->query($sql_categories2);
-
-
-$user_id = $_SESSION['login_user'];
-$query_user = "SELECT * FROM users WHERE id=$user_id";
-$result_user = $conn->query($query_user);
-
-
 ?>
 <!doctype html>
 
@@ -41,7 +33,7 @@ $result_user = $conn->query($query_user);
         <!--theme js-->
         <script src="common/assets/libs/js/javascript.js" type="text/javascript"></script>
 <!--        <script src="../common/assets/libs/js/main.js" type="text/javascript"></script>-->
-        
+
         <style>
             .nav-link {
                 color:white
@@ -87,21 +79,27 @@ $result_user = $conn->query($query_user);
                 <div class="py-4 px-3 mb-4 bg-light">
                     <div class="media d-flex align-items-center"><img src="<?php echo URLBASE; ?>/backend/uploads/profile-picture.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
                         <div class="media-body">
-                         <?php if (isset($_SESSION['login_user'])) { ?>
-                             <?php
-                                            if ($result_user->num_rows > 0) {
-                                                while ($row = $result_user->fetch_assoc()) {
-                                                    ?>
-                            <h4 class="m-0"><?php echo $row['username']; ?></h4>
-                                      <?php
-                                                }
-                                            }
-                                            ?>
-                                     <?php } else { ?>  
-                            <h4 class="m-0">Потребител</h4>
-                                     <?php
+                            <?php
+                            if (isset($_SESSION['login_user'])) {
+
+                                $user_id = $_SESSION['login_user'];
+                                $query_user = "SELECT * FROM users WHERE id=$user_id";
+                                $result_user = $conn->query($query_user);
+                                ?>
+                                <?php
+                                if ($result_user->num_rows > 0) {
+                                    while ($row = $result_user->fetch_assoc()) {
+                                        ?>
+                                        <h4 class="m-0"><?php echo $row['username']; ?></h4>
+                                        <?php
+                                    }
                                 }
                                 ?>
+                            <?php } else { ?>  
+                                <h4 class="m-0">Потребител</h4>
+                                <?php
+                            }
+                            ?>
                             <p class="font-weight-light text-muted mb-0">Добре дошли</p>
                         </div>
                     </div>
@@ -249,7 +247,7 @@ $result_user = $conn->query($query_user);
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                         </svg>
-/              <p id="cart-count" class="cart-count"><?php /*  echo count($_SESSION["products"]); */ ?></p>  // 
+                        /              <p id="cart-count" class="cart-count"><?php /* echo count  ($_SESSION["products"]); */ ?></p>  // 
                     </a>
                 </nav>
             </div>

@@ -11,136 +11,77 @@ $user_id = $_SESSION['login_user'];
 $query = "SELECT * FROM users WHERE id=$user_id";
 $result = $conn->query($query);
 ?>
-<title> </title>
+
+
+
+
+
+
+
+
+
 
 <!--<script type="text/javascript" src="script/cart.js"></script>-->
 <?php include('common/includes/container.php'); ?>
+<head>
+    <style>
+        #purchase {
+            text-align: right;
+        }
+        
+        #tableprice {
+            text-align: center;
+        }
 
+    </style>
+
+</head>
 
 <div class="page-content p-1" id="content">
-    <div class='row' >
-        <div class='col-12' >
-            <div class="card bg-secondary shadow">
-                <div class="card-header bg-white border-2">
-                    <div class="row align-items-center">
-                        <div class="col-12">
-                            <h3 class="mb-1">Моят профил</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <h6 class="heading-small text-muted mb-4">User information</h6>
-                        <div class="pl-lg-4">
-                            <?php
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    ?>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group focused">
-                                                <label class="form-control-label" for="input-username">Потребителско име</label>
-                                                <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Потребителско име" value="<?php echo $row['username']; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group focused">
-                                                <label class="form-control-label" for="input-first-name">Име и Фамилия</label>
-                                                <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Име и фамилия" value="">
-                                            </div>
-                                        </div>
 
-                                    </div>
-
-                                    <div class="row">
-
-
-                                       
-                                            <div class="col-lg-8">
-                                                <div class="form-group focused">
-                                                    <label class="form-control-label" for="address">Адрес</label>
-                                                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Моля, въведете вашият адрес" value="">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group focused">
-                                                    <label class="form-control-label" for="input-city">Град</label>
-                                                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Град" value="">
-                                                </div>
-                                            </div>
-                                       
-                                    </div>
-
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label class="form-control-label" for="input-email">Имейл адрес</label>
-                                                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Имейл адрес" value="<?php echo $row['email']; ?>">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group focused">
-                                                    <label class="form-control-label" for="input-number">Номер за връзка</label>
-                                                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Number " value="+359 ">
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                            </div>
-
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class='row'>
-        <div class='col-12' >
+    <div class='row-g-4'>
+        <div class='col-md-12' >
             <div class="container">	
-                <h3 style="text-align:left">Review Your Cart Before Buying</h3>
+                <h3 style="text-align:left">Преглед</h3>
                 <?php
                 if (isset($_SESSION["products"]) && count($_SESSION["products"]) > 0) {
                     $total = 0;
                     $list_tax = '';
                     ?>	
-
-                    <table class="table" id="shopping-cart-results">
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Subtotal</th>		
-                                <th>&nbsp;</th>				
-                            </tr>
-                        </thead>
-                        <tbody>				
-                            <?php
-                            $cart_box = '';
-                            foreach ($_SESSION["products"] as $product) {
-                                $product_name = $product["title"];
-                                $product_qty = $product["book_qty"];
-                                $product_price = $product["price"];
-                                $product_code = $product["book_id"];
-                                $item_price = sprintf("%01.2f", ($product_price * $product_qty));
-                                $currency = 'лв. ';
-                                ?>
+                    <div style="overflow-x:auto;">
+                        <table class="table" id="shopping-cart-results">
+                            <thead>
                                 <tr>
-                                    <td><?php echo $product_name; /* echo "&mdash;"; */ ?></td>
-                                    <td><?php echo $product_price; ?></td>
-                                    <td><?php echo $product_qty; ?></td>
-                                    <td><?php echo sprintf("%01.2f", ($product_price * $product_qty)) ?> <?php echo $currency; ?></td>
-                                    <td>&nbsp;</td>
-                                </tr>				
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Subtotal</th>		
+                                    <th>&nbsp;</th>				
+                                </tr>
+                            </thead>
+                            <tbody>				
                                 <?php
-                                $subtotal = ($product_price * $product_qty);
-                                $total = ($total + $subtotal);
-                            }
-                            $grand_total = $total;
+                                $cart_box = '';
+                                foreach ($_SESSION["products"] as $product) {
+                                    $product_name = $product["title"];
+                                    $product_qty = $product["book_qty"];
+                                    $product_price = $product["price"];
+                                    $product_code = $product["book_id"];
+                                    $item_price = sprintf("%01.2f", ($product_price * $product_qty));
+                                    $currency = 'лв. ';
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $product_name; /* echo "&mdash;"; */ ?></td>
+                                        <td><?php echo $product_price; ?></td>
+                                        <td><?php echo $product_qty; ?></td>
+                                        <td><?php echo sprintf("%01.2f", ($product_price * $product_qty)) ?> <?php echo $currency; ?></td>
+                                        <td>&nbsp;</td>
+                                    </tr>				
+                                    <?php
+                                    $subtotal = ($product_price * $product_qty);
+                                    $total = ($total + $subtotal);
+                                }
+                                $grand_total = $total;
 //	foreach($taxes as $key => $value){
 //			$tax_amount = round($total * ($value / 100));
 //			$tax_item[$key] = $tax_amount;
@@ -150,34 +91,176 @@ $result = $conn->query($query);
 //		$list_tax .= $key. ' : '. $currency. sprintf("%01.2f", $value).'<br />';
 //	}	
 
-                            $cart_box .= "<span>  $list_tax <hr>Payable Amount : " . sprintf("%01.2f", $grand_total) . " $currency </span>";
-                            ?>
-                        <tfoot>
-                            <tr>
-                                <td><br><br><br><br><br><br><a href="<?php echo URLBASE; ?>/categories-template.php?id=1"  class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Продължи пазаруването</a></td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td class="text-center view-cart-total"><strong><?php echo $cart_box; ?></strong></td>	
-                                <td><br><br><br><br><br><br><a href="success.php" class="btn btn-success btn-block">Направи поръчка <i class="glyphicon glyphicon-menu-right"></i></a></td>
-                            </tr>
-                        </tfoot>	
-                        <?php
-                    } else {
-                        echo "Вашата количка е празна";
-                    }
-                    ?>
-                    </tbody>
-                </table>
+                                $cart_box .= "<span>  $list_tax <hr>Дължима сума : " . sprintf("%01.2f", $grand_total) . " $currency </span>";
+                                ?>
+                            <tfoot>
+                                <tr>
+                                    <!--<td><br><br><br><br><br><br><a href="<?php echo URLBASE; ?>/categories-template.php?id=1"  class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Продължи пазаруването</a></td>-->
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td class="text-center view-cart-total"  id="tableprice" ><strong><?php echo $cart_box; ?></strong></td>	
+                                    <!--<td><br><br><br><br><br><br><a href="success.php" class="btn btn-success btn-block">Направи поръчка <i class="glyphicon glyphicon-menu-right"></i></a></td>-->
+                                </tr>
+                            </tfoot>	
+                            <?php
+                        } else {
+                            echo "Вашата количка е празна";
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class='col-12' >
 
         </div>
     </div>
+
+
+
+
+
+
+    <form class="row g-3 needs-validation" novalidate>
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <div class="col-md-4">
+                    <label for="validationCustom01" class="form-label">Име и фамилия</label>
+                    <input type="text" class="form-control" id="validationCustom01" value="" required>
+                    <div class="valid-feedback">
+                        Всичко е наред!
+                    </div>
+                    <div class="invalid-feedback">
+                        <!--                        Моля въведете име и фамилия-->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom02" class="form-label">E-mail</label>
+                    <input type="text" class="form-control" id="validationCustom02" value="<?php echo $row['email']; ?>" required>
+                    <div class="valid-feedback">
+                        Всичко е наред!
+                    </div>
+                    <div class="invalid-feedback">
+                        <!--                        Моля въведете е-mail-->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustomUsername" class="form-label">Потребителско име</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" value="<?php echo $row['username']; ?>" required>
+                        <div class="invalid-feedback">
+                            Моля въведете потребителско име
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom03" class="form-label">Адрес</label>
+                    <input type="text" class="form-control" id="validationCustom03" required>
+                    <div class="invalid-feedback">
+                        Моля въведете вашият адрес
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationCustom04" class="form-label">Град</label>
+                    <select class="form-select" id="validationCustom04" required>
+                        <option selected disabled value="">Избери...</option>
+                        <option>София</option>
+                        <option>Враца</option>
+                        <option>Бургас</option>
+                        <option>Пловдив</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Моля въведете вашият град
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationCustom05" class="form-label">Номер за връзка</label>
+                    <input type="text" class="form-control" id="validationCustom05" value="+359 "required>
+                    <div class="invalid-feedback">
+                        Моля въведете вашият номер
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                            Съгласявам се с условията на сайта.
+                        </label>
+                        <div class="invalid-feedback">
+                            Трябва да се съгласите с условията на сайта преди да продължите.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                     <div class="col-6" id="back">
+                        <a href="<?php echo URLBASE; ?>/categories-template.php?id=1"  class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Продължи пазаруването</a>
+                    </div>
+                    <div class="col-6" id="purchase">
+                        <button class="btn btn-success" type="submit">Направи поръчка</button>
+                    </div>
+                   
+                </div>
+                <?php
+            }
+        }
+        ?>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 
 
 <?php /* include footer */ ?>
+
+
+<script>
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+    // wait for page to load then run the code inside 
+    window.onload = () => {
+        // Select the form we want to validate
+        let form = document.querySelector('form');
+
+        // listen for submit event
+        form.onsubmit = (event) => {
+            // prevent the form from posting so the page won't refresh
+            event.preventDefault();
+            // debugging log statememnet  (not needed)
+            console.log('Form submitted')
+            // checking for form validation
+            if (form.checkValidity() === false) {
+                // if we're inside this if statement, the form is invalid
+                // we add the boostrap class to handle styling
+                form.classList.add('was-validated');
+                // debugging log statememnet  (not needed)
+                console.log('Form not valid')
+            } else {
+                // if we're inside this if statement, the form is valid and ready for further actions
+                // debugging log statememnet  (not needed)
+                console.log('Form valid')
+                // redirect to the target page
+                location.href = "success.php"
+            }
+        }
+    };
+</script>
+
+
 
 <script>
 
