@@ -1,9 +1,16 @@
 <?php
 require_once 'common/includes/dbconnect.php';
 define('URLBASE', 'http://localhost/bookstore');
+
+
 session_start();
+
 $sql_categories = "SELECT id, title FROM categories";
 $result_categories = $conn->query($sql_categories);
+
+$sql_categories2 = "SELECT id, title FROM categories";
+$result_categories2 = $conn->query($sql_categories2);
+
 
 $user_id = $_SESSION['login_user'];
 $query_user = "SELECT * FROM users WHERE id=$user_id";
@@ -138,7 +145,7 @@ $result_user = $conn->query($query_user);
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
-                                <li class="nav-item">
+                                <li class="nav-item dropdown">
                                     <a class="nav-link active" href="<?php echo URLBASE; ?>"><i class="bi bi-shuffle"></i>  Начало</a>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -148,8 +155,8 @@ $result_user = $conn->query($query_user);
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                                         <?php
-                                        if ($result_categories->num_rows > 0) {
-                                            while ($row = $result_categories->fetch_assoc()) {
+                                        if ($result_categories2->num_rows > 0) {
+                                            while ($row = $result_categories2->fetch_assoc()) {
                                                 ?> 
                                                 <li><a href="<?php echo URLBASE; ?>/categories-template.php?id=<?php echo $row['id'] ?> "><?php echo $row['title']; ?></a></li>
                                                 <?php
@@ -242,7 +249,7 @@ $result_user = $conn->query($query_user);
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                         </svg>
-/              <p id="cart-count" class="cart-count"><?php /* echo count($_SESSION["products"]); ТОВА Е ЗА БРОЯЧА, НО КАТО Е ВКЛЮЧЕНИ ИЗЧЕЗВА ВСИЧКО И НЯМА ЛОГИН*/?></p>  // 
+/              <p id="cart-count" class="cart-count"><?php /*  echo count($_SESSION["products"]); */ ?></p>  // 
                     </a>
                 </nav>
             </div>

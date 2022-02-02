@@ -51,7 +51,7 @@ if (!$result)
                                                     <thead>
                                                         <tr>
                                                     
-                                                            <th scope="col">Потребител</th>
+<!--                                                            <th scope="col">Потребител</th>-->
                                                             <th scope="col">Книга</th>
                                                             <th scope="col">Количество</th>
                                                         </tr>
@@ -62,7 +62,7 @@ if (!$result)
                                                             while ($row = $result->fetch_assoc()) {
                                                                 ?>
                                                                 <tr>
-                                                                    <td><?php echo htmlspecialchars($row['customer_id']) ?></td>
+<!--                                                                    <td><?php echo htmlspecialchars($row['customer_id']) ?></td>-->
                                                                     <td><?php echo htmlspecialchars($row['title']) ?></td>
                                                                     <td><?php echo htmlspecialchars($row['qty']) ?></td>
                                                                 </tr>        

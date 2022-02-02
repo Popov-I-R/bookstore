@@ -248,7 +248,7 @@ $result = $conn->query($query);
                                         <div class="product-content">
                                             <h3 class="title"><a href="#"><?php echo $row['title'] ?></a></h3>
                                             <div class="price">
-                                                <span><?php echo $row['price'] ?></span>
+                                                <span><?php echo $row['price']. ' лв.'; ?> </span>
                                             </div>
                                             <input type="hidden" value="1" name="book_qty">
                                             <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
@@ -345,7 +345,7 @@ $result = $conn->query($query);
                 var data = JSON.parse(data);
                 console.log(data);
                 $("#cart-count").html(data.products);
-                button_content.html('Add to Cart');
+                button_content.html('Добавено в количката');
             })
             e.preventDefault();
         });
