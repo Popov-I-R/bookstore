@@ -26,10 +26,12 @@ $result = $conn->query($query);
 
         h3.h3 {
             text-align: center;
-            margin: 1em;
+            margin-bottom: 5rem;
+            margin-top: 1rem;
             text-transform: capitalize;
             font-size: 5vw;
             color:black;
+            font-style: oblique;
         }
 
         .product-grid6,
@@ -203,41 +205,43 @@ $result = $conn->query($query);
 
         <div class="page-content p-1" id="content">
 
-            <div class="container">
+            <div class="container" style="margin-bottom: 2%;">
                 <div class="row">
-                    <h3 class="h3" id="categoryname">
-                        <?php
-                        if ($category_id === "1") {
-                            echo "Фантастика";
-                        } elseif ($category_id === "2") {
-                            echo "История";
-                        } elseif ($category_id === "3") {
-                            echo "Компютри/Програмиране";
-                        } elseif ($category_id === "4") {
-                            echo "Психология";
-                        } elseif ($category_id === "5") {
-                            echo "Трилър";
-                        } elseif ($category_id === "6") {
-                            echo "Финанси";
-                        } elseif ($category_id === "7") {
-                            echo "Медицина";
-                        } elseif ($category_id === "8") {
-                            echo "Българска литература";
-                        } elseif ($category_id === "9") {
-                            echo "Хумор/Смях";
-                        } elseif ($category_id === "10") {
-                            echo "Хорър/Ужаси";
-                        } elseif ($category_id === "11") {
-                            echo "Всичко друго";
-                        } else {
-                            echo "hell nah!";
-                        }
-                        ?>   </h3>
+                    <div class="col-lg-12">
+                        <h3 class="h3" id="categoryname">
+                            <?php
+                            if ($category_id === "1") {
+                                echo "Фантастика";
+                            } elseif ($category_id === "2") {
+                                echo "История";
+                            } elseif ($category_id === "3") {
+                                echo "Компютри/Програмиране";
+                            } elseif ($category_id === "4") {
+                                echo "Психология";
+                            } elseif ($category_id === "5") {
+                                echo "Трилър";
+                            } elseif ($category_id === "6") {
+                                echo "Икономика и бизнес";
+                            } elseif ($category_id === "7") {
+                                echo "Медицина";
+                            } elseif ($category_id === "8") {
+                                echo "Българска литература";
+                            } elseif ($category_id === "9") {
+                                echo "Хумор/Смях";
+                            } elseif ($category_id === "10") {
+                                echo "Хорър/Ужаси";
+                            } elseif ($category_id === "11") {
+                                echo "Всичко друго";
+                            } else {
+                                echo "hell nah!";
+                            }
+                            ?>   </h3>
+                    </div>
                     <?php
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             ?>
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-3 col-sm-6" style="margin-bottom:1.5%;">
                                 <div class="product-grid6">
                                     <form class="product-form">
                                         <div class="product-image6">
@@ -248,7 +252,7 @@ $result = $conn->query($query);
                                         <div class="product-content">
                                             <h3 class="title"><a href="#"><?php echo $row['title'] ?></a></h3>
                                             <div class="price">
-                                                <span><?php echo $row['price']. ' лв.'; ?> </span>
+                                                <span><?php echo $row['price'] . ' лв.'; ?> </span>
                                             </div>
                                             <input type="hidden" value="1" name="book_qty">
                                             <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
@@ -262,7 +266,7 @@ $result = $conn->query($query);
 
 
 
-                                        <!--                    <li><a href="<?php echo URLBASE ?>/backend/book-template.php?id=<?php echo $row['id']; ?>" data-tip="Добави в количката"><i class="fa fa-shopping-cart"></i></a></li>-->
+                                                <!--                    <li><a href="<?php echo URLBASE ?>/backend/book-template.php?id=<?php echo $row['id']; ?>" data-tip="Добави в количката"><i class="fa fa-shopping-cart"></i></a></li>-->
 
                                         </ul>
                                     </form>

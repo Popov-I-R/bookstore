@@ -24,6 +24,7 @@ require_once 'header.php';
     if (isset($_SESSION["products"]) && count($_SESSION["products"]) > 0) {
         ?>
         <div class="col-lg-12">
+            <div style="overflow-x:auto;">
             <table class="table" id="shopping-cart-results">
                 <thead>
                     <tr>
@@ -113,6 +114,7 @@ require_once 'header.php';
             <?php } ?>				
             </tbody>
         </table>
+            </div>
     </div>
 </div>
 

@@ -23,6 +23,12 @@ $result_slide3 = $conn->query($query_slide3);
 
 $query_slide4 = "SELECT * FROM `books` WHERE id BETWEEN 116 AND 117; ";
 $result_slide4 = $conn->query($query_slide4);
+
+$query_related = "SELECT * FROM `book_category` WHERE category_id = 1; ";
+$result_related = $conn->query($query_related);
+
+
+
 ?>
 <!doctype html>
 
@@ -34,7 +40,18 @@ $result_slide4 = $conn->query($query_slide4);
             .product-add-cart {
                 text-decoration: none;
             }
-
+            
+            h3 {
+                text-align: center;
+            }
+            
+            .related_books {
+                margin-top:5%;
+                margin-bottom: 5%;
+            }
+            .col-lg-12 {
+                margin-bottom: 3%;
+            }
         </style>
     </head>
 
@@ -260,26 +277,54 @@ $result_slide4 = $conn->query($query_slide4);
         </div>
 
         <script>
-
-            $(".product-form").submit(function (e) {
-                var form_data = $(this).serialize();
-                var button_content = $(this).find('button[type=submit]');
-                button_content.html('Adding...');
-
-                $.ajax({
-                    url: "common/includes/manage-cart.php",
-                    type: "POST",
-//            dataType: "json",
-                    data: form_data,
-                }).done(function (data) {
-                    var data = JSON.parse(data);
-                    console.log(data);
-                    $("#cart-count").html(data.products);
-                    button_content.html('Добавено в количката');
-                })
-                e.preventDefault();
+  $(document).ready(function () {
+        // update product quantity in cart
+        $(".quantity").change(function () {
+            var element = this;
+            setTimeout(function () {
+                update_quantity.call(element)
+            }, 2000);
+        });
+        function update_quantity() {
+            var pcode = $(this).attr("data-code");
+            var quantity = $(this).val();
+            $(this).parent().parent().fadeOut();
+            $.getJSON("manage_cart.php", {"update_quantity": pcode, "quantity": quantity}, function (data) {
+                window.location.reload();
             });
+        }
 
+
+
+        $(".product-form").submit(function (e) {
+            var form_data = $(this).serialize();
+            var button_content = $(this).find('button[type=submit]');
+            button_content.html('Добави отново');
+
+            $.ajax({
+                url: "common/includes/manage-cart.php",
+                type: "POST",
+//            dataType: "json",
+                data: form_data,
+            }).done(function (data) {
+                var data = JSON.parse(data);
+                console.log(data);
+                $("#cart-count").html(data.products);
+                button_content.html('Добавено в количката');
+            })
+            e.preventDefault();
+        });
+
+        //Remove items from cart
+        $("#shopping-cart-results").on('click', 'a.remove-item', function (e) {
+            e.preventDefault();
+            var pcode = $(this).attr("data-code");
+            $(this).parent().parent().fadeOut();
+            $.getJSON("manage_cart.php", {"remove_code": pcode}, function (data) {
+                $("#cart-container").html(data.products);
+                window.location.reload();
+            });
+        });
+    });
         </script>
-
     </body>
