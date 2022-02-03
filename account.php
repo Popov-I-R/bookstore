@@ -9,107 +9,113 @@ $result = $conn->query($query);
 <!doctype html>
 
 <html> 
-
     <head>
-
         <style>
-
+            h2{
+                text-align: center;
+            }
+            
+            .btn-success {
+                margin-top: 2%;
+                
+            }
+            
         </style>
     </head>
-
-
-
     <body>
         <main>
             <div class="page-content p-5" id="content">
 
-
-                <!-- Page content -->
-                <div class="container-fluid mt--7">
-                    <div class="row">
-
-                        <div class="col-xl-12 order-xl-1">
-                            <div class="card bg-secondary shadow">
-                                <div class="card-header bg-white border-2">
-                                    <div class="row align-items-center">
-                                        <div class="col-12">
-                                            <h3 class="mb-1">Моят профил</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <h6 class="heading-small text-muted mb-4">User information</h6>
-                                        <div class="pl-lg-4">
-                                            <?php
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
-                                                    ?>
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="form-group focused">
-                                                                <label class="form-control-label" for="input-username">Потребителско име</label>
-                                                                <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Потребителско име" value="<?php echo $row['username']; ?>">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="form-group">
-                                                                <label class="form-control-label" for="input-email">Имейл адрес</label>
-                                                                <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Имейл адрес" value="<?php echo $row['email']; ?>">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="form-group focused">
-                                                                <label class="form-control-label" for="input-first-name">Първо име</label>
-                                                                <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Първо име" value="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="form-group focused">
-                                                                <label class="form-control-label" for="input-number">Номер за връзка</label>
-                                                                <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Number " value="+359 ">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="form-group focused">
-                                                                <label class="form-control-label" for="input-city">Град</label>
-                                                                <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Град" value="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-                                        </div>
-                                        <hr class="my-4">
-                                        <!-- Address -->
-
-
-                                        <hr class="my-4">
-                                        <!-- Description -->
-
-                                        <div class="pl-lg-4">
-                                            <div class="form-group focused">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <a href="<?php echo URLBASE; ?>/myorders.php" class="btn btn-sm btn-primary">Моите поръчки</a>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <a href="#!" class="btn btn-sm btn-primary">Запази</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Моят профил</h2>
                     </div>
                 </div>
+                
+                
+                <form class="row g-3 needs-validation" novalidate>
+                    <?php
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            ?>
+<!--                            <div class="col-md-4">
+                                <label for="validationCustom01" class="form-label">Име и фамилия</label>
+                                <input type="text" class="form-control" id="validationCustom01" value="" required>
+                                <div class="valid-feedback">
+                                    Всичко е наред!
+                                </div>
+                                <div class="invalid-feedback">
+                                                            Моля въведете име и фамилия
+                                </div>
+                            </div>-->
+                            <div class="col-md-4">
+                                <label for="validationCustom02" class="form-label">E-mail</label>
+                                <input type="text" class="form-control" id="validationCustom02" value="<?php echo $row['email']; ?>" required>
+                                <div class="valid-feedback">
+                                    Всичко е наред!
+                                </div>
+                                <div class="invalid-feedback">
+                                    <!--                        Моля въведете е-mail-->
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="validationCustomUsername" class="form-label">Потребителско име</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" value="<?php echo $row['username']; ?>" required>
+                                    <div class="invalid-feedback">
+                                        Моля въведете потребителско име
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="validationCustom03" class="form-label">Създанен на</label>
+                                <input type="text" class="form-control disabled" id="validationCustom03" value="<?php echo $row['created_at']; ?>" disabled>
+                                <div class="invalid-feedback">
+                                    Моля въведете вашият адрес
+                                </div>
+                                <!--
+-->                            </div><!--
+                            <div class="col-md-3">
+                                <label for="validationCustom04" class="form-label">Град</label>
+                                <select class="form-select" id="validationCustom04" required>
+                                    <option selected disabled value="">Избери...</option>
+                                    <option>София</option>
+                                    <option>Враца</option>
+                                    <option>Бургас</option>
+                                    <option>Пловдив</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Моля въведете вашият град
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="validationCustom05" class="form-label">Номер за връзка</label>
+                                <input type="text" class="form-control" id="validationCustom05" placeholder="+359 " value=""required>
+                                <div class="invalid-feedback">
+                                    Моля въведете вашият номер
+                                </div>
+                            </div>-->
+                            <div class="row">
+                                <div class="col-6" id="myorders">
+                                    <a href="<?php echo URLBASE; ?>/myorders.php"  class="btn btn-success"><i class="glyphicon glyphicon-menu-center"></i> Моите поръчки</a>
+                                </div>
+                                <!--                    <div class="col-6" id="purchase">
+                                                        <button class="btn btn-success" type="submit">Направи поръчка</button>
+                                                    </div>-->
+
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
+                </form>
+
+
+
+
+
+
             </div>
         </main>
     </body>

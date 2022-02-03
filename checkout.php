@@ -13,22 +13,15 @@ $result = $conn->query($query);
 ?>
 
 
-
-
-
-
-
-
-
-
-<!--<script type="text/javascript" src="script/cart.js"></script>-->
 <?php include('common/includes/container.php'); ?>
+
+
 <head>
     <style>
         #purchase {
             text-align: right;
         }
-        
+
         #tableprice {
             text-align: center;
         }
@@ -52,10 +45,10 @@ $result = $conn->query($query);
                         <table class="table" id="shopping-cart-results">
                             <thead>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Subtotal</th>		
+                                    <th>Продукт</th>
+                                    <th>Единична цена</th>
+                                    <th>Количество</th>
+                                    <th>Крайна цена</th>	
                                     <th>&nbsp;</th>				
                                 </tr>
                             </thead>
@@ -82,14 +75,6 @@ $result = $conn->query($query);
                                     $total = ($total + $subtotal);
                                 }
                                 $grand_total = $total;
-//	foreach($taxes as $key => $value){
-//			$tax_amount = round($total * ($value / 100));
-//			$tax_item[$key] = $tax_amount;
-//			$grand_total = $grand_total + $tax_amount; 
-//	}	
-//	foreach($tax_item as $key => $value){
-//		$list_tax .= $key. ' : '. $currency. sprintf("%01.2f", $value).'<br />';
-//	}	
 
                                 $cart_box .= "<span>  $list_tax <hr>Дължима сума : " . sprintf("%01.2f", $grand_total) . " $currency </span>";
                                 ?>
@@ -116,12 +101,6 @@ $result = $conn->query($query);
 
         </div>
     </div>
-
-
-
-
-
-
     <form class="row g-3 needs-validation" novalidate>
         <?php
         if ($result->num_rows > 0) {
@@ -179,7 +158,7 @@ $result = $conn->query($query);
                 </div>
                 <div class="col-md-3">
                     <label for="validationCustom05" class="form-label">Номер за връзка</label>
-                    <input type="text" class="form-control" id="validationCustom05" value="+359 "required>
+                    <input type="text" class="form-control" id="validationCustom05" placeholder="+359 " value=""required>
                     <div class="invalid-feedback">
                         Моля въведете вашият номер
                     </div>
@@ -196,31 +175,19 @@ $result = $conn->query($query);
                     </div>
                 </div>
                 <div class="row">
-                     <div class="col-6" id="back">
+                    <div class="col-6" id="back">
                         <a href="<?php echo URLBASE; ?>/categories-template.php?id=1"  class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Продължи пазаруването</a>
                     </div>
                     <div class="col-6" id="purchase">
                         <button class="btn btn-success" type="submit">Направи поръчка</button>
                     </div>
-                   
+
                 </div>
                 <?php
             }
         }
         ?>
     </form>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </div>
 
@@ -254,7 +221,7 @@ $result = $conn->query($query);
                 // debugging log statememnet  (not needed)
                 console.log('Form valid')
                 // redirect to the target page
-                location.href = "success.php"
+                location.href = "<?php echo URLBASE; ?>/success.php"
             }
         }
     };
@@ -280,8 +247,6 @@ $result = $conn->query($query);
                 window.location.reload();
             });
         }
-
-
 
         $(".product-form").submit(function (e) {
             var form_data = $(this).serialize();

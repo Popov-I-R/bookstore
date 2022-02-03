@@ -2,7 +2,9 @@
 require_once 'header.php';
 ?>
 <html>
-    <head></head>
+    <head>
+        
+    </head>
     <body>
 
 
@@ -11,9 +13,9 @@ require_once 'header.php';
         <!-- Page content holder -->
         <div class="page-content p-5" id="content">
 
-<!--            <div class="Welcome message">
+            <div class="Welcome message">
                 <h1>Welcome, admin.</h1>
-            </div>
+            </div><!--
             
             
             

@@ -58,8 +58,9 @@ require_once 'header.php';
                                        data-code="<?php echo $product_code; ?>" 
                                        class="form-control text-center quantity" value="<?php echo $product_qty; ?>"></td>
                             <td><?php
-                                echo $currency = 'BGN ';
+                                
                                 echo sprintf("%01.2f", ($product_price * $product_qty));
+                                echo $currency = ' лв.';
                                 ?></td>
                             <td>				
                                 <a href="#" class="btn btn-danger remove-item" 
@@ -79,7 +80,7 @@ require_once 'header.php';
                     <?php
                     if (isset($total)) {
                         ?>	
-                        <td class="text-center cart-products-total"><strong>Total <?php echo sprintf("%01.2f", $total); ?> <?php echo $currency ?> </strong></td>
+                        <td class="text-center cart-products-total"><strong>Общо <?php echo sprintf("%01.2f", $total); ?> <?php echo $currency ?> </strong></td>
                         <?php if (isset($_SESSION['login_user'])) { ?>
                         <td><a href="checkout.php" 
                                class="btn btn-success btn-block">Продължи (като потребител)<i 
@@ -93,13 +94,12 @@ require_once 'header.php';
                                 }
                                 ?>
                                     
-                        
                         <?php } ?>
                 </tr>
                 </tfoot>			
                 <?php
             } else {
-                echo "Your Cart is empty";
+                echo "Вашата количка е празна";
                 ?>
                 <tfoot>
                 <br>
@@ -107,7 +107,7 @@ require_once 'header.php';
                 <tr>
                     <td><a href="index.php" 
                            class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> 
-                            Continue Shopping</a></td>
+                            Продължете пазаруването</a></td>
                     <td colspan="2"></td>
                 </tr>
                 </tfoot>
@@ -162,7 +162,7 @@ require_once 'header.php';
         $(this).parent().parent().fadeOut();
 //        $.getJSON("manage_cart.php", {"remove_code": pcode}, function (data) {
 //            $("#cart-container").html(data.products);
-//            window.location.reload();
+            window.location.reload();
 //        });
 
         $.ajax({

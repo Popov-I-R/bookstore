@@ -1,7 +1,7 @@
 <?php
 require_once 'header.php';
 
-$query = "SELECT * FROM `books` WHERE id BETWEEN 1 AND 4 ; ";
+$query = "SELECT * FROM `books` WHERE id BETWEEN 101 AND 102 ; ";
 $result = $conn->query($query);
 
 $query_slide = "SELECT * FROM `books` WHERE id BETWEEN 90 AND 91 ; ";
@@ -21,8 +21,6 @@ $result_slide4 = $conn->query($query_slide4);
 
             /*START CAROUSEL BOOKS*/
 
-
-            
             h1 {
                 text-align: center;
             }
@@ -40,12 +38,9 @@ $result_slide4 = $conn->query($query_slide4);
                 text-decoration: none;
             }
 
-                /*END CAROUSEL CATEGORY*/
+                /*END CAROUSEL BOOKS*/
 
                 /*START LOGO*/
-
-
-
 
                 #canvas-container-1{
                     margin-left:50%;
@@ -108,7 +103,7 @@ $result_slide4 = $conn->query($query_slide4);
                                             </div>
                                             <div class="carousel-inner">
 
-                                                <div class="carousel-item active" data-bs-interval="1333000">
+                                                <div class="carousel-item active" data-bs-interval="4500">
                                                     <?php
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
@@ -128,7 +123,7 @@ $result_slide4 = $conn->query($query_slide4);
                                                                         <h3><?php echo htmlspecialchars($row['price']) . ' лв.' ?></h3>
                                                                         <input type="hidden" value="1" name="book_qty">
                                                                         <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
-                                                                        <button type="submit" class="mt-3 btn btn-primary add-cart">
+                                                                        <button type="submit" class="mt-3 btn btn-outline-success add-cart">
                                                                             Добави в количката
                                                                         </button>
                                                                     </div>
@@ -139,7 +134,7 @@ $result_slide4 = $conn->query($query_slide4);
                                                     }
                                                     ?>
                                                 </div>
-                                                <div class="carousel-item" data-bs-interval="111113000">
+                                                <div class="carousel-item" data-bs-interval="4500">
                                                     <?php
                                                     if ($result_slide->num_rows > 0) {
                                                         while ($row = $result_slide->fetch_assoc()) {
@@ -159,7 +154,7 @@ $result_slide4 = $conn->query($query_slide4);
                                                                         <h3><?php echo htmlspecialchars($row['price']) ?></h3>
                                                                         <input type="hidden" value="1" name="book_qty">
                                                                         <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
-                                                                        <button type="submit" class="mt-3 btn btn-primary add-cart">
+                                                                        <button type="submit" class="mt-3 btn btn-outline-success add-cart">
                                                                             Добави в количката
                                                                         </button>
                                                                     </div>
@@ -170,7 +165,7 @@ $result_slide4 = $conn->query($query_slide4);
                                                     }
                                                     ?>
                                                 </div>
-                                                <div class="carousel-item" data-bs-interval="111113000">
+                                                <div class="carousel-item" data-bs-interval="4500">
                                                     <?php
                                                     if ($result_slide3->num_rows > 0) {
                                                         while ($row = $result_slide3->fetch_assoc()) {
@@ -190,7 +185,7 @@ $result_slide4 = $conn->query($query_slide4);
                                                                         <h3><?php echo htmlspecialchars($row['price']) ?></h3>
                                                                         <input type="hidden" value="1" name="book_qty">
                                                                         <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
-                                                                        <button type="submit" class="mt-3 btn btn-primary add-cart">
+                                                                        <button type="submit" class="mt-3 btn btn-outline-success add-cart">
                                                                             Добави в количката
                                                                         </button>
                                                                     </div>
@@ -201,7 +196,7 @@ $result_slide4 = $conn->query($query_slide4);
                                                     }
                                                     ?>
                                                 </div>
-                                                <div class="carousel-item" data-bs-interval="111113000">
+                                                <div class="carousel-item" data-bs-interval="4500">
                                                     <?php
                                                     if ($result_slide4->num_rows > 0) {
                                                         while ($row = $result_slide4->fetch_assoc()) {
@@ -221,7 +216,7 @@ $result_slide4 = $conn->query($query_slide4);
                                                                         <h3><?php echo htmlspecialchars($row['price']) ?></h3>
                                                                         <input type="hidden" value="1" name="book_qty">
                                                                         <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
-                                                                        <button type="submit" class="mt-3 btn btn-primary add-cart">
+                                                                        <button type="submit" class="mt-3 btn btn-outline-success add-cart">
                                                                             Добави в количката
                                                                         </button>
                                                                     </div>

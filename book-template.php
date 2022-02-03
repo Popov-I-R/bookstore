@@ -13,19 +13,23 @@ $result = $conn->query($sql);
 
 if (!$result)
     die("Fatal error");
+//
+//
+//$query_slide = "SELECT * FROM book_category WHERE category_id = 1 LIMIT 2; ";
+//$result_slide = $conn->query($query_slide);
 
 
-$query_slide = "SELECT * FROM book_category WHERE category_id = 1 ; ";
-$result_slide = $conn->query($query_slide);
+$query_slide2 = "SELECT * FROM `books` WHERE id = 90; ";
+$result_slide2 = $conn->query($query_slide2);
 
-$query_slide3 = "SELECT * FROM `books` WHERE id BETWEEN 95 AND 96 ; ";
+$query_slide3 = "SELECT * FROM `books` WHERE id = 76 ; ";
 $result_slide3 = $conn->query($query_slide3);
 
-$query_slide4 = "SELECT * FROM `books` WHERE id BETWEEN 116 AND 117; ";
+$query_slide4 = "SELECT * FROM `books` WHERE id = 80; ";
 $result_slide4 = $conn->query($query_slide4);
 
-$query_related = "SELECT * FROM `book_category` WHERE category_id = 1; ";
-$result_related = $conn->query($query_related);
+//$query_related = "SELECT * FROM `book_category` WHERE category_id = 1; ";
+//$result_related = $conn->query($query_related);
 
 
 
@@ -57,10 +61,7 @@ $result_related = $conn->query($query_related);
 
 
     <body>
-
         <div class="page-content p-1" id="content">
-
-
             <div class="container">
                 <div class="row">
                     <?php
@@ -75,9 +76,7 @@ $result_related = $conn->query($query_related);
                                     </div>
                                 </section>
                             </div>
-
                         </div>
-
                         <div class="col-sm-7 col-xxl-7 col-xl-7 col-lg-7 col-sm-7">
                             <div class="product-details-info">
                                 <form class="product-form">
@@ -140,12 +139,8 @@ $result_related = $conn->query($query_related);
                             </form>
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
-
             <div class="row">
                 <div class="related_books">
                     <div class="col-lg-12">
@@ -162,71 +157,7 @@ $result_related = $conn->query($query_related);
                                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"  aria-label="Slide 3"></button>
                                         </div>
                                         <div class="carousel-inner">
-
-                                            <div class="carousel-item active" data-bs-interval="13">
-
-                                                <?php
-                                                if ($result_slide->num_rows > 0) {
-                                                    while ($row = $result_slide->fetch_assoc()) {
-                                                        ?>
-                                                        <form class="product-form">
-                                                            <div class="col d-flex align-items-start book-item">
-                                                                <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-                                                                    <img width="150" src="<?php echo URLBASE . '/backend/uploads/' . $row['image'] ?>">
-                                                                </div>
-                                                                <div>
-                                                                    <h2> 
-                                                                        <a href="<?php echo URLBASE ?>/book-template.php?id=<?php echo $row['id']; ?>">
-                                                                            <?php echo htmlspecialchars($row['title']) ?></a>
-                                                                    </h2>
-                                                                    <?php $des = htmlspecialchars($row['description']) ?>
-                                                                    <p><?php echo (strlen($des) > 200) ? substr($des, 0, 200) . '...' : $des ?></p>
-                                                                    <h3><?php echo htmlspecialchars($row['price']) ?></h3>
-                                                                    <input type="hidden" value="1" name="book_qty">
-                                                                    <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
-                                                                    <button type="submit" class="mt-3 btn btn-primary add-cart">
-                                                                        Добави в количката
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="111113000">
-                                                <?php
-                                                if ($result_slide3->num_rows > 0) {
-                                                    while ($row = $result_slide3->fetch_assoc()) {
-                                                        ?>
-                                                        <form class="product-form">
-                                                            <div class="col d-flex align-items-start book-item">
-                                                                <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-                                                                    <img width="150" src="<?php echo URLBASE . '/backend/uploads/' . $row['image'] ?>">
-                                                                </div>
-                                                                <div>
-                                                                    <h2> 
-                                                                        <a href="<?php echo URLBASE ?>/book-template.php?id=<?php echo $row['id']; ?>">
-                                                                            <?php echo htmlspecialchars($row['title']) ?></a>
-                                                                    </h2>
-                                                                    <?php $des = htmlspecialchars($row['description']) ?>
-                                                                    <p><?php echo (strlen($des) > 200) ? substr($des, 0, 200) . '...' : $des ?></p>
-                                                                    <h3><?php echo htmlspecialchars($row['price']) ?></h3>
-                                                                    <input type="hidden" value="1" name="book_qty">
-                                                                    <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
-                                                                    <button type="submit" class="mt-3 btn btn-primary add-cart">
-                                                                        Добави в количката
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="111113000">
+                                           <div class="carousel-item active" data-bs-interval="4500">
                                                 <?php
                                                 if ($result_slide4->num_rows > 0) {
                                                     while ($row = $result_slide4->fetch_assoc()) {
@@ -257,6 +188,69 @@ $result_related = $conn->query($query_related);
                                                 }
                                                 ?>
                                             </div>
+                                            <div class="carousel-item" data-bs-interval="4500">
+                                                <?php
+                                                if ($result_slide3->num_rows > 0) {
+                                                    while ($row = $result_slide3->fetch_assoc()) {
+                                                        ?>
+                                                        <form class="product-form">
+                                                            <div class="col d-flex align-items-start book-item">
+                                                                <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                                                                    <img width="150" src="<?php echo URLBASE . '/backend/uploads/' . $row['image'] ?>">
+                                                                </div>
+                                                                <div>
+                                                                    <h2> 
+                                                                        <a href="<?php echo URLBASE ?>/book-template.php?id=<?php echo $row['id']; ?>">
+                                                                            <?php echo htmlspecialchars($row['title']) ?></a>
+                                                                    </h2>
+                                                                    <?php $des = htmlspecialchars($row['description']) ?>
+                                                                    <p><?php echo (strlen($des) > 200) ? substr($des, 0, 200) . '...' : $des ?></p>
+                                                                    <h3><?php echo htmlspecialchars($row['price']) ?></h3>
+                                                                    <input type="hidden" value="1" name="book_qty">
+                                                                    <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
+                                                                    <button type="submit" class="mt-3 btn btn-primary add-cart">
+                                                                        Добави в количката
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </div>
+                                            <div class="carousel-item" data-bs-interval="4500">
+                                                <?php
+                                                if ($result_slide2->num_rows > 0) {
+                                                    while ($row = $result_slide2->fetch_assoc()) {
+                                                        ?>
+                                                        <form class="product-form">
+                                                            <div class="col d-flex align-items-start book-item">
+                                                                <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                                                                    <img width="150" src="<?php echo URLBASE . '/backend/uploads/' . $row['image'] ?>">
+                                                                </div>
+                                                                <div>
+                                                                    <h2> 
+                                                                        <a href="<?php echo URLBASE ?>/book-template.php?id=<?php echo $row['id']; ?>">
+                                                                            <?php echo htmlspecialchars($row['title']) ?></a>
+                                                                    </h2>
+                                                                    <?php $des = htmlspecialchars($row['description']) ?>
+                                                                    <p><?php echo (strlen($des) > 200) ? substr($des, 0, 200) . '...' : $des ?></p>
+                                                                    <h3><?php echo htmlspecialchars($row['price']) ?></h3>
+                                                                    <input type="hidden" value="1" name="book_qty">
+                                                                    <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
+                                                                    <button type="submit" class="mt-3 btn btn-primary add-cart">
+                                                                        Добави в количката
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </div>
+                                            
 
                                         </div>
                                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -275,7 +269,6 @@ $result_related = $conn->query($query_related);
                 </div>
             </div>
         </div>
-
         <script>
   $(document).ready(function () {
         // update product quantity in cart

@@ -5,6 +5,16 @@ define('URLBASE', 'http://localhost/bookstore');
 
 $sql_categories = "SELECT id, title FROM categories";
 $result_categories = $conn->query($sql_categories);
+
+//session_start();
+//// Ако юзера не е логнат, редиректва към логин страницата
+//if(!isset($_SESSION["user_id"])){
+//    header("location:login.php");
+//    exit();
+//} 
+ 
+
+
 ?>
 <!doctype html>
 
@@ -60,7 +70,7 @@ $result_categories = $conn->query($sql_categories);
     <body>
         <div class="vertical-nav bg-white" id="sidebar">
             <div class="py-4 px-3 mb-4 bg-light">
-                <div class="media d-flex align-items-center"><img src="https://bootstrapious.com/i/snippets/sn-v-nav/avatar.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+                <div class="media d-flex align-items-center"><img src="<?php echo URLBASE; ?>/uploads/profile-picture.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
                     <div class="media-body">
                         <h4 class="m-0">ADMIN-PANEL</h4>
 

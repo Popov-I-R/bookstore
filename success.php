@@ -1,5 +1,9 @@
  <?php 
 include_once 'header.php'; 
+
+require_once 'common/includes/dbconnect.php';
+
+
 ?>
 <!--<title>phpzag.com : Demo Build Shopping Cart with Ajax, PHP and MySQL</title>
 <link href="style/style.css" rel="stylesheet" type="text/css">-->
@@ -15,6 +19,17 @@ include_once 'header.php';
 		
 	</div>
 </div>
+
+<?php //session_start();
+$_SESSION = array();
+// Destroy the session.
+unset($_SESSION["login_user"]);
+// Redirect to the login page
+//header("location:index.php");
+exit();
+
+?>
+
 <?php include('footer.php');?>
 
 

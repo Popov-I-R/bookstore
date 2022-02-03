@@ -3,16 +3,6 @@ require_once 'header.php';
 require_once 'common/includes/dbconnect.php';
 ?>
 
-<?php
-
-//require_once 'backend/includes/check.php';
-
-//$user_id = $_SESSION['login_user'];
-//$query = "SELECT * FROM users WHERE id=$user_id";
-//$result = $conn->query($query);
-?>
-
-
 
 <?php include('common/includes/container.php'); ?>
 <head>
@@ -20,7 +10,7 @@ require_once 'common/includes/dbconnect.php';
         #purchase {
             text-align: right;
         }
-        
+
         #tableprice {
             text-align: center;
         }
@@ -30,7 +20,7 @@ require_once 'common/includes/dbconnect.php';
 </head>
 
 <div class="page-content p-1" id="content">
-  <div class='row-g-4'>
+    <div class='row-g-4'>
         <div class='col-md-12' >
             <div class="container">	
                 <h3 style="text-align:left">Преглед</h3>
@@ -43,10 +33,10 @@ require_once 'common/includes/dbconnect.php';
                         <table class="table" id="shopping-cart-results">
                             <thead>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Subtotal</th>		
+                                    <th>Продукт</th>
+                                    <th>Единична цена</th>
+                                    <th>Количество</th>
+                                    <th>Крайна цена</th>	
                                     <th>&nbsp;</th>				
                                 </tr>
                             </thead>
@@ -73,14 +63,6 @@ require_once 'common/includes/dbconnect.php';
                                     $total = ($total + $subtotal);
                                 }
                                 $grand_total = $total;
-//	foreach($taxes as $key => $value){
-//			$tax_amount = round($total * ($value / 100));
-//			$tax_item[$key] = $tax_amount;
-//			$grand_total = $grand_total + $tax_amount; 
-//	}	
-//	foreach($tax_item as $key => $value){
-//		$list_tax .= $key. ' : '. $currency. sprintf("%01.2f", $value).'<br />';
-//	}	
 
                                 $cart_box .= "<span>  $list_tax <hr>Дължима сума : " . sprintf("%01.2f", $grand_total) . " $currency </span>";
                                 ?>
@@ -114,88 +96,85 @@ require_once 'common/includes/dbconnect.php';
 
 
     <form class="row g-3 needs-validation" novalidate>
+
+        <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">Име и фамилия</label>
+            <input type="text" class="form-control" id="validationCustom01" value="" required>
+            <div class="valid-feedback">
+                Всичко е наред!
+            </div>
+            <div class="invalid-feedback">
+                <!--                        Моля въведете име и фамилия-->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">E-mail</label>
+            <input type="text" class="form-control" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+                Всичко е наред!
+            </div>
+            <div class="invalid-feedback">
+                <!--                        Моля въведете е-mail-->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label">Потребителско име</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input type="text" class="form-control" id="validationCustomUsername" placeholder="Изключено" aria-describedby="inputGroupPrepend" value="" disabled>
+                <div class="invalid-feedback">
+                    Моля въведете потребителско име
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">Адрес</label>
+            <input type="text" class="form-control" id="validationCustom03" required>
+            <div class="invalid-feedback">
+                Моля въведете вашият адрес
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom04" class="form-label">Град</label>
+            <select class="form-select" id="validationCustom04" required>
+                <option selected disabled value="">Избери...</option>
+                <option>София</option>
+                <option>Враца</option>
+                <option>Бургас</option>
+                <option>Пловдив</option>
+            </select>
+            <div class="invalid-feedback">
+                Моля въведете вашият град
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom05" class="form-label">Номер за връзка</label>
+            <input type="text" class="form-control" id="validationCustom05" placeholder="+359" value="" required>
+            <div class="invalid-feedback">
+                Моля въведете вашият номер
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                    Съгласявам се с условията на сайта.
+                </label>
+                <div class="invalid-feedback">
+                    Трябва да се съгласите с условията на сайта преди да продължите.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6" id="back">
+                <a href="<?php echo URLBASE; ?>/categories-template.php?id=1"  class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Продължи пазаруването</a>
+            </div>
+            <div class="col-6" id="purchase">
+                <button class="btn btn-success" type="submit">Направи поръчка</button>
+            </div>
+
+        </div>
         <?php
-//        if ($result->num_rows > 0) {
-//            while ($row = $result->fetch_assoc()) {
-                ?>
-                <div class="col-md-4">
-                    <label for="validationCustom01" class="form-label">Име и фамилия</label>
-                    <input type="text" class="form-control" id="validationCustom01" value="" required>
-                    <div class="valid-feedback">
-                        Всичко е наред!
-                    </div>
-                    <div class="invalid-feedback">
-                        <!--                        Моля въведете име и фамилия-->
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <label for="validationCustom02" class="form-label">E-mail</label>
-                    <input type="text" class="form-control" id="validationCustom02" value="" required>
-                    <div class="valid-feedback">
-                        Всичко е наред!
-                    </div>
-                    <div class="invalid-feedback">
-                        <!--                        Моля въведете е-mail-->
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <label for="validationCustomUsername" class="form-label">Потребителско име</label>
-                    <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" value="" disabled>
-                        <div class="invalid-feedback">
-                            Моля въведете потребителско име
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <label for="validationCustom03" class="form-label">Адрес</label>
-                    <input type="text" class="form-control" id="validationCustom03" required>
-                    <div class="invalid-feedback">
-                        Моля въведете вашият адрес
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <label for="validationCustom04" class="form-label">Град</label>
-                    <select class="form-select" id="validationCustom04" required>
-                        <option selected disabled value="">Избери...</option>
-                        <option>София</option>
-                        <option>Враца</option>
-                        <option>Бургас</option>
-                        <option>Пловдив</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Моля въведете вашият град
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <label for="validationCustom05" class="form-label">Номер за връзка</label>
-                    <input type="text" class="form-control" id="validationCustom05" value="+359 "required>
-                    <div class="invalid-feedback">
-                        Моля въведете вашият номер
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck">
-                            Съгласявам се с условията на сайта.
-                        </label>
-                        <div class="invalid-feedback">
-                            Трябва да се съгласите с условията на сайта преди да продължите.
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                     <div class="col-6" id="back">
-                        <a href="<?php echo URLBASE; ?>/categories-template.php?id=1"  class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Продължи пазаруването</a>
-                    </div>
-                    <div class="col-6" id="purchase">
-                        <button class="btn btn-success" type="submit">Направи поръчка</button>
-                    </div>
-                   
-                </div>
-                <?php
 //            }
 //        }
         ?>
@@ -245,7 +224,7 @@ require_once 'common/includes/dbconnect.php';
                 // debugging log statememnet  (not needed)
                 console.log('Form valid')
                 // redirect to the target page
-                location.href = "success.php"
+                location.href = "<?php echo URLBASE; ?>/success.php"
             }
         }
     };

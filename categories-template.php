@@ -9,20 +9,12 @@ $query = "SELECT books.* "
         . "WHERE book_category.category_id = $category_id";
 $result = $conn->query($query);
 
-//$query_info ="SELECT books.id, books.title, books.image. books.price, categories.name FROM books INNER JOIN book_category";
-//$result_info = $conn->query($query);
 ?>
 <head>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
 
-        /*body{
-          font-family: Roboto, sans-serif;
-        
-          font-weight: 400;
-          line-height: 1.5;
-          color: #000;
-        }*/
+       
 
         h3.h3 {
             text-align: center;
@@ -44,8 +36,6 @@ $result = $conn->query($query);
             text-align: center;
             position: relative;
             transition: all .5s ease 0s;
-
-
         }
 
         .product-grid6:hover {
@@ -99,8 +89,6 @@ $result = $conn->query($query);
             font-weight: 600;
             color: black
         }
-
-
 
         .product-grid6 .social {
             background-color: transparent;
@@ -189,10 +177,7 @@ $result = $conn->query($query);
 
             }
         }
-
-
-
-
+        
     </style>
 
 
@@ -204,7 +189,6 @@ $result = $conn->query($query);
 
 
         <div class="page-content p-1" id="content">
-
             <div class="container" style="margin-bottom: 2%;">
                 <div class="row">
                     <div class="col-lg-12">
@@ -282,37 +266,11 @@ $result = $conn->query($query);
                             <a href="cart.html"> <span>0</span></a> това е за ютуб туториала брояча
                         </li>-->
             </div>
-
         </div>
-
-
-
-
-
-
-    </div>
-
-</div>
-
-
-
-
 </main>
 
 
 
-
-
-<!--<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-  </div>
-</footer>
-
-
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>-->
 
 <script>
 

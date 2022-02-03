@@ -35,11 +35,7 @@ $result_categories2 = $conn->query($sql_categories2);
 <!--        <script src="../common/assets/libs/js/main.js" type="text/javascript"></script>-->
 
         <style>
-            
-          
-            
-            
-            
+
             .nav-link {
                 color:white
             }
@@ -72,7 +68,10 @@ $result_categories2 = $conn->query($sql_categories2);
                 top: 0;
                 left: 20px;
             }
-
+            
+/*            a {
+                font-style: italic;
+            }*/
         </style>
     </head>
 
@@ -86,7 +85,6 @@ $result_categories2 = $conn->query($sql_categories2);
                         <div class="media-body">
                             <?php
                             if (isset($_SESSION['login_user'])) {
-
                                 $user_id = $_SESSION['login_user'];
                                 $query_user = "SELECT * FROM users WHERE id=$user_id";
                                 $result_user = $conn->query($query_user);
@@ -109,7 +107,6 @@ $result_categories2 = $conn->query($sql_categories2);
                         </div>
                     </div>
                 </div>
-
                 <nav class="vertical">
                     <ul>
                         <li>
@@ -130,8 +127,6 @@ $result_categories2 = $conn->query($sql_categories2);
                         </li>
                     </ul>
                 </nav>
-
-
             </div>
         </div>
         <!-- КРАЙ НА ВЕРТИКАЛЕН НАВБАР -->
@@ -244,19 +239,19 @@ $result_categories2 = $conn->query($sql_categories2);
         </div>
 
         <header>
-            
-            
+
+
             <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-          
-                <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+
+<!--                <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                     <a class="me-3 py-2 text-dark text-decoration-none" href="#">Pricing</a>
                     <a class="py-2 text-dark text-decoration-none link-cart" href="<?php echo URLBASE ?>/view-cart.php"> 
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                         </svg>
-                                      <p id="cart-count" class="cart-count"><?php /* echo count  ($_SESSION["products"]); */ ?></p>   
+                        <p id="cart-count" class="cart-count"><?php /* echo count  ($_SESSION["products"]); */ ?></p>   
                     </a>
-                </nav>
+                </nav>-->
             </div>
         </header>
 
