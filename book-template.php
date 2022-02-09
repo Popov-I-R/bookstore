@@ -14,9 +14,6 @@ $result = $conn->query($sql);
 if (!$result)
     die("Fatal error");
 //
-//
-//$query_slide = "SELECT * FROM book_category WHERE category_id = 1 LIMIT 2; ";
-//$result_slide = $conn->query($query_slide);
 
 
 $query_slide2 = "SELECT * FROM `books` WHERE id = 90; ";
@@ -28,8 +25,7 @@ $result_slide3 = $conn->query($query_slide3);
 $query_slide4 = "SELECT * FROM `books` WHERE id = 80; ";
 $result_slide4 = $conn->query($query_slide4);
 
-//$query_related = "SELECT * FROM `book_category` WHERE category_id = 1; ";
-//$result_related = $conn->query($query_related);
+
 
 
 
@@ -113,18 +109,7 @@ $result_slide4 = $conn->query($query_slide4);
                                         <h4 class="sr-only">Product Summary</h4>
                                         <p><?php echo $row['description'] ?></p>
                                     </div>
-                                    <div class="col-sm-6 col-xxl-6 col-xl-6 col-lg-6">
-                                        <div class="product-add-to-cart">
-                                            <div class="product-addtocart">
-                                                <span class="product-add-quantity">Количество:</span>
-                                                <input type="number" class="form-control text-center" value="1">
-                                            </div>
-                                            <!--                                <div class="product-add-to-cart-add-cart-btn">
-                                                                                <a href="#" class="btn btn-outlined--primary"><span class="product-add-plus">+</span>Add to
-                                                                                    Cart</a>
-                                                                            </div>-->
-                                        </div>    
-                                    </div>
+                                    
                                     <input type="hidden" value="1" name="book_qty">
                                     <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
                                     <div class="product-favourites-cart">

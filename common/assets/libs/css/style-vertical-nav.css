@@ -6,7 +6,12 @@
 *
 */
 
+#sidebar {
+     margin-top: 31px;
+}
+
 .vertical-nav {
+   
   min-width: 17rem;
   width: 17rem;
   height: 100vh;
@@ -28,6 +33,7 @@
 
 #sidebar.active {
   margin-left: -17rem;
+  margin-top: 21rem;
 }
 
 #content.active {
@@ -38,9 +44,11 @@
 @media (max-width: 768px) {
   #sidebar {
     margin-left: -17rem;
+     margin-top: 123px;
   }
   #sidebar.active {
     margin-left: 0;
+    margin-top: 123px;
   }
   #content {
     width: 100%;

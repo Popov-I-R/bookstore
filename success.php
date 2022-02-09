@@ -5,10 +5,9 @@ require_once 'common/includes/dbconnect.php';
 
 
 ?>
-<!--<title>phpzag.com : Demo Build Shopping Cart with Ajax, PHP and MySQL</title>
-<link href="style/style.css" rel="stylesheet" type="text/css">-->
+
 <script type="text/javascript" src="script/cart.js"></script>
-<?php  /* include('container.php'); */ ?>
+
 <div class="container">	
 	
 	<div class="text-left">	

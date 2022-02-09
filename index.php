@@ -151,7 +151,7 @@ $result_slide4 = $conn->query($query_slide4);
                                                                         </h2>
                                                                         <?php $des = htmlspecialchars($row['description']) ?>
                                                                         <p><?php echo (strlen($des) > 200) ? substr($des, 0, 200) . '...' : $des ?></p>
-                                                                        <h3><?php echo htmlspecialchars($row['price']) ?></h3>
+                                                                        <h3><?php echo htmlspecialchars($row['price']) .  ' лв.' ?></h3>
                                                                         <input type="hidden" value="1" name="book_qty">
                                                                         <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
                                                                         <button type="submit" class="mt-3 btn btn-outline-success add-cart">
@@ -182,7 +182,7 @@ $result_slide4 = $conn->query($query_slide4);
                                                                         </h2>
                                                                         <?php $des = htmlspecialchars($row['description']) ?>
                                                                         <p><?php echo (strlen($des) > 200) ? substr($des, 0, 200) . '...' : $des ?></p>
-                                                                        <h3><?php echo htmlspecialchars($row['price']) ?></h3>
+                                                                        <h3><?php echo htmlspecialchars($row['price']).  ' лв.' ?></h3>
                                                                         <input type="hidden" value="1" name="book_qty">
                                                                         <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
                                                                         <button type="submit" class="mt-3 btn btn-outline-success add-cart">
@@ -213,7 +213,7 @@ $result_slide4 = $conn->query($query_slide4);
                                                                         </h2>
                                                                         <?php $des = htmlspecialchars($row['description']) ?>
                                                                         <p><?php echo (strlen($des) > 200) ? substr($des, 0, 200) . '...' : $des ?></p>
-                                                                        <h3><?php echo htmlspecialchars($row['price']) ?></h3>
+                                                                        <h3><?php echo htmlspecialchars($row['price']).  ' лв.' ?></h3>
                                                                         <input type="hidden" value="1" name="book_qty">
                                                                         <input type="hidden" value="<?php echo $row['id']; ?>" name="book_id">
                                                                         <button type="submit" class="mt-3 btn btn-outline-success add-cart">

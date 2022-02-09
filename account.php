@@ -38,16 +38,6 @@ $result = $conn->query($query);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             ?>
-<!--                            <div class="col-md-4">
-                                <label for="validationCustom01" class="form-label">Име и фамилия</label>
-                                <input type="text" class="form-control" id="validationCustom01" value="" required>
-                                <div class="valid-feedback">
-                                    Всичко е наред!
-                                </div>
-                                <div class="invalid-feedback">
-                                                            Моля въведете име и фамилия
-                                </div>
-                            </div>-->
                             <div class="col-md-4">
                                 <label for="validationCustom02" class="form-label">E-mail</label>
                                 <input type="text" class="form-control" id="validationCustom02" value="<?php echo $row['email']; ?>" required>
@@ -74,34 +64,13 @@ $result = $conn->query($query);
                                 <div class="invalid-feedback">
                                     Моля въведете вашият адрес
                                 </div>
-                                <!--
--->                            </div><!--
-                            <div class="col-md-3">
-                                <label for="validationCustom04" class="form-label">Град</label>
-                                <select class="form-select" id="validationCustom04" required>
-                                    <option selected disabled value="">Избери...</option>
-                                    <option>София</option>
-                                    <option>Враца</option>
-                                    <option>Бургас</option>
-                                    <option>Пловдив</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Моля въведете вашият град
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="validationCustom05" class="form-label">Номер за връзка</label>
-                                <input type="text" class="form-control" id="validationCustom05" placeholder="+359 " value=""required>
-                                <div class="invalid-feedback">
-                                    Моля въведете вашият номер
-                                </div>
-                            </div>-->
+                             </div>
                             <div class="row">
                                 <div class="col-6" id="myorders">
                                     <a href="<?php echo URLBASE; ?>/myorders.php"  class="btn btn-success"><i class="glyphicon glyphicon-menu-center"></i> Моите поръчки</a>
                                 </div>
                                 <!--                    <div class="col-6" id="purchase">
-                                                        <button class="btn btn-success" type="submit">Направи поръчка</button>
+                                                        <button class="btn btn-success" type="submit">Тук ще е бутон за редакция</button>
                                                     </div>-->
 
                             </div>

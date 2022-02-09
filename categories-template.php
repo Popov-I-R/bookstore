@@ -24,6 +24,12 @@ $result = $conn->query($query);
             font-size: 5vw;
             color:black;
             font-style: oblique;
+            font-size: -webkit-xxx-large;
+            font-weight: bold;  
+        }
+        
+        .product-content {
+            min-height: 140px;
         }
 
         .product-grid6,

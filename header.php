@@ -78,9 +78,12 @@ $result_categories2 = $conn->query($sql_categories2);
 
 
     <body>
-        <div class="col-md">
+<!--СТАРТ ВЕРТИКАЛЕН НАВБАР.-->
+
+
+        <div class="col-md">  
             <div class="vertical-nav bg-white" id="sidebar">
-                <div class="py-4 px-3 mb-4 bg-light">
+                <div class="py-4 px-3 mb-4 bg-light"> <!-- Начало потр. име - Ако потребителя е логнат излиза името му над надписа "Добре дошли". В противен случай на мястото на потребителското име пише "Гост".-->
                     <div class="media d-flex align-items-center"><img src="<?php echo URLBASE; ?>/backend/uploads/profile-picture.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
                         <div class="media-body">
                             <?php
@@ -107,6 +110,8 @@ $result_categories2 = $conn->query($sql_categories2);
                         </div>
                     </div>
                 </div>
+<!--                КРАЙ ПОТРЕБИТЕЛСКО ИМЕ
+                НАЧАЛО НА КАТЕГОРИИ / ВЕРТИКАЛЕН НАВБАР-->
                 <nav class="vertical">
                     <ul>
                         <li>
@@ -126,13 +131,13 @@ $result_categories2 = $conn->query($sql_categories2);
                             </div>
                         </li>
                     </ul>
-                </nav>
+               </nav> <!--  КРАЙ НА КАТЕГОРИИ-->
             </div>
         </div>
         <!-- КРАЙ НА ВЕРТИКАЛЕН НАВБАР -->
 
 
-        <!-- ГОРЕН ЧЕРЕН НАВБАР СТАРТ-->
+        <!-- ХОРИЗОНТАЛЕН ЧЕРЕН НАВБАР СТАРТ-->
         <div class="site-header">
             <div class="header-top">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -142,10 +147,12 @@ $result_categories2 = $conn->query($sql_categories2);
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<!-- СТАРТ ПАДАЩО МЕНЮ "Книги" (КАТЕГОРИИ)-->
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link active" href="<?php echo URLBASE; ?>"><i class="bi bi-shuffle"></i>  Начало</a>
                                 </li>
+                                
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <img src=""/> Книги
@@ -156,17 +163,16 @@ $result_categories2 = $conn->query($sql_categories2);
                                         if ($result_categories2->num_rows > 0) {
                                             while ($row = $result_categories2->fetch_assoc()) {
                                                 ?> 
-                                                <li><a href="<?php echo URLBASE; ?>/categories-template.php?id=<?php echo $row['id'] ?> "><?php echo $row['title']; ?></a></li>
+                                                <li><a class="dropdown-item" href="<?php echo URLBASE; ?>/categories-template.php?id=<?php echo $row['id'] ?> "><?php echo $row['title']; ?></a></li>
+                                                <li><hr class="dropdown-divider"></li>
                                                 <?php
                                             }
                                         }
                                         ?>   
                                     </ul>
                                 </li>
-
-
                             </ul>
-                            <!-- NAVBAR RIGHT with command navbar-nav ms-auto-->
+<!--КРАЙ ПАДАЩО МЕНЮ "Книги" (Категории)-->
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
                                     <a class="nav-link active" href="#"><i class="bi bi-shuffle"></i>  За нас</a>
@@ -174,7 +180,8 @@ $result_categories2 = $conn->query($sql_categories2);
                                 <li class="nav-item">
                                     <a class="nav-link active" href="<?php echo URLBASE; ?>/contact.php""><i class="bi bi-heart-fill"></i>  Контакти</a>
                                 </li>
-                                <?php if (isset($_SESSION['login_user'])) { ?>
+                                <!--Проверка за сесия с потребител от базата данни. Ако има логнат потребител менюто се променя-->
+                                <?php if (isset($_SESSION['login_user'])) { ?> 
                                     <div class="profile">
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -207,12 +214,14 @@ $result_categories2 = $conn->query($sql_categories2);
                                     <?php
                                 }
                                 ?>
+                                <!--Край на проверката. -->
                             </ul>
                         </div>
                     </div>
                 </nav>
             </div>
         </div>
+        <!--ХОРИЗОНТАЛЕН ЧЕРЕН НАВБАР КРАЙ -->
         <div class="page-content p-1" id="content"> 
             <div class="row">
 
