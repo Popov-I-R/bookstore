@@ -50,12 +50,7 @@ if ($result) {
 
 
 if ($last_book_id != "" && $_POST ['authors']) {
-//    $query = "";
-//    foreach ($_POST['authors'] as $author){
-//       $query .= "('$last_book_id', '$author'),";
-//    }
-//    $query = "INSERT INTO book_author(book_id, author_id) VALUES " .trim($query, ',');
-//            $result = $conn->query($query);
+
     $data = array();
     foreach ($_POST['authors'] as $author) {
         $data[] = $author;
