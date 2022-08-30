@@ -1,13 +1,5 @@
 <?php 
-
-
-//session_start();
-//// Ако юзера не е логнат, редиректва към логин страницата
-//if(!isset($_SESSION["user_id"])){
-//    header("location:login.php");
-//    exit();
-//} 
-//    
+ 
     
 require_once 'header.php';
 
@@ -17,23 +9,7 @@ require_once 'header.php';
     <head></head>
     <body>
         
-<!-- Page content holder -->
 <div class="page-content p-5" id="content">
-  <!-- Toggle button -->
-<!--  <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>-->
-
-  <!-- Demo content -->
-<!--  <h2 class="display-4 text-white">Bootstrap vertical nav</h2>
-  <p class="lead text-white mb-0">Build a fixed sidebar using Bootstrap 4 vertical navigation and media objects.</p>
-  <p class="lead text-white">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white">
-        <u>Bootstrapious</u></a>
-  </p>-->
-
-
-
-
-
-  
   <div class="row text-white">
     <div class="col-lg-7">
       <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
