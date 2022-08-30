@@ -69,9 +69,7 @@ $result = $conn->query($query);
                                 <div class="col-6" id="myorders">
                                     <a href="<?php echo URLBASE; ?>/myorders.php"  class="btn btn-success"><i class="glyphicon glyphicon-menu-center"></i> Моите поръчки</a>
                                 </div>
-                                <!--                    <div class="col-6" id="purchase">
-                                                        <button class="btn btn-success" type="submit">Тук ще е бутон за редакция</button>
-                                                    </div>-->
+                               
 
                             </div>
                             <?php

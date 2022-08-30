@@ -2,23 +2,14 @@
 require_once 'header.php';
 ?>
 
-<head>
-
-    <style>
-    </style>
-</head>
-
-
 <div class="page-content p-1" id="content">
-
-
     <main>
         <div class="container px-4 py-5" id="hanging-icons">
             <h2 class="pb-2 border-bottom">Количка</h2>
         </div>
     </main>
-
     <?php
+
     if (isset($_SESSION["products"]) && count($_SESSION["products"]) > 0) {
         ?>
         <div class="col-lg-12">
@@ -42,10 +33,8 @@ require_once 'header.php';
                             $product_price = $product["price"];
                             $product_code = $product["book_id"];
                             $product_qty = $product["book_qty"];
-//                        var_dump($product_qty);
                             $subtotal = ($product_price * $product_qty);
                             $total = ($total + $subtotal);
-//                        var_dump($subtotal);
                             ?>
                             <tr>
                                 <td><?php
@@ -86,7 +75,6 @@ require_once 'header.php';
                                 <td><a href="checkout_guest.php" 
                                        class="btn btn-success btn-block">Продължи (като гост) <i 
                                             class="glyphicon glyphicon-menu-right"></i></a></td>
-
                                 <?php
                             }
                             ?>
@@ -114,7 +102,6 @@ require_once 'header.php';
         </div>
     </div>
 </div>
-
 
 <script>
     $(".quantity").change(function () {
@@ -146,22 +133,10 @@ require_once 'header.php';
             }
         });
 
-
-//        $.getJSON("manage-cart.php", {"update_quantity": pcode, "quantity": quantity}, function (data) {
-//            window.location.reload();
-//        });
-    }
-
     $("#shopping-cart-results").on('click', 'a.remove-item', function (e) {
-//        console.log(123);
         e.preventDefault();
         var pcode = $(this).attr("data-code");
         $(this).parent().parent().fadeOut();
-//        $.getJSON("manage_cart.php", {"remove_code": pcode}, function (data) {
-//            $("#cart-container").html(data.products);
-        window.location.reload();
-//        });
-
         $.ajax({
             url: "common/includes/manage-cart.php",
             type: "POST",
@@ -172,7 +147,6 @@ require_once 'header.php';
             },
             cache: false,
             success: function (dataresult) {
-//                window.location.reload();
             }
         });
     });
