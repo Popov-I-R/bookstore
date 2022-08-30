@@ -30,9 +30,7 @@ $result = $conn->query($query);
                     <div class="col-12">
                         <h2>Моят профил</h2>
                     </div>
-                </div>
-                
-                
+                </div>              
                 <form class="row g-3 needs-validation" novalidate>
                     <?php
                     if ($result->num_rows > 0) {
@@ -45,7 +43,6 @@ $result = $conn->query($query);
                                     Всичко е наред!
                                 </div>
                                 <div class="invalid-feedback">
-                                    <!--                        Моля въведете е-mail-->
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -77,12 +74,6 @@ $result = $conn->query($query);
                     }
                     ?>
                 </form>
-
-
-
-
-
-
             </div>
         </main>
     </body>

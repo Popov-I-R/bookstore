@@ -3,8 +3,6 @@
 require_once 'header.php'; 
 
 $query = "SELECT * FROM orders";
-//$query = "SELECT * FROM orders INNER JOIN orders.custumer_id ON categories.name  = name.customer_id";
-//$query = "SELECT books.*, authors.name FROM books INNER JOIN book_author ON books.id = book_author.book_id INNER JOIN authors ON authors.id = book_author.author_id";
 $result = $conn->query($query);
 
 if(!$result)

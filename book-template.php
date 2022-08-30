@@ -13,8 +13,6 @@ $result = $conn->query($sql);
 
 if (!$result)
     die("Fatal error");
-//
-
 
 $query_slide2 = "SELECT * FROM `books` WHERE id = 90; ";
 $result_slide2 = $conn->query($query_slide2);
@@ -54,8 +52,6 @@ $result_slide4 = $conn->query($query_slide4);
             }
         </style>
     </head>
-
-
     <body>
         <div class="page-content p-1" id="content">
             <div class="container">
@@ -116,7 +112,6 @@ $result_slide4 = $conn->query($query_slide4);
                                         <button type="submit"  class="mt-3 btn btn-outline-success add-cart">
                                             Добави в количката
                                         </button>
-        <!--                                    <a href="" class="product-add-favourites"><i class=""></i>Добави в любими</a>-->
                                     </div> 
                                     <?php
                                 }
@@ -271,8 +266,6 @@ $result_slide4 = $conn->query($query_slide4);
                 window.location.reload();
             });
         }
-
-
 
         $(".product-form").submit(function (e) {
             var form_data = $(this).serialize();

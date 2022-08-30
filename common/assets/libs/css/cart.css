@@ -3,15 +3,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
 
 
-
-/*body {
-  background-color: #fff;
-  color: #666;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 62.5%;
-  margin: 0 auto;
-}*/
-
 strong {
   font-weight: bold;
 }
@@ -357,21 +348,3 @@ aside {
     position: relative;
   }
 }
-
-/*@media screen and (min-width: 641px) and (max-width: 960px) {
-  aside {
-    padding: 0 1rem 0 0;
-  }
-  .summary {
-    width: 28%;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  main {
-    width: 100%;
-  }
-  .product-details {
-    padding: 0 1rem;
-  }
-}*/

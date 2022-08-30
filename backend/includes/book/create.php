@@ -18,9 +18,6 @@ if (!empty($_FILES['cover']['name'])) {
     $filename = $_FILES['cover']['name'];
     $destination = '../../uploads/' . $filename;
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
-
-//    $destination = $_SERVER['DOCUMENT_ROOT'] . "/backend/uploads/" . $filename;
-   
     $file = $_FILES['cover']['tmp_name'];
     $size = $_FILES['cover']['size'];
     if (!in_array($extension, ['jpeg', 'jpg', 'png'])) {
@@ -48,7 +45,6 @@ if ($result) {
     $last_book_id = $conn->insert_id; //връща последно качено id
 }
 
-
 if ($last_book_id != "" && $_POST ['authors']) {
 
     $data = array();
@@ -66,13 +62,6 @@ if ($last_book_id != "" && $_POST ['authors']) {
 }
 
 if ($last_book_id != "" && $_POST['categories']) {
-//    $query = "";
-//    foreach ($_POST['categories'] as $category){
-//       $query .= "('$last_book_id', '$category'),";
-//    }
-//    $query = "INSERT INTO book_category(book_id, category_id) VALUES " .trim($query, ',');
-//            $result = $conn->query($query);
-//}
 
     $data = array();
     foreach ($_POST['categories'] as $categories) {

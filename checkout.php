@@ -12,7 +12,6 @@ $query = "SELECT * FROM users WHERE id=$user_id";
 $result = $conn->query($query);
 ?>
 
-
 <?php include('common/includes/container.php'); ?>
 
 
@@ -196,9 +195,6 @@ $result = $conn->query($query);
 
 
 <script>
-
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-    // wait for page to load then run the code inside 
     window.onload = () => {
         // Select the form we want to validate
         let form = document.querySelector('form');
@@ -247,7 +243,6 @@ $result = $conn->query($query);
                 window.location.reload();
             });
         }
-
         $(".product-form").submit(function (e) {
             var form_data = $(this).serialize();
             var button_content = $(this).find('button[type=submit]');

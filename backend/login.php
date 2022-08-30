@@ -15,7 +15,6 @@ define('URLBASE', 'http://localhost/bookstore/');
         <link rel="stylesheet" href="../common/assets/vendor/font-awesome/css/all.min.css">
         <!--theme css-->
         <link rel="stylesheet" href="../common/assets/libs/css/style.css">
-
         <!--bootstrap bundle-->
         <script src="../common/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
         <!--jquery 3.6.0-->
@@ -156,6 +155,5 @@ define('URLBASE', 'http://localhost/bookstore/');
         }
     });
 </script>
-
 <?php
 include_once 'footer.php';

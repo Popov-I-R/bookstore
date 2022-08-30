@@ -3,8 +3,6 @@
 require_once '../../../common/includes/dbconnect.php';
 if (isset($_POST['id'])) {
 
-
-
     $id = $_POST['id'];
     $isbn = $_POST['isbn'];
     $title = $_POST['title'];
@@ -20,8 +18,6 @@ if (isset($_POST['id'])) {
         $filename = $_FILES['cover']['name'];
         $destination = '../../uploads/' . $filename;
         $extension = pathinfo($filename, PATHINFO_EXTENSION);
-
-//    $destination = $_SERVER['DOCUMENT_ROOT'] . "/backend/uploads/" . $filename;
 
         $file = $_FILES['cover']['tmp_name'];
         $size = $_FILES['cover']['size'];
@@ -41,7 +37,6 @@ if (isset($_POST['id'])) {
     $result = "";
     if (($image == "" && $flag == "") || ($image != "" && $flag == "" )) {
        
-       
         $stmp = $conn->prepare('UPDATE books SET isbn=?, title=?, year=?, description=?, image=?, price=?,publisher_id=? WHERE id=?');
         $stmp->bind_param('sssssdii', $isbn, $title, $year, $description, $image, $price, $publisher, $id);
         $result = $stmp->execute();
@@ -52,14 +47,8 @@ if (isset($_POST['id'])) {
         $last_book_id = $id; //връща последно качено id
     }
 
-
     if ($last_book_id != "" && isset($_POST ['authors'])) {
-//    $query = "";
-//    foreach ($_POST['authors'] as $author){
-//       $query .= "('$last_book_id', '$author'),";
-//    }
-//    $query = "INSERT INTO book_author(book_id, author_id) VALUES " .trim($query, ',');
-//    $result = $conn->query($query);
+
         $data = array();
         foreach ($_POST['authors'] as $author) {
             $data[] = $author;
@@ -79,9 +68,6 @@ if (isset($_POST['id'])) {
         foreach ($_POST['categories'] as $category) {
             $query .= "('$last_book_id', '$category'),";
         } 
-//    $query = "INSERT INTO book_category(book_id, category_id) VALUES " .trim($query, ',');
-//            $result = $conn->query($query);
-//}
 
         $data = array();
         foreach ($_POST['categories'] as $categories) {
@@ -95,9 +81,6 @@ if (isset($_POST['id'])) {
         }
         $conn->commit();
     }
-
-
-
 
     if ($result) {
         echo json_encode(["statusCode" => 200]);

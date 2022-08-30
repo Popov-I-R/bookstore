@@ -1,19 +1,9 @@
 <?php
 require_once '../common/includes/dbconnect.php';
-//require_once 'includes/check.php';
 define('URLBASE', 'http://localhost/bookstore');
 
 $sql_categories = "SELECT id, title FROM categories";
 $result_categories = $conn->query($sql_categories);
-
-//session_start();
-//// Ако юзера не е логнат, редиректва към логин страницата
-//if(!isset($_SESSION["user_id"])){
-//    header("location:login.php");
-//    exit();
-//} 
- 
-
 
 ?>
 <!doctype html>

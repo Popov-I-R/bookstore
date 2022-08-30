@@ -1,10 +1,4 @@
-/*
-*
-* ==========================================
-* CUSTOM UTIL CLASSES
-* ==========================================
-*
-*/
+
 
 #sidebar {
      margin-top: 31px;
@@ -60,11 +54,6 @@
   }
 }
 
-/*
-*
-*
-*/
-
 body {
   background: #599fd9;
   background: -webkit-linear-gradient(to right, #599fd9, #c2e59c);
@@ -93,6 +82,6 @@ body {
 }
 
 .btn-light:hover {
-/*  color: #000;*/
+
   border-color: #0582ff !important;
 }

@@ -101,9 +101,6 @@ require_once 'header.php';
                 }
             });
         }
-
-        
-            
          else {
             alert("Моля, въведете вашите данни.")
         }

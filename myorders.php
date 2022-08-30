@@ -13,17 +13,13 @@ if (!$result)
 
 
 <html> 
-
     <head>
-
         <style>
             h2 {
                 text-align: center;
             }
         </style>
     </head>
-
-
     <body>
         <main>
             <div class="page-content p-5" id="content">

@@ -68,11 +68,9 @@ require_once 'common/includes/dbconnect.php';
                                 ?>
                             <tfoot>
                                 <tr>
-                                    <!--<td><br><br><br><br><br><br><a href="<?php echo URLBASE; ?>/categories-template.php?id=1"  class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Продължи пазаруването</a></td>-->
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <td class="text-center view-cart-total"  id="tableprice" ><strong><?php echo $cart_box; ?></strong></td>	
-                                    <!--<td><br><br><br><br><br><br><a href="success.php" class="btn btn-success btn-block">Направи поръчка <i class="glyphicon glyphicon-menu-right"></i></a></td>-->
+                                    <td class="text-center view-cart-total"  id="tableprice" ><strong><?php echo $cart_box; ?></strong></td>	                        
                                 </tr>
                             </tfoot>	
                             <?php
@@ -89,14 +87,7 @@ require_once 'common/includes/dbconnect.php';
 
         </div>
     </div>
-
-
-
-
-
-
     <form class="row g-3 needs-validation" novalidate>
-
         <div class="col-md-4">
             <label for="validationCustom01" class="form-label">Име и фамилия</label>
             <input type="text" class="form-control" id="validationCustom01" value="" required>
@@ -175,23 +166,8 @@ require_once 'common/includes/dbconnect.php';
 
         </div>
         <?php
-//            }
-//        }
         ?>
     </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
 
@@ -205,7 +181,6 @@ require_once 'common/includes/dbconnect.php';
     window.onload = () => {
         // Select the form we want to validate
         let form = document.querySelector('form');
-
         // listen for submit event
         form.onsubmit = (event) => {
             // prevent the form from posting so the page won't refresh
@@ -229,11 +204,6 @@ require_once 'common/includes/dbconnect.php';
         }
     };
 </script>
-
-
-
-
-
 <script>
 
     $(document).ready(function () {
@@ -252,9 +222,6 @@ require_once 'common/includes/dbconnect.php';
                 window.location.reload();
             });
         }
-
-
-
         $(".product-form").submit(function (e) {
             var form_data = $(this).serialize();
             var button_content = $(this).find('button[type=submit]');
@@ -263,7 +230,6 @@ require_once 'common/includes/dbconnect.php';
             $.ajax({
                 url: "common/includes/manage-cart.php",
                 type: "POST",
-//            dataType: "json",
                 data: form_data,
             }).done(function (data) {
                 var data = JSON.parse(data);

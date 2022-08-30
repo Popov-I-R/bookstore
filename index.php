@@ -38,7 +38,6 @@ $result_slide4 = $conn->query($query_slide4);
             }
 
                 /*END CAROUSEL BOOKS*/
-
                 /*START LOGO*/
 
                 #canvas-container-1{
@@ -65,15 +64,12 @@ $result_slide4 = $conn->query($query_slide4);
             </style>
         </head>
         <body>
-
-            <!-- Page content holder -->
             <div class="page-content p-1" id="content">
                 <div class="row">
                     <div class="actual books">
                         <div class="col-lg-12">
                             <h1>Актуални книги</h1>
                         </div>
-
                         <section class="hero-area hero-slider-4">
                             <div class="container">
                                 <div class="row ">
@@ -229,11 +225,7 @@ $result_slide4 = $conn->query($query_slide4);
                     </div>
                 </div>
             </div>
-
-            <!--END-->
-
         </body>
-
     </html>
 
     <?php
@@ -265,18 +257,16 @@ $result_slide4 = $conn->query($query_slide4);
                 $.ajax({
                     url: "common/includes/manage-cart.php",
                     type: "POST",
-//            dataType: "json",
                     data: form_data,
                 }).done(function (data) {
                     var data = JSON.parse(data);
                     console.log(data);
                     $("#cart-count").html(data.products);
                     button_content.html('Добавено в количката');
-                })
+                });
                 e.preventDefault();
             });
 
-            //Remove items from cart
             $("#shopping-cart-results").on('click', 'a.remove-item', function (e) {
                 e.preventDefault();
                 var pcode = $(this).attr("data-code");

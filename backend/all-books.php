@@ -8,7 +8,6 @@ $result = $conn->query($query);
 if(!$result)
     die("Fatal error");
 ?>
-
 <div class="page-content p-5" id="content">
     
     <h1>Всички книги</h1>

@@ -14,7 +14,6 @@ $result_publishers = $conn->query($sql_publishers);
 
 ?>
 
-<!--Page content holder-->
 <div class='page-content p-5' id="content">
     <div class="card">
         <h2 class="card-header">Добавяне на нова книга</h2>
@@ -120,11 +119,6 @@ include_once 'footer.php';
             if(isbn != "" && title != "" && publisher != ""){
                 $.ajax({
                    type: 'POST',
-//                   data: {
-//                       isbn: isbn,
-//                       dasdasd: $('#isbn').val(),
-//                       
-//                   },
                     data: formData,
                     cache: false, 
                     processData: false,
@@ -154,7 +148,6 @@ include_once 'footer.php';
                 });
             }else {
                 alert("Попълни задължителните полета!");
-//                $('form').addClass('needs-validation');
             }
             
         });

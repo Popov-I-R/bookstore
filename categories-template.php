@@ -189,11 +189,7 @@ $result = $conn->query($query);
 
 </head>
 <body>
-
-
     <main>
-
-
         <div class="page-content p-1" id="content">
             <div class="container" style="margin-bottom: 2%;">
                 <div class="row">

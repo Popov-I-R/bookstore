@@ -9,7 +9,6 @@ require_once 'header.php';
         </div>
     </main>
     <?php
-
     if (isset($_SESSION["products"]) && count($_SESSION["products"]) > 0) {
         ?>
         <div class="col-lg-12">
@@ -117,7 +116,6 @@ require_once 'header.php';
         if (quantity == 0) {
             $(this).parent().parent().fadeOut();
         }
-
 
         $.ajax({
             url: "common/includes/manage-cart.php",

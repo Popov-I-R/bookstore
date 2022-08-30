@@ -2,10 +2,7 @@
 
 require_once 'header.php'; 
 ?>
-
-
     <div class="page-content p-5" id="content">
-
         <section class="vh-100">
             <div class="container-fluid h-custom">
                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -14,29 +11,23 @@ require_once 'header.php';
                             <div class="divider d-flex align-items-center my-4">
                                 <p class="text-center fw-bold mx-3 mb-0">Регистрация</p>
                             </div>
-
                             <!-- Email input -->
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="form3Example3">E-mail адрес</label>
                                 <input type="email" id="email" class="form-control form-control-lg"
                                        placeholder="Въведете имейл адрес" />
-
                             </div>
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="username">Потребителско име</label>
                                 <input type="username" id="username" class="form-control form-control-lg"
                                        placeholder="Въведете потребителско име" />
-
                             </div>
-
                             <!-- Password input -->
                             <div class="form-outline mb-3">
                                 <label class="form-label" for="form3Example4">Парола</label>
                                 <input type="password" id="password" class="form-control form-control-lg"
                                        placeholder="Въведете парола" />
-
                             </div>
-
                             <div class="d-flex justify-content-between align-items-center">
                                 <!-- Checkbox -->
                                 <div class="form-check mb-0">
@@ -53,9 +44,8 @@ require_once 'header.php';
                                 <button type="button" id="btn-register" class="btn btn-primary btn-lg"
                                         style="padding-left: 2.5rem; padding-right: 2.5rem;">Регистрация</button>
                                 <p class="small fw-bold mt-2 pt-1 mb-0">Имате акаунт? <a href="<?php echo URLBASE; ?>/login.php"
-                                                                                            class="link-danger">Вход</a></p>
+                                                                                           class="link-danger">Вход</a></p>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -85,7 +75,6 @@ require_once 'header.php';
                     success: function (dataResult) {
     //                  console.log(dataResult);
                         var dataResult = JSON.parse(dataResult);
-    //                  console.log(dataResult);
                         if (dataResult.statusCode == 200) {
                             $('#success').show();
                             $('#success').html('Успешна регистрация');

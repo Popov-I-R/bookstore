@@ -126,11 +126,10 @@ $result_categories2 = $conn->query($sql_categories2);
                             </div>
                         </li>
                     </ul>
-               </nav> <!--  КРАЙ НА КАТЕГОРИИ-->
+               </nav> 
             </div>
         </div>
         <!-- КРАЙ НА ВЕРТИКАЛЕН НАВБАР -->
-
         <!-- ХОРИЗОНТАЛЕН ЧЕРЕН НАВБАР СТАРТ-->
         <div class="site-header">
             <div class="header-top">

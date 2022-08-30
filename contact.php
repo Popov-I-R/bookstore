@@ -12,8 +12,6 @@ require_once 'header.php';
 
         </head>
         <body>
-
-            <!-- Page content holder -->
             <div class="page-content p-1" id="content">
                 <div class="row">
                     <div class="col-lg-12">

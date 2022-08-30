@@ -1,10 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);
-/*.stage {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}*/
 
 [type=submit], [type=text],
 [type=email],
@@ -141,7 +135,6 @@ textarea.active {
 
 .stage {
     
-/*    max-width: 65em; */
   max-width: 800px;
   width: 80%;
 }
