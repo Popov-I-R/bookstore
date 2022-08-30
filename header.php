@@ -19,7 +19,6 @@ $result_categories2 = $conn->query($sql_categories2);
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--bootstrap css-->
-
         <link href="common/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!--font awesome-->
         <link href="common/assets/vendor/font-awesome/css/all.min.css" rel="stylesheet" type="text/css"/>
@@ -32,10 +31,8 @@ $result_categories2 = $conn->query($sql_categories2);
         <script src="common/assets/vendor/jquery/jquery-3.6.0.min.js" type="text/javascript"></script>
         <!--theme js-->
         <script src="common/assets/libs/js/javascript.js" type="text/javascript"></script>
-<!--        <script src="../common/assets/libs/js/main.js" type="text/javascript"></script>-->
 
         <style>
-
             .nav-link {
                 color:white
             }
@@ -68,19 +65,17 @@ $result_categories2 = $conn->query($sql_categories2);
                 top: 0;
                 left: 20px;
             }
-            
-/*            a {
-                font-style: italic;
-            }*/
         </style>
     </head>
 
 
 
     <body>
+        <header>
+            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+            </div>
+        </header>
 <!--СТАРТ ВЕРТИКАЛЕН НАВБАР.-->
-
-
         <div class="col-md">  
             <div class="vertical-nav bg-white" id="sidebar">
                 <div class="py-4 px-3 mb-4 bg-light"> <!-- Начало потр. име - Ако потребителя е логнат излиза името му над надписа "Добре дошли". В противен случай на мястото на потребителското име пише "Гост".-->
@@ -136,7 +131,6 @@ $result_categories2 = $conn->query($sql_categories2);
         </div>
         <!-- КРАЙ НА ВЕРТИКАЛЕН НАВБАР -->
 
-
         <!-- ХОРИЗОНТАЛЕН ЧЕРЕН НАВБАР СТАРТ-->
         <div class="site-header">
             <div class="header-top">
@@ -152,13 +146,11 @@ $result_categories2 = $conn->query($sql_categories2);
                                 <li class="nav-item dropdown">
                                     <a class="nav-link active" href="<?php echo URLBASE; ?>"><i class="bi bi-shuffle"></i>  Начало</a>
                                 </li>
-                                
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <img src=""/> Книги
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
                                         <?php
                                         if ($result_categories2->num_rows > 0) {
                                             while ($row = $result_categories2->fetch_assoc()) {
@@ -196,7 +188,6 @@ $result_categories2 = $conn->query($sql_categories2);
                                         </li>
                                     </div>
                                 <?php } else { ?>
-
                                     <div class="login">
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -224,9 +215,7 @@ $result_categories2 = $conn->query($sql_categories2);
         <!--ХОРИЗОНТАЛЕН ЧЕРЕН НАВБАР КРАЙ -->
         <div class="page-content p-1" id="content"> 
             <div class="row">
-
                 <div class="container">
-
                     <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <line x1="4" y1="6" x2="20" y2="6" />
@@ -243,25 +232,6 @@ $result_categories2 = $conn->query($sql_categories2);
                         </svg><span class="text-number"> <?php /* echo count ($_SESSION["products"]); */ ?> </span>
                     </button>
                 </div>
-
             </div>
         </div>
-
-        <header>
-
-
-            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-
-<!--                <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                    <a class="me-3 py-2 text-dark text-decoration-none" href="#">Pricing</a>
-                    <a class="py-2 text-dark text-decoration-none link-cart" href="<?php echo URLBASE ?>/view-cart.php"> 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                        </svg>
-                        <p id="cart-count" class="cart-count"><?php /* echo count  ($_SESSION["products"]); */ ?></p>   
-                    </a>
-                </nav>-->
-            </div>
-        </header>
-
     </body>
